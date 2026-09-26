@@ -87,12 +87,17 @@ class DataQualityIssue(Base):
     severity = Column(String(20), nullable=False, default="MEDIUM")  # LOW, MEDIUM, HIGH, CRITICAL
     raw_value = Column(Text, nullable=True)
     description = Column(Text, nullable=False)
-    status = Column(String(30), nullable=False, default="UNRESOLVED")  # UNRESOLVED, TRANSFORMED, ACCEPTED, REJECTED
+    status = Column(String(30), nullable=False, default="OPEN")  # OPEN, RESOLVED, ACCEPTED
+    program_id = Column(String(50), ForeignKey("programs.program_id", ondelete="SET NULL"), nullable=True)
+    resolved_at = Column(DateTime(timezone=True), nullable=True)
+    resolved_by = Column(String(100), nullable=True)
+    resolution_notes = Column(Text, nullable=True)
     detected_at = Column(DateTime(timezone=True), server_default=func.now())
 
     # Relationships
     source_file = relationship("SourceFile", back_populates="dq_issues")
     source_record = relationship("SourceRecord", back_populates="dq_issues")
+    program = relationship("Program", backref="dq_issues")
 
 
 class Program(Base):

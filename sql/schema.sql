@@ -44,18 +44,24 @@ CREATE TABLE IF NOT EXISTS data_quality_issues (
     issue_id SERIAL PRIMARY KEY,
     file_id INTEGER REFERENCES source_files(file_id) ON DELETE CASCADE,
     record_id INTEGER REFERENCES source_records(record_id) ON DELETE SET NULL,
+    program_id VARCHAR(50) REFERENCES programs(program_id) ON DELETE SET NULL,
     row_number INTEGER,
     column_name VARCHAR(100),
-    issue_type VARCHAR(50) NOT NULL,       -- e.g., DUPLICATE_RECORD, MISSING_VALUE, INVALID_FORMAT, OUT_OF_RANGE
-    severity VARCHAR(20) NOT NULL DEFAULT 'MEDIUM', -- LOW, MEDIUM, HIGH, CRITICAL
+    issue_type VARCHAR(50) NOT NULL,       -- e.g., DUPLICATE, MISSING_VALUE, INVALID_FORMAT, INVALID_NUMBER, UNMATCHED_REFERENCE
+    severity VARCHAR(20) NOT NULL DEFAULT 'INFO', -- INFO, WARNING, ERROR
     raw_value TEXT,
     description TEXT NOT NULL,
-    status VARCHAR(30) NOT NULL DEFAULT 'UNRESOLVED', -- UNRESOLVED, TRANSFORMED, ACCEPTED, REJECTED
+    status VARCHAR(30) NOT NULL DEFAULT 'OPEN', -- OPEN, RESOLVED, ACCEPTED
+    resolved_at TIMESTAMP WITH TIME ZONE,
+    resolved_by VARCHAR(100),
+    resolution_notes TEXT,
     detected_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_dq_issues_type ON data_quality_issues(issue_type);
 CREATE INDEX IF NOT EXISTS idx_dq_issues_status ON data_quality_issues(status);
+CREATE INDEX IF NOT EXISTS idx_dq_issues_program ON data_quality_issues(program_id);
+CREATE INDEX IF NOT EXISTS idx_dq_issues_severity ON data_quality_issues(severity);
 
 -- -----------------------------------------------------------------------------
 -- 2. NORMALIZED CORE DOMAIN TABLES (Cleaned & Structured Data)
