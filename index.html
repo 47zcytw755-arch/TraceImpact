@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TraceImpact — Data Processing Control Room</title>
+  <meta name="description" content="TraceImpact 2.0 Digital Twin — Real-time pipeline simulation and monitoring control room for World Bank data ingestion, ML anomaly detection, and AI investigation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ═══════════════════ TOP BAR ═══════════════════ -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <div class="logo-mark">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="url(#g1)" stroke-width="2.5"/><path d="M8 14h12M14 8v12" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#06d6a0"/><stop offset="1" stop-color="#118ab2"/></linearGradient></defs></svg>
+      </div>
+      <h1 class="brand">TRACEIMPACT <span class="version">2.0</span></h1>
+      <span class="separator">|</span>
+      <span class="subtitle">DATA PROCESSING CONTROL ROOM</span>
+    </div>
+    <div class="topbar-center" id="clock-container">
+      <span id="live-clock" class="mono"></span>
+    </div>
+    <div class="topbar-right">
+      <button id="btn-mode-toggle" class="topbar-btn" title="Switch mode">
+        <span class="mode-label" id="mode-label">LIVE DEMO</span>
+      </button>
+      <button id="btn-judge-mode" class="topbar-btn accent" title="Judge Mode — 3-minute guided tour">JUDGE MODE</button>
+      <button id="btn-fullscreen" class="topbar-btn" title="Toggle fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════ MAIN GRID ═══════════════════ -->
+  <main id="control-room">
+
+    <!-- ───── LEFT COLUMN: Pipeline Visualization ───── -->
+    <section id="pipeline-col" class="panel">
+      <div class="panel-header">
+        <h2>Pipeline Flow</h2>
+        <div class="panel-controls">
+          <button id="btn-start" class="ctrl-btn start" title="Start simulation">▶ START</button>
+          <button id="btn-pause" class="ctrl-btn" title="Pause" disabled>⏸</button>
+          <button id="btn-reset" class="ctrl-btn" title="Reset" disabled>⟲</button>
+        </div>
+      </div>
+      <div id="pipeline-canvas">
+        <!-- Pipeline stages rendered by JS -->
+        <div class="pipeline-stages" id="pipeline-stages"></div>
+        <!-- Particle layer -->
+        <canvas id="particle-canvas"></canvas>
+      </div>
+      <!-- Stage detail flyout -->
+      <div id="stage-detail" class="detail-flyout hidden">
+        <button id="detail-close" class="detail-close-btn">✕</button>
+        <h3 id="detail-title"></h3>
+        <div id="detail-body"></div>
+      </div>
+    </section>
+
+    <!-- ───── CENTER COLUMN: Metrics + Lineage ───── -->
+    <section id="center-col">
+      <!-- Top: Live Metrics Grid -->
+      <div class="panel metrics-panel" id="metrics-panel">
+        <div class="panel-header"><h2>System Metrics</h2><span class="provenance-badge" id="metrics-provenance">[MEASURED]</span></div>
+        <div class="metrics-grid" id="metrics-grid">
+          <div class="metric-card" id="mc-records">
+            <span class="metric-label">Records Processed</span>
+            <span class="metric-value" id="mv-records">0</span>
+            <span class="metric-sub" id="ms-records">—</span>
+          </div>
+          <div class="metric-card" id="mc-throughput">
+            <span class="metric-label">Throughput</span>
+            <span class="metric-value" id="mv-throughput">0</span>
+            <span class="metric-sub">rec/sec</span>
+          </div>
+          <div class="metric-card" id="mc-anomalies">
+            <span class="metric-label">Anomalies</span>
+            <span class="metric-value" id="mv-anomalies">0</span>
+            <span class="metric-sub" id="ms-anomaly-rate">0%</span>
+          </div>
+          <div class="metric-card" id="mc-dq">
+            <span class="metric-label">DQ Score</span>
+            <span class="metric-value" id="mv-dq">—</span>
+            <span class="metric-sub" id="ms-dq-issues">0 issues</span>
+          </div>
+          <div class="metric-card" id="mc-latency">
+            <span class="metric-label">Avg Query</span>
+            <span class="metric-value" id="mv-latency">—</span>
+            <span class="metric-sub">ms</span>
+          </div>
+          <div class="metric-card" id="mc-security">
+            <span class="metric-label">Security</span>
+            <span class="metric-value" id="mv-security">—</span>
+            <span class="metric-sub" id="ms-security">0/0 blocked</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Traceability Visualization -->
+      <div class="panel trace-panel" id="trace-panel">
+        <div class="panel-header"><h2>Lineage Trace</h2><span class="provenance-badge">[REAL]</span></div>
+        <div id="lineage-viz" class="lineage-container">
+          <!-- Lineage chain rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ───── RIGHT COLUMN: ML/AI + Failure Lab ───── -->
+    <section id="right-col">
+      <!-- ML Anomaly Panel -->
+      <div class="panel ml-panel" id="ml-panel">
+        <div class="panel-header"><h2>ML Anomaly Engine</h2><span class="provenance-badge">[MEASURED]</span></div>
+        <div id="ml-viz" class="ml-container">
+          <canvas id="anomaly-chart" width="340" height="180"></canvas>
+          <div class="ml-stats" id="ml-stats">
+            <div class="ml-stat"><span class="sl">Model</span><span class="sv">IsolationForest</span></div>
+            <div class="ml-stat"><span class="sl">Fit</span><span class="sv" id="ml-fit-time">—</span></div>
+            <div class="ml-stat"><span class="sl">Inference</span><span class="sv" id="ml-infer-time">—</span></div>
+            <div class="ml-stat"><span class="sl">Throughput</span><span class="sv" id="ml-throughput">—</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Investigation Panel -->
+      <div class="panel ai-panel" id="ai-panel">
+        <div class="panel-header"><h2>AI Investigation</h2><span class="provenance-badge">[MEASURED]</span></div>
+        <div id="ai-terminal" class="terminal">
+          <div id="ai-output" class="terminal-output"></div>
+        </div>
+      </div>
+
+      <!-- Failure Lab Panel -->
+      <div class="panel failure-panel" id="failure-panel">
+        <div class="panel-header"><h2>Failure Lab</h2></div>
+        <div class="failure-grid" id="failure-grid">
+          <button class="failure-btn" data-failure="http429">HTTP 429</button>
+          <button class="failure-btn" data-failure="http500">HTTP 500</button>
+          <button class="failure-btn" data-failure="timeout">Timeout</button>
+          <button class="failure-btn" data-failure="malformed">Malformed JSON</button>
+          <button class="failure-btn" data-failure="sqli">SQL Injection</button>
+          <button class="failure-btn" data-failure="missing">Missing Fields</button>
+        </div>
+        <div id="failure-result" class="failure-result hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════ STATUS BAR ═══════════════════ -->
+  <footer id="statusbar">
+    <div class="status-left">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">IDLE</span>
+    </div>
+    <div class="status-center" id="progress-section">
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      <span id="progress-pct" class="mono">0%</span>
+    </div>
+    <div class="status-right">
+      <span class="status-info">PostgreSQL 18.4</span>
+      <span class="status-sep">•</span>
+      <span class="status-info">Python 3.14</span>
+      <span class="status-sep">•</span>
+      <span class="status-info">Apple M4 · 10 cores</span>
+      <span class="status-sep">•</span>
+      <span class="status-info" id="mem-usage">RAM: —</span>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════ JUDGE MODE OVERLAY ═══════════════════ -->
+  <div id="judge-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <div class="judge-header">
+        <h2>🎯 JUDGE MODE</h2>
+        <span class="judge-timer" id="judge-timer">3:00</span>
+        <button id="judge-close" class="overlay-close">✕</button>
+      </div>
+      <div id="judge-narrative" class="judge-narrative">
+        <p id="judge-text"></p>
+      </div>
+      <div class="judge-controls">
+        <button id="judge-prev" class="ctrl-btn" disabled>← PREV</button>
+        <span id="judge-step-indicator" class="mono">1 / 8</span>
+        <button id="judge-next" class="ctrl-btn accent">NEXT →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SCALE OVERLAY ═══════════════════ -->
+  <div id="scale-overlay" class="overlay hidden">
+    <div class="overlay-content scale-content">
+      <h2>⚡ Stress Simulation Scale</h2>
+      <button id="scale-close" class="overlay-close">✕</button>
+      <div class="scale-slider-container">
+        <input type="range" id="scale-slider" min="0" max="4" step="1" value="0" />
+        <div class="scale-labels">
+          <span class="scale-label active" data-idx="0">1K</span>
+          <span class="scale-label" data-idx="1">10K</span>
+          <span class="scale-label" data-idx="2">100K</span>
+          <span class="scale-label" data-idx="3">500K</span>
+          <span class="scale-label" data-idx="4">1M</span>
+        </div>
+      </div>
+      <div id="scale-projections" class="scale-projections"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="pipeline.js"></script>
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
