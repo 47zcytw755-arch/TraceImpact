@@ -172,6 +172,74 @@ PRESET_QUERIES = [
             "financial performance, and outcome metrics into an un-duplicated 1-row-per-program summary."
         ),
     },
+    {
+        "id": "world_bank_anomalies",
+        "title": "ML Anomaly Intelligence: Top Isolation Forest statistical anomalies",
+        "question": "Show the top statistical anomalies detected by the Isolation Forest model.",
+        "category": "ML Anomaly Intelligence",
+        "sql": """
+            SELECT 
+                country_name,
+                region,
+                indicator_name,
+                year,
+                indicator_value,
+                anomaly_score,
+                has_investigation
+            FROM v_world_bank_anomalies_summary
+            ORDER BY anomaly_score ASC
+            LIMIT 10;
+        """,
+        "explanation": (
+            "Queries `v_world_bank_anomalies_summary` to surface country-year observations that deviate most "
+            "strongly from multi-year historical trajectories and cross-country peer baselines. "
+            "Strictly descriptive of empirical statistical divergence; does not assert causal claims."
+        ),
+    },
+    {
+        "id": "ai_insights_feed",
+        "title": "AI Grounded Insights: Evidence-backed investigation findings",
+        "question": "What are the latest AI-generated insights and investigations?",
+        "category": "AI Investigation",
+        "sql": """
+            SELECT 
+                insight_title,
+                insight_type,
+                country_name,
+                indicator_name,
+                year,
+                indicator_value,
+                anomaly_score
+            FROM v_world_bank_ai_lineage
+            ORDER BY insight_id DESC
+            LIMIT 10;
+        """,
+        "explanation": (
+            "Queries `v_world_bank_ai_lineage` to display AI insights rigorously grounded in verified "
+            "PostgreSQL records with full source-to-raw SHA-256 lineage."
+        ),
+    },
+    {
+        "id": "world_bank_quality",
+        "title": "Real Data Governance: World Bank data quality summary",
+        "question": "What is the data quality and quarantine status of the World Bank dataset?",
+        "category": "Data Quality",
+        "sql": """
+            SELECT 
+                total_runs,
+                valid_observations_count,
+                total_issues,
+                error_count,
+                warning_count,
+                quarantined_count,
+                observation_clean_rate_pct
+            FROM v_world_bank_data_quality_summary;
+        """,
+        "explanation": (
+            "Queries `v_world_bank_data_quality_summary` to monitor missing values, invalid records, "
+            "and quarantine counts across live World Bank indicator ingestions."
+        ),
+    },
 ]
 
 
@@ -180,7 +248,7 @@ class AIAssistantEngine:
 
     DISALLOWED_KEYWORDS = [
         "drop", "delete", "insert", "update", "truncate", "alter", "create", 
-        "grant", "revoke", "exec", "execute", "shutdown", "--", "/*", "xp_"
+        "grant", "revoke", "exec", "execute", "shutdown", "--", "/*", "xp_", "union"
     ]
 
     ALLOWED_OBJECTS = [
@@ -189,7 +257,15 @@ class AIAssistantEngine:
         "v_data_quality_summary", "v_data_quality_by_file", "v_data_quality_by_program",
         "v_data_quality_by_type", "v_data_quality_blocking", "programs",
         "beneficiaries", "attendance", "expenses", "outcomes", "data_quality_issues",
-        "source_files", "source_records"
+        "source_files", "source_records",
+        # TraceImpact 2.0 World Bank & ML Intelligence Objects
+        "world_bank_countries", "world_bank_indicators", "world_bank_observations",
+        "world_bank_data_quality_issues", "world_bank_anomalies", "ai_investigations",
+        "ai_insights", "ml_anomaly_models", "api_ingestion_runs", "api_raw_responses",
+        "v_world_bank_country_trends", "v_world_bank_data_quality_summary",
+        "v_world_bank_indicator_summary", "v_world_bank_latest_indicators",
+        "v_world_bank_regional_comparison", "v_world_bank_anomalies_summary",
+        "v_world_bank_ai_lineage"
     ]
 
     PROGRAM_MAP = {
@@ -245,6 +321,11 @@ class AIAssistantEngine:
             if re.search(pattern, clean_sql):
                 logger.warning("Rejected query containing disallowed keyword: %s", kw)
                 return False
+
+        # Reject tautology SQL injection patterns (e.g. '1'='1', 1=1)
+        if re.search(r"(\bwhere|\bor|\band)\s+['\"]?1['\"]?\s*=\s*['\"]?1['\"]?", clean_sql) or re.search(r"\bor\s+1\s*=\s*1\b", clean_sql):
+            logger.warning("Rejected query containing tautology injection pattern")
+            return False
 
         return True
 
@@ -362,6 +443,36 @@ class AIAssistantEngine:
                 exp = "Summarizes data quality issues by anomaly type from `v_data_quality_by_type`."
                 cat = "Data Quality"
 
+        elif any(w in q_lower for w in ["anomaly", "anomalies", "outlier", "isolation forest", "unusual"]):
+            sql = """
+                SELECT country_name, region, indicator_name, year, indicator_value, anomaly_score
+                FROM v_world_bank_anomalies_summary
+                ORDER BY anomaly_score ASC
+                LIMIT 15;
+            """
+            exp = "Surfaces top statistical anomalies flagged by Isolation Forest using `v_world_bank_anomalies_summary`."
+            cat = "ML Anomaly Intelligence"
+
+        elif any(w in q_lower for w in ["insight", "insights", "investigation", "grounded"]):
+            sql = """
+                SELECT insight_title, insight_type, country_name, indicator_name, year, indicator_value
+                FROM v_world_bank_ai_lineage
+                ORDER BY insight_id DESC
+                LIMIT 15;
+            """
+            exp = "Queries `v_world_bank_ai_lineage` to display grounded AI investigations and insights."
+            cat = "AI Investigation"
+
+        elif any(w in q_lower for w in ["world bank", "gdp", "drinking water", "life expectancy", "population"]):
+            sql = """
+                SELECT country_name, region, indicator_name, latest_year, latest_value
+                FROM v_world_bank_latest_indicators
+                ORDER BY country_name ASC
+                LIMIT 20;
+            """
+            exp = "Retrieves latest real-world indicator observations from `v_world_bank_latest_indicators`."
+            cat = "Public Data Explorer"
+
         else:
             # Default fallback: Consolidated program scorecard
             sql = """
@@ -433,6 +544,22 @@ class AIAssistantEngine:
             return (
                 f"**Finding:** Retrieved master consolidated scorecard for all **{len(df)} organization programs**, "
                 f"spanning financial utilization, participant reach, and outcome metrics."
+            )
+        elif preset_id == "world_bank_anomalies":
+            return (
+                f"**Finding:** The Isolation Forest model flagged **{len(df)} significant statistical anomalies** "
+                f"across global country-year observations. These represent empirical deviations from historical "
+                f"trajectories and peer distributions (strictly non-causal)."
+            )
+        elif preset_id == "ai_insights_feed":
+            return (
+                f"**Finding:** Retrieved **{len(df)} grounded AI investigations**. Each insight links directly "
+                f"to its underlying statistical baseline, multi-year history, and immutable World Bank raw API hash."
+            )
+        elif preset_id == "world_bank_quality":
+            return (
+                f"**Finding:** World Bank data quality summary loaded across {len(df)} categories. "
+                f"Monitors missing values, invalid numbers, and quarantined observations."
             )
         return f"Successfully retrieved {len(df)} records from PostgreSQL."
 

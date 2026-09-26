@@ -113,3 +113,53 @@ While raw JSONB records contain field entries, domain tables and analytical view
 - Beneficiary identities are pseudonymized via salted SHA-256 hashing into `anonymized_code`.
 - High-level reports reference only aggregated counts or pseudonymous codes.
 - Direct raw names remain strictly isolated within the raw staging partition.
+
+---
+
+## 7. TraceImpact 2.0: Real Public Data & AI Investigation Lineage
+
+TraceImpact 2.0 extends cryptographic lineage to external REST APIs, machine learning anomaly detection, and AI-assisted investigations.
+
+### The 7-Step Source-to-Insight Verification Chain
+
+```
+[Step 1] AI Grounded Insight (`ai_insights`)
+            │ (insight_id, title, underlying_metrics)
+            ▼
+[Step 2] AI Investigation (`ai_investigations`)
+            │ (finding_summary, structured_evidence, limitations)
+            ▼
+[Step 3] Machine Learning Anomaly (`world_bank_anomalies`)
+            │ (model_name, model_version, anomaly_score, feature_snapshot)
+            ▼
+[Step 4] Normalized Observation (`world_bank_observations`)
+            │ (country_code, indicator_code, year, indicator_value)
+            ▼
+[Step 5] Raw Bronze API Payload (`api_raw_responses`)
+            │ (verbatim JSON array element at raw_record_index)
+            ▼
+[Step 6] Cryptographic SHA-256 Fingerprint (`api_raw_responses.response_hash`)
+            │ (guarantees API response page payload immutability)
+            ▼
+[Step 7] Ingestion Batch Run Provenance (`api_ingestion_runs`)
+            (run_id, source_name, endpoint_url, timestamp, duration)
+```
+
+### Verification via SQL View (`v_world_bank_ai_lineage`)
+
+Auditors and users can query the unified view:
+```sql
+SELECT 
+    insight_title,
+    anomaly_score,
+    indicator_name,
+    country_name,
+    year,
+    indicator_value,
+    response_hash,
+    run_id
+FROM v_world_bank_ai_lineage
+WHERE insight_id = 1;
+```
+
+This guarantees that an AI insight is never an ungrounded hallucination: it is anchored in an empirical ML anomaly, a verified database observation, and an immutable SHA-256 hashed API payload.

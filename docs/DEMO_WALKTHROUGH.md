@@ -1,174 +1,230 @@
-# TraceImpact — Complete Visual Demo & Evaluation Walkthrough
+# TraceImpact — 3-Minute Demo Walkthrough
 
-**Document Version:** 1.0.0  
-**Target Audience:** Technical Recruiters, Engineering Interviewers, Grant Evaluators, Nonprofit Directors  
-**Application Entry Point:** `app.py`  
-**Evaluation Mode:** Interactive Multi-Page Streamlit UI + Automated Pytest Verification  
+A structured 3-minute portfolio presentation and spoken script for technical reviewers, recruiters, and engineering interviewers.
 
----
-
-## 1. Quick-Start Launch Instructions
-
-Open a terminal in the project root directory and execute:
-
-```bash
-# 1. Activate virtual environment
-source .venv/bin/activate
-
-# 2. Run automated test suite verification (69/69 passing)
-.venv/bin/python -m pytest -v
-
-# 3. Launch the Streamlit Multi-Page Application
-.venv/bin/python -m streamlit run app.py
-```
-
-Streamlit will launch locally at `http://localhost:8501`.
+**Central Message:**  
+*"Not only can the system report a KPI, it can trace that KPI back to the original source record."*
 
 ---
 
-## 2. Interactive Page-by-Page Evaluation Tour
+## 0:00–0:20 — Problem
+
+### What to show
+Open the browser at `http://localhost:8501/` displaying the TraceImpact landing page (`app.py`), highlighting the PostgreSQL connection status and the high-level volume metrics.
+
+### What to say
+"Most small nonprofits track their core operations across disconnected spreadsheets—attendance rosters, expense slips, and intake surveys. When grantors ask for an impact report, organizations manually compile numbers into a deck. But the real problem isn't just calculating a KPI; it's answering the audit question: *'Where did this number actually come from?'* TraceImpact was built to solve this by providing traceable impact reporting with verifiable data quality."
+
+### Technical point
+Demonstrates the business context: solving spreadsheet fragmentation, unvalidated metrics, and lack of auditability in operational impact reporting.
+
+---
+
+## 0:20–0:45 — Architecture
+
+### What to show
+The system architecture flow (or the terminal showing the clean pipeline layout: `src/ingestion`, `src/cleaning`, `sql/views.sql`, and `pages/`).
 
 ```
-TraceImpact Web Application Hierarchy
-├── app.py (Portal Overview & System Health)
-├── pages/
-│   ├── 1_Executive_Summary.py (Portfolio Impact & Visualizations)
-│   ├── 2_Program_Analysis.py (Initiative Scorecard & Domain Records)
-│   ├── 3_Data_Quality.py (Observability & Anomaly Triage Workspace)
-│   ├── 4_Traceability.py (1-to-1 Cryptographic Lineage Proof Engine)
-│   └── 5_AI_Query_Assistant.py (Grounded Natural-Language Q&A)
+Raw source files (CSV)
+       ↓
+Raw ingestion (source_files & source_records with JSONB staging)
+       ↓
+Validation & cleaning (normalizers, schema validators, anomaly quarantine)
+       ↓
+PostgreSQL relational tables (programs, beneficiaries, attendance, expenses, outcomes)
+       ↓
+Analytical SQL views (11 views calculating KPIs & DQ aggregations)
+       ↓
+Data quality observability (severity classification & triage)
+       ↓
+Streamlit dashboard (5 interactive pages)
+       ↓
+Source-level traceability (1-to-1 linkage back to raw CSV lines)
 ```
 
----
+### What to say
+"Here is how the system is engineered. Raw CSV files are first ingested verbatim into PostgreSQL staging tables—preserving the unedited row as JSONB along with a cryptographic SHA-256 file fingerprint. Next, a deterministic cleaning and validation pipeline normalizes dates, locations, and currencies, quarantining blocking errors into a data quality log. Valid records populate relational domain tables, which feed 11 analytical SQL views. Finally, our Streamlit dashboard reads from these views, maintaining a direct foreign-key link from every domain record back to its raw source record."
 
-### Step 1: Portal Overview & Live Health Probe (`app.py`)
-
-- **URL:** `http://localhost:8501/`
-- **What to Observe:**
-  1. **Live PostgreSQL Health Probe:** Displays a green connection badge showing PostgreSQL host, port, active database (`traceimpact`), and connection pool status.
-  2. **Platform Volume Metrics:**
-     - Master Programs: **5**
-     - Verified Beneficiaries: **51**
-     - Attendance Sessions: **612**
-     - Total Expenditures: **₹666,950.36**
-     - Outcome Evaluations: **39**
-     - Cataloged Data Quality Issues: **177**
-     - Open Triage Items: **28** (with -149 resolved delta)
-     - Issue Resolution Rate: **84.18%**
-     - Clean Record Rate: **98.72%**
-  3. **Guided Workflow Navigation:** Interactive cards detailing the 5 application modules.
+### Technical point
+Explains the ELT/ETL pattern: immutable raw ingestion into JSONB, idempotent data cleansing, analytical database views, and 1-to-1 foreign key lineage.
 
 ---
 
-### Step 2: Executive Summary & Visual Analytics (`pages/1_Executive_Summary.py`)
+## 0:45–1:20 — Executive Dashboard
 
-- **Navigation:** Click **"1 Executive Summary"** in the left sidebar.
-- **What to Observe:**
-  1. **8 KPI Summary Cards:** Summarizes organization-wide reach, expenditures, attendance, and data reliability metrics.
-  2. **5 Production Visualizations (Directly from SQL Views):**
-     - **Program Reach Chart (`v_program_reach`):** Bar chart comparing distinct community members served across all 5 initiatives.
-     - **Attendance Consistency Chart (`v_attendance_consistency`):** Dual-axis analysis comparing check-ins per person against cumulative contact hours.
-     - **Cost per Beneficiary Chart (`v_cost_per_beneficiary`):** Unit economics ranking initiatives by cost per person served (from ₹2,044.94 to ₹4,346.91).
-     - **Outcome Improvement Chart (`v_outcome_improvement`):** Grouped bar chart comparing baseline evaluation scores against exit evaluation scores (gains between +21.75 and +31.40 points).
-     - **Data Quality Severity Distribution:** Donut chart showing the proportion of `ERROR` (5.65%), `WARNING` (6.78%), and `INFO` (87.57%) items.
+### What to show
+Navigate to **1 Executive Summary** (`pages/1_Executive_Summary.py`). Point to the metric cards and the live charts.
 
----
+- **KPI Cards:**
+  - `Total Programs`: 5
+  - `Total Beneficiaries`: 51
+  - `Total Attendance Records`: 612
+  - `Total Program Expenses`: ₹666,950.36
+  - `Total Outcomes Surveys`: 39
+  - `Data Quality Issues`: 177
+  - `Issue Resolution Rate`: 84.18%
+- **SQL-Backed Visualizations:**
+  - Program Reach (`v_program_reach`)
+  - Attendance Consistency (`v_attendance_consistency`)
+  - Cost per Beneficiary (`v_cost_per_beneficiary`)
+  - Outcome Improvement (`v_outcome_improvement`)
 
-### Step 3: Program Analysis & Variance Detection (`pages/2_Program_Analysis.py`)
+### What to say
+"Moving to the Executive Summary page, leadership gets a unified view of organization-wide performance. Every card and chart here is powered live by PostgreSQL analytical views rather than static CSV exports. We can see 51 verified beneficiaries across 5 programs, 612 attendance check-ins, and ₹666,950 in total expenses. Down below, our analytical views calculate unit economics—like cost per beneficiary ranging from ₹2,044 up to ₹4,346—and pre/post outcome score improvements between +21 and +31 points. Every aggregation handles division-by-zero safely using SQL `NULLIF` and `COALESCE`."
 
-- **Navigation:** Click **"2 Program Analysis"** in the left sidebar.
-- **What to Test:**
-  1. **Program Selector Dropdown:** Select each initiative from the dropdown:
-     - `PRG-001: Digital Literacy Initiative`
-     - `PRG-002: Women Vocational Sewing`
-     - `PRG-003: Youth Coding Bootcamp`
-     - `PRG-004: Elderly Healthcare Outreach`
-     - `PRG-005: Community Nutrition Drive`
-  2. **Over-Budget Discovery (`PRG-005`):**
-     - Select **`PRG-005: Community Nutrition Drive`**.
-     - Notice the automated red alert badge: **"156.75% Budget Utilization (Over Budget)"**.
-     - Observe the financial variance: Total Spent: **₹148,913.20** vs. Allocated Budget: **₹95,000.00**.
-  3. **12-Metric Scorecard:** Inspect Reach, Economic, and Outcome metrics loaded live from `v_program_kpis`.
-  4. **4-Domain Tabbed Record Explorer:**
-     - Click through **"Beneficiaries"**, **"Attendance"**, **"Expenses"**, and **"Outcomes"** tabs.
-     - Note that beneficiary records show salted SHA-256 `anonymized_code` for PII protection.
-  5. **Program Data Quality Log:** Displays anomalies specifically linked to the selected program.
+### Technical point
+Highlights analytical SQL view design, pre-aggregated database queries, division safety, and clear separation between application UI and database logic.
 
 ---
 
-### Step 4: Data Quality Observability & Issue Triage (`pages/3_Data_Quality.py`)
+## 1:20–1:50 — Program Analysis
 
-- **Navigation:** Click **"3 Data Quality"** in the left sidebar.
-- **What to Observe:**
-  1. **Systemic Reliability Scorecard:**
-     - Data Reliability Index (DRI): **94.94 / 100**
-     - Clean Record Rate: **98.72%**
-     - Issue Resolution Rate: **84.18%**
-  2. **Defect Breakdown Visualizations:**
-     - Distribution by Source File (`attendance.csv`: 139, `beneficiaries.csv`: 16, `expenses.csv`: 11, `outcomes.csv`: 11).
-     - Distribution by Anomaly Type (`MISSING_VALUE`: 150, `INVALID_FORMAT`: 16, `DUPLICATE`: 7, `INVALID_NUMBER`: 2, `UNMATCHED_REFERENCE`: 2).
-  3. **Quarantine Review Container:** Highlights the **10 critical ERROR records** quarantined from domain tables.
-  4. **Interactive Multi-Parameter Filter Table:**
-     - Filter by **Severity** (`ERROR`, `WARNING`, `INFO`).
-     - Filter by **Status** (`OPEN`, `RESOLVED`, `ACCEPTED`).
-     - Filter by **Source File** and **Program** (including `UNASSIGNED` org-level issues).
-     - Confirm that filtering dynamically updates the underlying DataFrame.
+### What to show
+Navigate to **2 Program Analysis** (`pages/2_Program_Analysis.py`).
+1. Open the **"Select a Program Initiative to Inspect"** dropdown.
+2. Select **`PRG-005: Community Nutrition Drive`**.
+3. Point to the budget alert: **"156.75% Budget Utilization (Over Budget)"** (Total Spent: ₹148,913.20 vs Budget: ₹95,000.00).
+4. Click through the domain record tabs (**Beneficiaries**, **Attendance**, **Expenses**, **Outcomes**) showing individual records and salted SHA-256 beneficiary identifiers (`BEN-XXXXXXXXXXXX`).
+
+### What to say
+"On the Program Analysis page, we can drill down from organization-level numbers to individual initiatives. If we inspect PRG-005, the Community Nutrition Drive, the system immediately surfaces a variance: it is at 156% budget utilization, having spent ₹148,913 against an allocated budget of ₹95,000. Below the scorecard, we can inspect individual domain records across attendance, expenses, and outcomes. Notice that beneficiary records display salted pseudonymized codes, ensuring community privacy while maintaining relational consistency."
+
+### Technical point
+Demonstrates parameterized SQL filtering, financial variance monitoring, PII pseudonymization, and interactive multi-table domain exploration.
 
 ---
 
-### Step 5: The 1-to-1 Cryptographic Lineage Proof Engine (`pages/4_Traceability.py`)
+## 1:50–2:15 — Data Quality
 
-- **Navigation:** Click **"4 Traceability"** in the left sidebar.
-- **The Core Audit Scenario:**
-  - An auditor asks: *"Prove that attendance record ATT-0001 or beneficiary BEN-001 wasn't fabricated."*
-- **What to Test:**
-  1. **Quick Select Investigation:**
-     - Select **"Attendance Check-In (ATT-0001)"** from the dropdown.
-     - Click **"Verify End-to-End Lineage"**.
-  2. **The 4-Step Verification Sequence:**
-     - **Step 1: Cleaned Domain Record:** Inspect the cleaned `attendance` row (`ATT-0001`, `PRG-001`, 2.0 hours).
-     - **Step 2: Staged JSONB Record:** Inspect the verbatim JSONB staged in `source_records(record_id: 1)`.
-     - **Step 3: Source File Provenance:** Verify `source_files(file_name: 'attendance.csv')` and its 64-character SHA-256 cryptographic hash.
-     - **Step 4: Physical Disk Read:** Observe the live read-only verification from `data/raw/attendance.csv` at row 1, confirming character-for-character agreement between disk, database, and UI.
-  3. **Quarantined Record Lineage Test:**
-     - Enter Record ID `#613` (a duplicate attendance check-in).
-     - Notice the orange callout: *"This record was flagged with an ERROR defect and safely quarantined from domain tables."*
+### What to show
+Navigate to **3 Data Quality** (`pages/3_Data_Quality.py`).
+1. Point to the summary cards:
+   - `Total Cataloged Issues`: 177
+   - `Blocking Errors (Quarantined)`: 10
+   - `Non-Blocking Warnings`: 12
+   - `Auto-Sanitized Info`: 155
+   - `Clean Record Rate`: 98.72%
+2. Show the multi-dimensional tabs (`Issues by Source File`, `Issues by Program`, `Issues by Anomaly Type`).
+3. Point to the interactive triage filter showing issue types like `DUPLICATE`, `INVALID_FORMAT`, and `MISSING_VALUE`.
 
----
+### What to say
+"Before anyone trusts impact metrics, we have to prove the data is clean. The Data Quality page surfaces our automated observability findings. Out of 177 cataloged issues, 10 critical blocking errors—such as duplicate check-ins or negative expenses—were quarantined so they never corrupt downstream KPI views. 155 informational formatting issues, like non-standard date formats, were automatically normalized. Our Clean Record Rate stands at 98.72%, and users can slice issues by source file, program, severity, or triage status."
 
-### Step 6: AI Natural-Language Query Assistant (`pages/5_AI_Query_Assistant.py`)
-
-- **Navigation:** Click **"5 AI Query Assistant"** in the left sidebar.
-- **What to Test:**
-  1. **Curated Inquiries Mode:**
-     - Select: *"Which programs are currently exceeding their allocated budget?"*
-     - View the immediate finding: identifies **PRG-005 (156.75% utilization, ₹53,913 variance)**.
-     - Inspect the live tabular DataFrame retrieved from `v_cost_per_beneficiary`.
-     - Expand the **SQL & Technical Explanation accordion** to view the executed SQL query and architectural breakdown.
-  2. **Custom Natural-Language Prompt:**
-     - Switch to **"Custom Natural-Language Question"**.
-     - Type: *"Show outcome improvements for Youth Coding Bootcamp"*
-     - Observe how the engine extracts `PRG-003`, executes the filtered query against `v_outcome_improvement`, and returns the verified +31.40 point gain.
-  3. **Security Test:**
-     - The engine rejects any malicious SQL inputs (e.g., `DROP TABLE`, `DELETE`, comment tokens).
+### Technical point
+Covers automated data validation, severity classification (`ERROR`, `WARNING`, `INFO`), quarantine isolation, and multidimensional defect analysis.
 
 ---
 
-## 3. Automated Test Suite Verification
+## 2:15–2:50 — Traceability
 
-Run the complete test suite from terminal:
+### What to show
 
-```bash
-.venv/bin/python -m pytest -v
-```
+Navigate to the Traceability page.
 
-### Verification Checklist:
-- [x] **Day 1 Tests (`tests/test_day1.py`):** 5/5 PASSED (PostgreSQL connection, file staging, SHA-256 hashes, program seeding).
-- [x] **Day 2 Tests (`tests/test_day2.py`):** 14/14 PASSED (Normalizers, validators, PII hashing, domain loading, immutability).
-- [x] **Day 3 Tests (`tests/test_day3.py`):** 8/8 PASSED (Analytical views, non-multiplication CTEs, division safety, drilldowns).
-- [x] **Day 4 Tests (`tests/test_day4.py`):** 11/11 PASSED (Quality views, severity reconciliation, status totals, triage lifecycle).
-- [x] **Day 5 Tests (`tests/test_day5.py`):** 11/11 PASSED (Dashboard modules, KPI accuracy, program selectors, filtering).
-- [x] **Day 6 Tests (`tests/test_day6.py`):** 9/9 PASSED (1-to-1 lineage, JSONB staging match, physical CSV read, quarantine omission).
-- [x] **Day 7 Tests (`tests/test_day7.py`):** 11/11 PASSED (AI engine presets, execution, intent mapping, SQL injection safety, UI load).
+Select:
 
-**Total:** **69 / 69 PASSED in 0.95 seconds.**
+- Program: `PRG-001: Digital Literacy Initiative`
+- Domain Entity: `attendance`
+- `source_record_id`: `1` — Attendance `ATT-0001`
+
+Show the four-step lineage:
+
+1. **Domain Table Record**
+   - `attendance_id: ATT-0001`
+   - `program_id: PRG-001`
+   - `session_date: 2024-02-01`
+   - `session_hours: 2.00`
+
+2. **JSONB Staging Record**
+   - Show the original raw payload captured during ingestion.
+
+3. **Source File Provenance**
+   - `attendance.csv`
+   - SHA-256 file hash
+
+4. **Physical Source Verification**
+   - Live read from `data/raw/attendance.csv`
+   - Show the corresponding source row.
+
+### What to say
+
+"This is the key engineering feature of TraceImpact: the system doesn't stop at the cleaned database record.
+
+For this attendance record, we can move from the domain table back to the original JSONB payload captured during ingestion, identify the exact source file, verify its SHA-256 fingerprint, and inspect the corresponding raw CSV record.
+
+So if someone asks where a reported data point came from, we can follow the lineage back to the source instead of relying on an unexplained number."
+
+### Technical point
+
+"TraceImpact implements record-level data lineage using source records, immutable raw staging, source-file provenance, and cryptographic file hashing."
+
+---
+
+## 2:50–3:00 — Closing / Technical Takeaway
+
+### What to show
+Return to the main page or display the test suite summary in the terminal (`69 passed in 0.81s`).
+
+### What to say
+"To summarize: TraceImpact integrates automated ingestion, data cleaning, relational PostgreSQL modeling, 11 analytical SQL views, automated data-quality scoring, and full audit lineage. 
+
+TraceImpact is designed so that reporting does not stop at the KPI. The system preserves the path back to the underlying source record, making the reported data easier to investigate and trust."
+
+### Technical point
+Reiterates the end-to-end data engineering lifecycle: ingestion → validation → SQL modeling → observability → dashboarding → cryptographic auditability.
+
+---
+
+## Bonus / Optional — AI Query Assistant
+
+If time permits, open the AI Query Assistant page (`pages/5_AI_Query_Assistant.py`).
+
+### What to show
+Navigate to **5 AI Query Assistant** in the sidebar. Switch to **"Custom Natural-Language Question"** and submit:
+
+> *"Show outcome improvements for Youth Coding Bootcamp."*
+
+Show that the system maps the question to the appropriate approved analytical view (`v_outcome_improvement`) and returns the program-level result.
+
+### What to say
+"The assistant is intentionally constrained to approved analytical queries and read-only database access rather than allowing arbitrary SQL execution."
+
+### Technical point
+Demonstrates safe, constrained natural-language querying grounded strictly in pre-verified analytical database views with read-only query execution.
+
+---
+
+## TraceImpact 2.0 Walkthrough — Public Data Explorer, ML Anomaly Detection & AI Investigation
+
+For interviews or technical presentations focusing on **TraceImpact 2.0**:
+
+### What to show
+Navigate to **6 Public Data Explorer** (`pages/6_Public_Data_Explorer.py`).
+
+1. **Dual Domain Architecture**:
+   - Highlight the banner: World Bank Public API domain is completely separate from the synthetic nonprofit operational database.
+   - Point to the live KPIs: 264 Countries, 4 Global Indicators, 5,588 Verified Observations (2018–2025).
+
+2. **Automated Ingestion & SHA-256 Provenance**:
+   - Show the Ingestion Execution History table (`api_ingestion_runs`) with automated daily scheduler status, duration (e.g. 1.84s), and record upsert counts.
+   - Show the 1-to-1 Public API Lineage trace: drill down into any country-year observation to inspect the verbatim JSON array record and its 64-character SHA-256 response hash.
+
+3. **Machine Learning Anomaly Detection (Isolation Forest)**:
+   - Scroll to the ML Anomaly Detection section.
+   - Show active model: `IsolationForest_WorldBank (v1.0.0)` trained on multi-year Z-scores and YoY growth features with 4.0% baseline contamination.
+   - Display the sorted table of 224 statistical anomalies with anomaly decision scores.
+
+4. **AI-Assisted Investigation & Grounded Insights**:
+   - Select an anomaly (e.g. *Central African Republic 2019: Life expectancy at birth contraction*).
+   - Click **"🔍 Investigate Anomaly"**.
+   - Show the grounded structured finding:
+     - Exact Z-Score (-1.60) and historical baseline comparison.
+     - Co-occurring contextual indicators (e.g. GDP per capita, Drinking Water Access for that country and year).
+     - Clear segregation of **FACTS** from **POTENTIAL INTERPRETATIONS**.
+     - Explicit **NON-CAUSALITY NOTICE** stating observational data cannot prove causal attribution.
+   - Show the 7-step source-to-insight lineage trace: Insight ➔ Investigation ➔ Anomaly ➔ Observation ➔ Bronze JSONB ➔ SHA-256 Hash ➔ Run ID.
+
+### What to say
+"In TraceImpact 2.0, we expand beyond internal CSV files to real-world REST APIs, automated scheduling, machine learning anomaly detection, and grounded AI investigations. Every AI explanation is anchored in statistical feature baselines and verified PostgreSQL records, preserving complete lineage back to the immutable SHA-256 hashed API payload."
+

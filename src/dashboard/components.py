@@ -36,6 +36,8 @@ def render_sidebar():
             - **2. Program Analysis**: Deep-dive into individual initiatives
             - **3. Data Quality**: Observability scorecard & issue triage
             - **4. Traceability**: End-to-end audit drilldown to raw CSVs
+            - **5. AI Query Assistant**: Natural language analytical questions
+            - **6. Public Data Explorer**: World Bank development indicators
             """
         )
         st.markdown("---")

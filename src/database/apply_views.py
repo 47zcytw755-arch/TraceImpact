@@ -81,12 +81,33 @@ def apply_quality_views():
     logger.info("Successfully created/updated all Day 4 SQL data quality views!")
 
 
+def apply_world_bank_views():
+    """Applies World Bank public data views defined in sql/views_world_bank.sql."""
+    views_path = SQL_DIR / "views_world_bank.sql"
+    if not views_path.exists():
+        logger.warning("World Bank views file not found at: %s. Skipping.", views_path)
+        return
+
+    logger.info("Reading World Bank views from %s...", views_path)
+    with open(views_path, "r", encoding="utf-8") as f:
+        views_sql = f.read()
+
+    with engine.raw_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute(views_sql)
+        conn.commit()
+
+    logger.info("Successfully created/updated all World Bank SQL analytics views!")
+
+
 def apply_views():
-    """Applies all views (Day 3 analytics + Day 4 quality scorecard)."""
+    """Applies all views (Day 3 analytics + Day 4 quality scorecard + World Bank)."""
     apply_analytics_views()
     apply_quality_views()
+    apply_world_bank_views()
     logger.info("All TraceImpact views successfully verified and up to date.")
 
 
 if __name__ == "__main__":
     apply_views()
+

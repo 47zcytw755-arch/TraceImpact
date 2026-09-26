@@ -474,3 +474,311 @@ def get_physical_csv_row(file_name: str, row_index: int) -> Optional[Dict[str, A
         return None
 
     return None
+
+
+# -----------------------------------------------------------------------------
+# 5. World Bank Public Data Queries (TraceImpact 2.0)
+# -----------------------------------------------------------------------------
+
+def get_world_bank_kpis() -> Dict[str, Any]:
+    """Retrieves high-level summary KPIs for the World Bank public indicators domain."""
+    with get_db() as db:
+        sql = """
+            SELECT 
+                (SELECT COUNT(*) FROM world_bank_countries) AS total_countries,
+                (SELECT COUNT(*) FROM world_bank_indicators) AS total_indicators,
+                (SELECT COUNT(*) FROM world_bank_observations) AS total_observations,
+                (SELECT MIN(year) FROM world_bank_observations) AS min_year,
+                (SELECT MAX(year) FROM world_bank_observations) AS max_year,
+                (SELECT COUNT(*) FROM api_raw_responses WHERE source_name = 'world_bank') AS total_pages_ingested,
+                (SELECT COUNT(*) FROM world_bank_data_quality_issues) AS total_dq_issues
+        """
+        row = db.execute(text(sql)).mappings().first()
+        return dict(row) if row else {}
+
+
+def get_world_bank_indicators_list() -> List[Dict[str, Any]]:
+    """Retrieves list of all available indicators."""
+    with get_db() as db:
+        sql = "SELECT indicator_code, indicator_name, topic, unit_of_measure FROM world_bank_indicators ORDER BY indicator_name;"
+        return [dict(r) for r in db.execute(text(sql)).mappings().all()]
+
+
+def get_world_bank_countries_list() -> List[Dict[str, Any]]:
+    """Retrieves list of all countries."""
+    with get_db() as db:
+        sql = "SELECT country_code, country_name, region, income_level FROM world_bank_countries ORDER BY country_name;"
+        return [dict(r) for r in db.execute(text(sql)).mappings().all()]
+
+
+def get_world_bank_trend_data(indicator_code: str, country_codes: List[str]) -> pd.DataFrame:
+    """Retrieves multi-year trend data for selected indicator and countries."""
+    if not country_codes:
+        return pd.DataFrame()
+    with get_db() as db:
+        sql = """
+            SELECT 
+                country_code,
+                country_name,
+                year,
+                indicator_value,
+                yoy_change,
+                yoy_growth_pct
+            FROM v_world_bank_country_trends
+            WHERE indicator_code = :ind_code AND country_code = ANY(:c_codes)
+            ORDER BY year ASC, country_name ASC;
+        """
+        rows = db.execute(text(sql), {"ind_code": indicator_code, "c_codes": country_codes}).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_world_bank_indicator_summary_df(indicator_code: str) -> pd.DataFrame:
+    """Retrieves global summary statistics for a given indicator."""
+    with get_db() as db:
+        sql = """
+            SELECT year, countries_reporting, avg_value, min_value, max_value, stddev_value
+            FROM v_world_bank_indicator_summary
+            WHERE indicator_code = :ind_code
+            ORDER BY year DESC;
+        """
+        rows = db.execute(text(sql), {"ind_code": indicator_code}).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_world_bank_latest_table(indicator_code: str, limit: int = 50) -> pd.DataFrame:
+    """Retrieves latest reported observations across countries for an indicator."""
+    with get_db() as db:
+        sql = """
+            SELECT country_code, country_name, region, income_level, latest_year, latest_value, unit, raw_response_id
+            FROM v_world_bank_latest_indicators
+            WHERE indicator_code = :ind_code
+            ORDER BY latest_value DESC
+            LIMIT :lim;
+        """
+        rows = db.execute(text(sql), {"ind_code": indicator_code, "lim": limit}).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_world_bank_lineage(observation_id: Optional[int] = None, country_code: Optional[str] = None, indicator_code: Optional[str] = None, year: Optional[int] = None) -> Optional[Dict[str, Any]]:
+    """
+    Performs full 1-to-1 lineage trace for a World Bank observation record:
+    Observation -> Staged Raw JSONB Payload -> API Raw Response (SHA-256) -> Ingestion Run Metadata.
+    """
+    with get_db() as db:
+        if observation_id is not None:
+            where_clause = "o.observation_id = :oid"
+            params = {"oid": observation_id}
+        else:
+            where_clause = "o.country_code = :c_code AND o.indicator_code = :ind_code AND o.year = :yr"
+            params = {"c_code": country_code, "ind_code": indicator_code, "yr": year}
+
+        sql = f"""
+            SELECT 
+                o.observation_id,
+                o.country_code,
+                c.country_name,
+                c.iso3_code,
+                o.indicator_code,
+                i.indicator_name,
+                o.year,
+                o.indicator_value,
+                o.obs_status,
+                o.unit,
+                o.raw_response_id,
+                o.raw_record_index,
+                r.endpoint_url,
+                r.page_number,
+                r.per_page,
+                r.response_hash,
+                r.ingested_at,
+                r.raw_payload->1->o.raw_record_index AS raw_json_record,
+                run.run_id,
+                run.request_params,
+                run.status AS run_status,
+                run.started_at AS run_started_at
+            FROM world_bank_observations o
+            JOIN world_bank_countries c ON o.country_code = c.country_code
+            JOIN world_bank_indicators i ON o.indicator_code = i.indicator_code
+            JOIN api_raw_responses r ON o.raw_response_id = r.response_id
+            LEFT JOIN api_ingestion_runs run ON r.run_id = run.run_id
+            WHERE {where_clause}
+            LIMIT 1;
+        """
+        row = db.execute(text(sql), params).mappings().first()
+        return dict(row) if row else None
+
+
+def get_api_ingestion_runs_history(limit: int = 20) -> pd.DataFrame:
+    """Retrieves chronological execution history of API ingestion runs."""
+    with get_db() as db:
+        sql = """
+            SELECT 
+                run_id,
+                source_name,
+                run_type,
+                status,
+                total_pages,
+                total_records,
+                records_inserted,
+                records_updated,
+                records_quarantined,
+                duration_seconds,
+                started_at,
+                completed_at,
+                error_message
+            FROM api_ingestion_runs
+            ORDER BY run_id DESC
+            LIMIT :lim;
+        """
+        rows = db.execute(text(sql), {"lim": limit}).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+# -----------------------------------------------------------------------------
+# 8. ML Anomaly Detection & AI Investigation Queries
+# -----------------------------------------------------------------------------
+
+def get_ml_anomaly_models() -> pd.DataFrame:
+    """Retrieves registered ML anomaly detection models."""
+    with get_db() as db:
+        sql = """
+            SELECT 
+                model_id,
+                model_name,
+                model_version,
+                algorithm,
+                hyperparameters,
+                features_used,
+                training_sample_count,
+                contamination_rate,
+                metrics_summary,
+                is_active,
+                trained_at
+            FROM ml_anomaly_models
+            ORDER BY model_id DESC;
+        """
+        rows = db.execute(text(sql)).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_world_bank_anomalies(
+    indicator_code: Optional[str] = None,
+    country_code: Optional[str] = None,
+    limit: int = 50
+) -> pd.DataFrame:
+    """Retrieves detected ML anomalies from v_world_bank_anomalies_summary."""
+    with get_db() as db:
+        clauses = ["is_anomaly = TRUE"]
+        params = {"lim": limit}
+        if indicator_code:
+            clauses.append("indicator_code = :ind")
+            params["ind"] = indicator_code
+        if country_code:
+            clauses.append("country_code = :c")
+            params["c"] = country_code
+
+        where_str = " AND ".join(clauses)
+        sql = f"""
+            SELECT 
+                anomaly_id,
+                observation_id,
+                country_code,
+                country_name,
+                region,
+                indicator_code,
+                indicator_name,
+                year,
+                indicator_value,
+                anomaly_score,
+                feature_snapshot,
+                detected_at,
+                has_investigation,
+                investigation_id
+            FROM v_world_bank_anomalies_summary
+            WHERE {where_str}
+            ORDER BY anomaly_score ASC
+            LIMIT :lim;
+        """
+        rows = db.execute(text(sql), params).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_anomaly_investigation(anomaly_id: int) -> Optional[Dict[str, Any]]:
+    """Retrieves existing grounded AI investigation for an anomaly, if present."""
+    with get_db() as db:
+        sql = """
+            SELECT 
+                inv.investigation_id,
+                inv.anomaly_id,
+                inv.observation_id,
+                inv.country_code,
+                c.country_name,
+                c.region,
+                inv.indicator_code,
+                ind.indicator_name,
+                inv.year,
+                inv.finding_summary,
+                inv.structured_evidence,
+                inv.historical_comparison,
+                inv.related_indicators,
+                inv.ai_explanation,
+                inv.possible_interpretation,
+                inv.limitations,
+                inv.created_at,
+                a.anomaly_score
+            FROM ai_investigations inv
+            JOIN world_bank_countries c ON inv.country_code = c.country_code
+            JOIN world_bank_indicators ind ON inv.indicator_code = ind.indicator_code
+            JOIN world_bank_anomalies a ON inv.anomaly_id = a.anomaly_id
+            WHERE inv.anomaly_id = :a_id;
+        """
+        row = db.execute(text(sql), {"a_id": anomaly_id}).mappings().first()
+        return dict(row) if row else None
+
+
+def get_ai_insights(limit: int = 20) -> pd.DataFrame:
+    """Retrieves generated AI insights with underlying metrics."""
+    with get_db() as db:
+        sql = """
+            SELECT 
+                ins.insight_id,
+                ins.investigation_id,
+                ins.observation_id,
+                ins.anomaly_id,
+                ins.country_code,
+                c.country_name,
+                ins.indicator_code,
+                ind.indicator_name,
+                ins.year,
+                ins.title,
+                ins.insight_type,
+                ins.evidence_text,
+                ins.ai_explanation,
+                ins.underlying_metrics,
+                ins.created_at
+            FROM ai_insights ins
+            JOIN world_bank_countries c ON ins.country_code = c.country_code
+            JOIN world_bank_indicators ind ON ins.indicator_code = ind.indicator_code
+            ORDER BY ins.insight_id DESC
+            LIMIT :lim;
+        """
+        rows = db.execute(text(sql), {"lim": limit}).mappings().all()
+        return pd.DataFrame([dict(r) for r in rows])
+
+
+def get_ai_lineage_trace(insight_id: Optional[int] = None, anomaly_id: Optional[int] = None) -> Optional[Dict[str, Any]]:
+    """Retrieves full 7-step lineage trace for an insight or anomaly."""
+    with get_db() as db:
+        if insight_id:
+            sql = "SELECT * FROM v_world_bank_ai_lineage WHERE insight_id = :id LIMIT 1;"
+            params = {"id": insight_id}
+        elif anomaly_id:
+            sql = "SELECT * FROM v_world_bank_ai_lineage WHERE anomaly_id = :id LIMIT 1;"
+            params = {"id": anomaly_id}
+        else:
+            return None
+
+        row = db.execute(text(sql), params).mappings().first()
+        return dict(row) if row else None
+
+

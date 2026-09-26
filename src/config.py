@@ -34,3 +34,12 @@ else:
 DATA_RAW_DIR = BASE_DIR / "data" / "raw"
 DATA_PROCESSED_DIR = BASE_DIR / "data" / "processed"
 SQL_DIR = BASE_DIR / "sql"
+
+# TraceImpact 2.0 Automated Scheduler Configuration
+# Interval in hours between scheduled runs (default: 24 for daily schedule)
+PIPELINE_SCHEDULE_INTERVAL_HOURS = float(os.getenv("PIPELINE_SCHEDULE_INTERVAL_HOURS", "24"))
+# Whether the scheduler executes an immediate ingestion run when started (default: True)
+PIPELINE_RUN_ON_STARTUP = os.getenv("PIPELINE_RUN_ON_STARTUP", "true").lower() in ("true", "1", "yes")
+# Historical lookback years for incremental/scheduled ingestion (default: 3 years)
+PIPELINE_LOOKBACK_YEARS = int(os.getenv("PIPELINE_LOOKBACK_YEARS", "3"))
+

@@ -142,6 +142,27 @@ Physical Raw CSV on Local Disk (data/raw/<filename>)
 - Prevents multi-statement chaining and comment injection attacks.
 - Outputs human-readable SQL code blocks alongside plain-English architectural explanations.
 
+### Layer 7: TraceImpact 2.0 Automated Real Public Data Pipeline
+- Ingests real-world macroeconomic and social development indicators from the World Bank API.
+- Implements automated configurable scheduling (default 24h daily interval via `src/ingestion/scheduler.py`).
+- Bronze staging stores verbatim raw JSON responses with SHA-256 cryptographic fingerprints (`api_raw_responses`).
+- Data quality validation layer quarantines invalid numbers and logs missing values in `world_bank_data_quality_issues`.
+- Idempotent upserts populate normalized PostgreSQL domain tables (`world_bank_countries`, `world_bank_indicators`, `world_bank_observations`).
+
+### Layer 8: Machine Learning Anomaly Detection
+- Leverages scikit-learn's `IsolationForest` to detect statistically extreme deviations in country-year indicator trajectories.
+- Extracts multi-year historical Z-scores, YoY growth rates, and cross-country peer group deviations via `WorldBankFeatureExtractor`.
+- Persists model versions, hyperparameters, and evaluation metrics in `ml_anomaly_models`.
+- Records detected anomalies in `world_bank_anomalies` with continuous anomaly decision scores and feature snapshots.
+- **Strict Non-Causality Rule**: Detects empirical divergence from historical baselines without making causal assertions.
+
+### Layer 9: Grounded AI Investigation & Insight Generation
+- `WorldBankInvestigator` retrieves anomalous observations, historical trajectories, and co-occurring cross-indicator context.
+- Generates structured evidence dictionaries and synthesizes findings strictly separating verified **FACTS** from contextual **HYPOTHESES (INTERPRETATION)**.
+- Enforces a mandatory **Non-Causality Disclaimer** on all generated outputs.
+- Persists investigations into `ai_investigations` and actionable summaries into `ai_insights`.
+- Unifies full 7-step lineage from AI Insight back to immutable World Bank API response hash via `v_world_bank_ai_lineage`.
+
 ---
 
 ## 4. Security & Privacy Framework
@@ -156,7 +177,8 @@ Physical Raw CSV on Local Disk (data/raw/<filename>)
 
 ## 5. Performance & Scalability Profile
 
-- **Sub-15ms Query Response:** Analytical views leverage PostgreSQL indexes on `program_id`, `beneficiary_id`, `incurred_date`, and `session_date`.
-- **Memory Efficient:** Staging records are queried strictly by primary key (`record_id`); bulk tables are never loaded unnecessarily into memory.
+- **Sub-15ms Query Response:** Analytical views leverage PostgreSQL indexes on `country_code`, `indicator_code`, `year`, and `observation_id`.
+- **Sub-Second ML Training & Inference:** Isolation Forest model fits on 5,588 observations in 0.24s and evaluates the full corpus in 0.13s.
+- **Memory Efficient:** Staging records are queried strictly by primary key (`observation_id`, `record_id`); bulk tables are never loaded unnecessarily into memory.
 - **Connection Pooling:** Thread-safe connection pool manages checkout and release across concurrent Streamlit sessions.
-- **Sub-Second Test Execution:** Complete 69-test automated test suite executes in under 1 second (0.99s).
+- **Comprehensive Automated Test Execution:** Complete 94-test automated test suite executes in ~2.0 seconds.

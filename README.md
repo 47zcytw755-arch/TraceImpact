@@ -275,9 +275,15 @@ SALT_KEY=traceimpact_super_secret_pii_salt_2026
 ```bash
 .venv/bin/python -m pytest -v
 ```
-*(Expected output: 69/69 tests passing across Days 1–7 in < 1.0s).*
+*(Expected output: 81/81 tests passing across Days 1–7 and World Bank API suite in < 1.5s).*
 
-### 5. Launch the Streamlit Dashboard
+### 5. Ingest Real Public Data (TraceImpact 2.0 Extension)
+```bash
+# Ingest curated World Bank development indicators (2018-2021)
+.venv/bin/python -m src.ingestion.world_bank --start-year 2018 --end-year 2021
+```
+
+### 6. Launch the Streamlit Dashboard
 ```bash
 .venv/bin/python -m streamlit run app.py
 ```
@@ -285,10 +291,76 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
+## Real Public Data Pipeline (TraceImpact 2.0)
+
+TraceImpact 2.0 extends the platform beyond controlled internal operational datasets by introducing a scalable ingestion pipeline for real-world public data:
+
+```
+        ┌───────────────────────────────────────────────────────────┐
+        │                     DATA SOURCES                          │
+        ├─────────────────────────────┬─────────────────────────────┤
+        │  Controlled Synthetic CSVs  │   Real Public REST API      │
+        │  (Nonprofit Operations)     │   (World Bank Indicators)   │
+        └──────────────┬──────────────┴──────────────┬──────────────┘
+                       │                             │
+                       └──────────────┬──────────────┘
+                                      ↓
+                               INGESTION LAYER
+                                      ↓
+                               RAW / BRONZE
+                     (source_records & api_raw_responses)
+                                      ↓
+                               VALIDATION & DQ
+                                      ↓
+                               CLEAN / SILVER
+                    (PostgreSQL Relational Domain Tables)
+                                      ↓
+                               ANALYTICAL / GOLD
+                          (PostgreSQL SQL Views)
+                                      ↓
+                             STREAMLIT DASHBOARD
+                        (Pages 1–5 & Public Explorer)
+                                      ↓
+                            TRACEABILITY & LINEAGE
+```
+
+- **Data Provider:** World Bank Indicators API (`api.worldbank.org/v2`).
+- **Domain Separation:** Maintained in separate schema tables (`world_bank_countries`, `world_bank_indicators`, `world_bank_observations`, `world_bank_data_quality_issues`, `world_bank_anomalies`, `ai_investigations`, `ai_insights`) to guarantee zero mixing with synthetic nonprofit impact data.
+- **Automated Scheduling:** Configurable daily background scheduler (`src/ingestion/scheduler.py`).
+- **Bronze Layer Immutability:** Full JSON responses stored verbatim in `api_raw_responses` with SHA-256 hash digests.
+- **Silver Layer Normalization:** Idempotent country and observation loading with range, format, and null checks.
+- **Gold Layer Views:** Multi-year trend analytics (`v_world_bank_country_trends`), latest indicator rankings (`v_world_bank_latest_indicators`), descriptive statistics (`v_world_bank_indicator_summary`), and unified AI lineage (`v_world_bank_ai_lineage`).
+- **Machine Learning Anomaly Detection:** Scikit-learn `IsolationForest` detecting statistical outliers (Z-scores, YoY growth breakouts) without ungrounded causal claims.
+- **AI Investigation & Grounded Insights:** Formulates structured quantitative evidence, historical baselines, and contextual hypotheses with mandatory non-causality notices.
+- **Interactive Exploration:** Accessible via **Page 6: Public Data Explorer** with interactive anomaly investigation and 1-to-1 API lineage drilldown.
+
+### TraceImpact 2.0 CLI Commands
+
+```bash
+# Ingest World Bank indicators manually (idempotent upserts)
+python -m src.ingestion.world_bank --start-year 2018 --end-year 2025
+
+# Run the automated background scheduler
+python -m src.ingestion.scheduler --once
+
+# Train or execute ML Isolation Forest anomaly detection
+python -m src.ml.anomaly_detector
+
+# Generate automated AI investigations and grounded insights
+python -m src.ai.investigator
+```
+
+---
+
 ## Documentation Index
 
 - [`docs/ARCHITECTURE.md`](file:///Users/shashwat/Desktop/project1/docs/ARCHITECTURE.md): Complete system architecture, Medallion flow, and security specifications.
+- [`docs/REAL_DATA_INGESTION.md`](file:///Users/shashwat/Desktop/project1/docs/REAL_DATA_INGESTION.md): TraceImpact 2.0 World Bank public data pipeline architecture.
+- [`docs/AUTOMATION.md`](file:///Users/shashwat/Desktop/project1/docs/AUTOMATION.md): Automated scheduler configuration and cron execution guide.
+- [`docs/ML_ANOMALY_DETECTION.md`](file:///Users/shashwat/Desktop/project1/docs/ML_ANOMALY_DETECTION.md): Machine learning anomaly detection methodology and non-causality boundaries.
+- [`docs/AI_DATA_INTELLIGENCE.md`](file:///Users/shashwat/Desktop/project1/docs/AI_DATA_INTELLIGENCE.md): Grounded AI investigation engine and SQL security constraints.
 - [`docs/DEMO_SCRIPT.md`](file:///Users/shashwat/Desktop/project1/docs/DEMO_SCRIPT.md): 3-minute executive presentation walkthrough script.
+- [`docs/DEMO_WALKTHROUGH.md`](file:///Users/shashwat/Desktop/project1/docs/DEMO_WALKTHROUGH.md): Complete visual evaluation and spoken script walkthrough.
 - [`docs/DAY_1_6_FINAL_BASELINE.md`](file:///Users/shashwat/Desktop/project1/docs/DAY_1_6_FINAL_BASELINE.md): Verified Day 1–6 project baseline.
 - [`docs/POST_DAY_5_6_REVIEW.md`](file:///Users/shashwat/Desktop/project1/docs/POST_DAY_5_6_REVIEW.md): Independent deep-inspection review report.
 - [`docs/DATA_PIPELINE.md`](file:///Users/shashwat/Desktop/project1/docs/DATA_PIPELINE.md): Data cleaning rules and normalization contracts.
@@ -296,3 +368,4 @@ Open your browser at `http://localhost:8501`.
 - [`docs/DATA_QUALITY_SCORECARD.md`](file:///Users/shashwat/Desktop/project1/docs/DATA_QUALITY_SCORECARD.md): Quality scorecard views and reliability scoring methodology.
 - [`docs/DASHBOARD.md`](file:///Users/shashwat/Desktop/project1/docs/DASHBOARD.md): Streamlit application architecture and user guide.
 - [`docs/TRACEABILITY.md`](file:///Users/shashwat/Desktop/project1/docs/TRACEABILITY.md): 1-to-1 cryptographic lineage proof specifications.
+

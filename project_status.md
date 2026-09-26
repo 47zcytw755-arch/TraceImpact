@@ -38,8 +38,9 @@ With **Days 1 through 7** complete:
 | **Day 5** | **Interactive Streamlit Dashboard** | Multi-page Streamlit app, executive metric cards, 5 core visual charts, program deep-dive analyzer, domain record tabs, multi-parameter issue filter. | ✅ **COMPLETED** (11/11 Tests) |
 | **Day 6** | **Traceability UI / Interactive Drilldown** | Interactive click-through UI: Dashboard metric ➔ Domain row ➔ Staged JSONB record ➔ SHA-256 file fingerprint ➔ Raw CSV disk read. | ✅ **COMPLETED** (9/9 Tests) |
 | **Day 7** | **Portfolio Polish & AI Q&A** | AI natural-language query assistant, SQL explainer, Medallion architecture documentation, 3-minute executive demo script, portfolio README. | ✅ **COMPLETED** (11/11 Tests) |
+| **TraceImpact 2.0** | **Automated Real Data + ML Anomaly Detection + AI Investigation** | World Bank API ingestion, automated scheduler, Bronze JSONB responses with SHA-256 hashes, silver domain tables, 5 analytical SQL views, scikit-learn Isolation Forest anomaly detection, grounded AI investigation engine with non-causality notices, 7-step source-to-insight lineage, and Public Data Explorer UI. | ✅ **COMPLETED** (25/25 Tests) |
 
-**Overall Project Status:** 🟢 **100% COMPLETE — 69/69 Automated Tests Passing**
+**Overall Project Status:** 🟢 **TRACEIMPACT 2.0 COMPLETE — 94/94 Automated Tests Passing in 2.02s**
 
 ---
 
@@ -47,6 +48,7 @@ With **Days 1 through 7** complete:
 
 Live query results from PostgreSQL database (`traceimpact`):
 
+### Synthetic Nonprofit Domain (Days 1–7)
 | Table / View | Count | Status | Notes |
 | :--- | :---: | :---: | :--- |
 | `source_files` | 5 | ✅ Complete | Provenance tracking & SHA-256 hashes untouched |
@@ -64,17 +66,40 @@ Live query results from PostgreSQL database (`traceimpact`):
 | `v_outcome_improvement` | 5 | ✅ Complete | Day 3: Evaluation improvement scores |
 | `v_program_kpis` | 5 | ✅ Complete | Day 3: Master consolidated 16-metric scorecard |
 | `v_data_quality_summary` | 1 | ✅ Complete | Day 4: High-level platform quality scorecard |
-| `v_data_quality_by_file` | 4 | ✅ Complete | Day 4: Anomaly breakdown by source file |
+| `v_data_quality_by_file` | 5 | ✅ Complete | Day 4: Anomaly breakdown by source file |
 | `v_data_quality_by_program` | 6 | ✅ Complete | Day 4: Anomaly breakdown by program (incl. UNASSIGNED) |
-| `v_data_quality_by_type` | 5 | ✅ Complete | Day 4: Anomaly breakdown by category |
+| `v_data_quality_by_type` | 6 | ✅ Complete | Day 4: Anomaly breakdown by category |
 | `v_data_quality_blocking` | 10 | ✅ Complete | Day 4: Quarantined critical ERROR records |
+
+### Real Public Data Domain — World Bank Indicators & ML/AI Intelligence (TraceImpact 2.0)
+| Table / View | Count | Status | Notes |
+| :--- | :---: | :---: | :--- |
+| `api_ingestion_runs` | 13 | ✅ Complete | Ingestion run lifecycle, parameters, and status |
+| `api_raw_responses` | 24 | ✅ Complete | Bronze layer: verbatim raw JSONB responses with SHA-256 digests |
+| `world_bank_countries` | 264 | ✅ Complete | Sovereign nations & regional aggregate entities |
+| `world_bank_indicators` | 4 | ✅ Complete | Curated macroeconomic and social indicators |
+| `world_bank_observations` | 5,588 | ✅ Complete | Cleaned silver observation records (2018–2025) |
+| `world_bank_data_quality_issues` | 88 | ✅ Complete | Audit log of missing values and null observations |
+| `ml_anomaly_models` | 2 | ✅ Complete | Model registry tracking hyperparameters and evaluation metrics |
+| `world_bank_anomalies` | 224 | ✅ Complete | Isolation Forest statistical anomalies (4.01% anomaly rate) |
+| `ai_investigations` | 5 | ✅ Complete | Grounded investigations with facts, evidence, and non-causality notices |
+| `ai_insights` | 5 | ✅ Complete | Actionable insights feed with quantitative metrics |
+| `v_world_bank_latest_indicators` | 1,041 | ✅ Complete | Most recent observation per country/indicator |
+| `v_world_bank_country_trends` | 5,588 | ✅ Complete | Multi-year trends with YoY change and % growth |
+| `v_world_bank_indicator_summary` | 16 | ✅ Complete | Global descriptive statistics (mean, min, max, stddev) |
+| `v_world_bank_regional_comparison` | 16 | ✅ Complete | Regional performance comparisons |
+| `v_world_bank_data_quality_summary` | 1 | ✅ Complete | Public data ingestion quality and clean record rate |
+| `v_world_bank_anomalies_summary` | 224 | ✅ Complete | Consolidated anomaly view with country/indicator metadata |
+| `v_world_bank_ai_lineage` | 5 | ✅ Complete | 7-step source-to-insight lineage view |
 
 ---
 
 ## 4. Test Suite Summary
 
-- **Total Test Cases:** 69
-- **Passing:** 69 (100%)
+- **Total Test Cases:** 94
+- **Passing:** 94 (100%)
 - **Failing:** 0
 - **Skipped:** 0
-- **Execution Time:** ~0.99 seconds (`.venv/bin/python -m pytest -v`)
+- **Execution Time:** ~2.02 seconds (`.venv/bin/python -m pytest -v`)
+- **Suites:** 9 (`test_day1.py` through `test_day7.py` + `test_world_bank.py` + `test_ml_and_ai.py`)
+

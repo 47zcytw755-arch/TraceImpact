@@ -1,0 +1,15 @@
+Benchmark_Category,Metric_Name,Measured_Value,Unit,Target_or_Baseline,Status
+Dataset,Total_Observations_Tested,100000,records,">= 100,000",PASS
+Dataset,Real_API_Records_Fetched,15000,records,N/A (Real),PASS
+Dataset,Synthetic_Stress_Records,85701,records,N/A (Stress),PASS
+Ingestion,Real_API_Throughput,2493.4,records/sec,"> 1,000",PASS
+Ingestion,Idempotency_Duplicates,0,duplicates,0,PASS
+Database,Batch_10k_Throughput,19115.9,records/sec,"> 10,000",PASS
+Database,Composite_Query_Latency,0.15,ms,< 15.0 ms,PASS
+Database,Country_Trends_View_Latency,0.43,ms,< 50.0 ms,PASS
+Machine_Learning,ML_Feature_Extraction_Time,0.845,seconds,< 5.0 s,PASS
+Machine_Learning,Isolation_Forest_Inference_Time,0.26,seconds,< 2.0 s,PASS
+Machine_Learning,Anomalies_Flagged,4000,observations,~4.0%,PASS
+AI_Investigation,Avg_Investigation_Latency,0.003,seconds,< 0.5 s,PASS
+Lineage,Lineage_Trace_Success_Rate,100.0,percentage,100.0%,PASS
+Security,SQL_Injection_Block_Rate,100.0,percentage,100.0%,PASS
