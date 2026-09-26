@@ -75,8 +75,9 @@
   const failureResult = $("failure-result");
 
   /* ─── Initialize Components ─── */
-  const pipeline = new PipelineRenderer("pipeline-stages");
-  const particles = new ParticleSystem("particle-canvas");
+  const pipeline = new PipelineNetworkMap("pipeline-canvas");
+  window.pipelineInstance = pipeline;
+  const particles = new NetworkParticleSystem("particle-canvas", pipeline);
 
   /* ─── Clock ─── */
   function updateClock() {
@@ -268,6 +269,7 @@
   /* ─── Scale Projections ─── */
   function renderScaleProjection(index) {
     const proj = SCALE_PROJECTIONS[index];
+    particles.setScale(0.8 + index * 0.45);
     scaleProjections.innerHTML = `
       <div class="sp-row">
         <span class="sp-label">Records</span>
@@ -296,308 +298,19 @@
     });
   }
 
-  /* ─── Simulation Engine ─── */
-  const SIM_STAGES = PIPELINE_STAGES.map((s, i) => ({
-    ...s,
-    duration: [800, 500, 1200, 600, 800, 400, 900, 700, 600, 500, 1000, 800, 600, 400][i] || 600,
-    progressWeight: [8, 3, 12, 6, 8, 4, 10, 8, 6, 10, 15, 5, 3, 2][i] || 5
-  }));
-
-  function getTotalSimDuration() {
-    return SIM_STAGES.reduce((sum, s) => sum + s.duration, 0);
-  }
-
-  function startSimulation() {
-    if (simRunning) return;
-    simRunning = true;
-    simPaused = false;
-    currentStageIdx = -1;
-    simProgress = 0;
-
-    btnStart.disabled = true;
-    btnPause.disabled = false;
-    btnReset.disabled = false;
-    setStatus("running", "PROCESSING");
-    setProgress(0);
-    pipeline.reset();
-    particles.start(STRESS_DATA.batch_benchmarks[1000].rps);
-    termClear();
-    termWrite("▸ TraceImpact 2.0 Pipeline Simulation Started", "prompt");
-    termWrite(`  Mode: ${mode === "live" ? "Live Demo" : "Stress Simulation"}`, "info");
-    termWrite("", "");
-
-    advanceStage();
-  }
-
-  function advanceStage() {
-    if (!simRunning || simPaused) return;
-
-    currentStageIdx++;
-    if (currentStageIdx >= SIM_STAGES.length) {
-      completeSimulation();
-      return;
-    }
-
-    const stage = SIM_STAGES[currentStageIdx];
-    pipeline.setActive(currentStageIdx);
-    particles.setActiveStage(currentStageIdx);
-
-    // Update metrics progressively
-    updateMetricsForStage(currentStageIdx);
-
-    // Terminal output
-    termWrite(`▸ ${stage.icon} ${stage.label}`, "prompt");
-
-    simTimer = setTimeout(() => {
-      pipeline.setCompleted(currentStageIdx);
-
-      // Stage-specific terminal output
-      writeStageResult(currentStageIdx);
-
-      // Accumulate progress
-      const totalWeight = SIM_STAGES.reduce((s, st) => s + st.progressWeight, 0);
-      const accumulated = SIM_STAGES.slice(0, currentStageIdx + 1).reduce((s, st) => s + st.progressWeight, 0);
-      setProgress((accumulated / totalWeight) * 100);
-
-      advanceStage();
-    }, stage.duration);
-  }
-
-  function updateMetricsForStage(idx) {
-    const stage = SIM_STAGES[idx];
-
-    switch (stage.id) {
-      case "api":
-        animateValue(mvRecords, 0, STRESS_DATA.dataset.real_api_records, 800);
-        msRecords.textContent = "from API";
-        pulseCard("mc-records");
-        break;
-      case "ingestion":
-        animateValue(mvThroughput, 0, STRESS_DATA.batch_benchmarks[1000].rps, 1000, v => formatNum(Math.round(v)));
-        pulseCard("mc-throughput");
-        break;
-      case "validate":
-      case "dq":
-        mvDq.textContent = "99.3%";
-        msDqIssues.textContent = "701 issues";
-        pulseCard("mc-dq");
-        break;
-      case "postgres":
-        animateValue(mvRecords, STRESS_DATA.dataset.real_api_records, STRESS_DATA.dataset.total_observations, 600);
-        msRecords.textContent = "total observations";
-        mvLatency.textContent = "0.15";
-        pulseCard("mc-latency");
-        memUsage.textContent = `RAM: ${STRESS_DATA.batch_benchmarks[25000].mem_mb.toFixed(0)} MB`;
-        break;
-      case "ml":
-        animateValue(mvAnomalies, 0, STRESS_DATA.ml.anomalies, 800);
-        msAnomalyRate.textContent = STRESS_DATA.ml.anomaly_pct + "%";
-        pulseCard("mc-anomalies");
-        mlFitTime.textContent = STRESS_DATA.ml.fit_s + "s";
-        mlInferTime.textContent = STRESS_DATA.ml.inference_s + "s";
-        mlThroughput.textContent = formatNum(STRESS_DATA.ml.throughput_rps) + "/s";
-        memUsage.textContent = `RAM: ${STRESS_DATA.ml.peak_ram_mb.toFixed(0)} MB`;
-        drawAnomalyChart();
-        break;
-      case "ai":
-        mvSecurity.textContent = "100%";
-        msSecurity.textContent = "10/10 blocked";
-        pulseCard("mc-security");
-        break;
-      case "lineage":
-        renderLineage();
-        break;
-    }
-  }
-
-  function writeStageResult(idx) {
-    const stage = SIM_STAGES[idx];
-
-    switch (stage.id) {
-      case "api":
-        termWrite(`  ✓ Fetched ${STRESS_DATA.dataset.real_api_records.toLocaleString()} records in ${STRESS_DATA.timings.api_extraction_s}s`, "success");
-        break;
-      case "scheduler":
-        termWrite("  ✓ APScheduler: next run in 24h", "success");
-        break;
-      case "ingestion":
-        termWrite(`  ✓ Throughput: ${STRESS_DATA.batch_benchmarks[1000].rps.toLocaleString()} rec/sec`, "success");
-        break;
-      case "pagination":
-        termWrite(`  ✓ ${STRESS_DATA.db_tables.api_raw_responses} pages processed`, "success");
-        break;
-      case "bronze":
-        termWrite("  ✓ Raw JSONB payloads stored (immutable)", "success");
-        break;
-      case "hash":
-        termWrite("  ✓ SHA-256 fingerprints computed", "success");
-        break;
-      case "validate":
-        termWrite(`  ✓ ${STRESS_DATA.db_tables.world_bank_data_quality_issues} DQ issues cataloged`, "success");
-        break;
-      case "dq":
-        termWrite("  ✓ DQ Score: 99.3%", "success");
-        break;
-      case "transform":
-        termWrite(`  ✓ UPSERT: 0 duplicates`, "success");
-        break;
-      case "postgres":
-        termWrite(`  ✓ ${STRESS_DATA.dataset.total_observations.toLocaleString()} observations loaded`, "success");
-        termWrite(`  ✓ Composite query: ${STRESS_DATA.db_benchmarks.composite_ms}ms`, "success");
-        break;
-      case "ml":
-        termWrite(`  ✓ IsolationForest: ${STRESS_DATA.ml.anomalies.toLocaleString()} anomalies (${STRESS_DATA.ml.anomaly_pct}%)`, "success");
-        termWrite(`  ✓ Throughput: ${STRESS_DATA.ml.throughput_rps.toLocaleString()} obs/sec`, "success");
-        break;
-      case "ai":
-        termWrite(`  ✓ ${STRESS_DATA.ai.investigations} investigations @ ${STRESS_DATA.ai.avg_latency_s * 1000}ms avg`, "success");
-        termWrite(`  ✓ Sample: "${STRESS_DATA.ai.sample.summary.substring(0, 60)}..."`, "highlight");
-        break;
-      case "lineage":
-        termWrite(`  ✓ ${STRESS_DATA.lineage.traced}/${STRESS_DATA.lineage.sample_size} traces verified (${STRESS_DATA.lineage.success_pct}%)`, "success");
-        break;
-      case "dashboard":
-        termWrite(`  ✓ 6 dashboard pages ready`, "success");
-        termWrite(`  ✓ Security: ${STRESS_DATA.security.attacks_blocked}/${STRESS_DATA.security.attacks_tested} attacks blocked`, "success");
-        break;
-    }
-  }
-
-  function completeSimulation() {
-    simRunning = false;
-    setStatus("completed", "COMPLETE");
-    setProgress(100);
-    particles.stop();
-    btnStart.disabled = false;
-    btnPause.disabled = true;
-    termWrite("", "");
-    termWrite("═══ Pipeline Simulation Complete ═══", "prompt");
-    termWrite(`Total observations: ${STRESS_DATA.dataset.total_observations.toLocaleString()}`, "success");
-    termWrite(`Anomalies detected: ${STRESS_DATA.ml.anomalies.toLocaleString()} (${STRESS_DATA.ml.anomaly_pct}%)`, "success");
-    termWrite(`Lineage: ${STRESS_DATA.lineage.verdict}`, "success");
-    termWrite(`Security: ${STRESS_DATA.security.verdict}`, "success");
-    termWrite(`Overall: PASS`, "success");
-  }
-
-  function pauseSimulation() {
-    if (!simRunning) return;
-    simPaused = !simPaused;
-    btnPause.textContent = simPaused ? "▶" : "⏸";
-    if (simPaused) {
-      clearTimeout(simTimer);
-      particles.stop();
-      setStatus("running", "PAUSED");
-    } else {
-      particles.start(STRESS_DATA.batch_benchmarks[1000].rps);
-      setStatus("running", "PROCESSING");
-      advanceStage();
-    }
-  }
-
-  function resetSimulation() {
-    simRunning = false;
-    simPaused = false;
-    clearTimeout(simTimer);
-    currentStageIdx = -1;
-    pipeline.reset();
-    particles.clear();
-    setStatus("", "IDLE");
-    setProgress(0);
-    btnStart.disabled = false;
-    btnPause.disabled = true;
-    btnReset.disabled = true;
-    btnPause.textContent = "⏸";
-
-    // Reset metrics
-    mvRecords.textContent = "0";
-    msRecords.textContent = "—";
-    mvThroughput.textContent = "0";
-    mvAnomalies.textContent = "0";
-    msAnomalyRate.textContent = "0%";
-    mvDq.textContent = "—";
-    msDqIssues.textContent = "0 issues";
-    mvLatency.textContent = "—";
-    mvSecurity.textContent = "—";
-    msSecurity.textContent = "0/0 blocked";
-    mlFitTime.textContent = "—";
-    mlInferTime.textContent = "—";
-    mlThroughput.textContent = "—";
-    memUsage.textContent = "RAM: —";
-    termClear();
-    $("lineage-viz").innerHTML = "";
-  }
-
-  /* ─── Failure Lab ─── */
-  function triggerFailure(failureKey) {
-    const scenario = FAILURE_SCENARIOS[failureKey];
-    if (!scenario) return;
-
-    // Highlight button
-    const btn = document.querySelector(`[data-failure="${failureKey}"]`);
-    btn.classList.add("triggered");
-    setTimeout(() => btn.classList.remove("triggered"), 1200);
-
-    // Flash error on a pipeline stage
-    const errorStageIdx = failureKey === "sqli" ? 13 : 2; // ingestion stage for most
-    pipeline.setError(errorStageIdx);
-    setTimeout(() => pipeline.clearError(errorStageIdx), 1500);
-
-    // Show result
-    failureResult.classList.remove("hidden");
-    failureResult.innerHTML = `<strong style="color:var(--amber)">${scenario.title}</strong><br>`;
-
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i >= scenario.narrative.length) {
-        clearInterval(interval);
-        failureResult.innerHTML += `<br><span class="fr-pass">Result: ${scenario.result} ${scenario.measured ? "[MEASURED]" : ""}</span>`;
-        return;
-      }
-      failureResult.innerHTML += scenario.narrative[i] + "<br>";
-      failureResult.scrollTop = failureResult.scrollHeight;
-      i++;
-    }, 200);
-  }
-
-  /* ─── Judge Mode ─── */
-  function openJudgeMode() {
-    judgeMode = true;
-    judgeStep = 0;
-    judgeTimeLeft = 180;
-    judgeOverlay.classList.remove("hidden");
-    renderJudgeStep();
-    startJudgeTimer();
-  }
-
-  function closeJudgeMode() {
-    judgeMode = false;
-    judgeOverlay.classList.add("hidden");
-    clearInterval(judgeTimerInterval);
-  }
-
-  function renderJudgeStep() {
-    const step = JUDGE_STEPS[judgeStep];
-    judgeText.innerHTML = `<strong>${step.title}</strong><br><br>${step.text}`;
-    judgeStepIndicator.textContent = `${judgeStep + 1} / ${JUDGE_STEPS.length}`;
-    judgePrev.disabled = judgeStep === 0;
-    judgeNext.textContent = judgeStep === JUDGE_STEPS.length - 1 ? "FINISH" : "NEXT →";
-
-    // Execute action
-    if (step.action) {
-      executeJudgeAction(step.action);
-    }
-  }
-
   function executeJudgeAction(action) {
     if (action === "startPipeline") {
       resetSimulation();
+      pipeline.fitToMap();
       startSimulation();
     } else if (action.startsWith("highlightStage:")) {
       const stageId = action.split(":")[1];
       pipeline.highlightStage(stageId);
     } else if (action === "showLineage") {
+      pipeline.highlightStage("lineage");
       renderLineage();
     } else if (action === "highlightFailureLab") {
+      pipeline.highlightStage("ingestion");
       // Flash failure panel border
       $("failure-panel").style.borderColor = "var(--amber)";
       $("failure-panel").style.boxShadow = "0 0 16px var(--amber-dim)";
@@ -606,7 +319,7 @@
         $("failure-panel").style.boxShadow = "";
       }, 2000);
     } else if (action === "showScale") {
-      // Show scale info in metrics
+      pipeline.highlightStage("postgres");
       $("metrics-provenance").textContent = "[MEASURED + PROJECTED]";
     }
   }

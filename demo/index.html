@@ -39,7 +39,7 @@
     <!-- ───── LEFT COLUMN: Pipeline Visualization ───── -->
     <section id="pipeline-col" class="panel">
       <div class="panel-header">
-        <h2>Pipeline Flow</h2>
+        <h2>Interactive Data Map</h2>
         <div class="panel-controls">
           <button id="btn-start" class="ctrl-btn start" title="Start simulation">▶ START</button>
           <button id="btn-pause" class="ctrl-btn" title="Pause" disabled>⏸</button>
@@ -47,10 +47,7 @@
         </div>
       </div>
       <div id="pipeline-canvas">
-        <!-- Pipeline stages rendered by JS -->
-        <div class="pipeline-stages" id="pipeline-stages"></div>
-        <!-- Particle layer -->
-        <canvas id="particle-canvas"></canvas>
+        <!-- Interactive Network Data Map mounted by JS -->
       </div>
       <!-- Stage detail flyout -->
       <div id="stage-detail" class="detail-flyout hidden">
