@@ -1,42 +1,30 @@
 /* ═══════════════════════════════════════════════════════════════════
-   TraceImpact 2.0 — Particle System for Pipeline Flow Visualization
-   High-performance canvas-based particle animation
+   TraceImpact 2.0 — Network Map Data Batch Packet System
+   High-performance canvas particle animation following Bezier routes
    ═══════════════════════════════════════════════════════════════════ */
 
-class ParticleSystem {
-  constructor(canvasId) {
+class NetworkParticleSystem {
+  constructor(canvasId, mapRenderer) {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext("2d");
-    this.particles = [];
+    this.map = mapRenderer;
+    this.packets = [];
     this.running = false;
-    this.maxParticles = 60;
-    this.spawnRate = 0;  // particles per frame
+    this.spawnRate = 1.0;
     this.frameCount = 0;
     this.activeStageIndex = -1;
-    this.totalStages = PIPELINE_STAGES.length;
-    this._resize();
-    window.addEventListener("resize", () => this._resize());
+    this.scaleFactor = 1.0;
+
+    this.routes = mapRenderer.routes;
+    this.nodes = mapRenderer.nodes;
+    this.animating = false;
+
+    this._loop();
   }
 
-  _resize() {
-    const rect = this.canvas.parentElement.getBoundingClientRect();
-    this.canvas.width = rect.width * window.devicePixelRatio;
-    this.canvas.height = rect.height * window.devicePixelRatio;
-    this.canvas.style.width = rect.width + "px";
-    this.canvas.style.height = rect.height + "px";
-    this.ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-    this.width = rect.width;
-    this.height = rect.height;
-  }
-
-  start(throughput) {
-    // throughput: simulated records/sec → controls spawn rate
-    this.spawnRate = Math.min(3, Math.max(0.3, throughput / 8000));
+  start(throughput = 22215) {
+    this.spawnRate = Math.min(4.0, Math.max(0.5, throughput / 5000)) * this.scaleFactor;
     this.running = true;
-    if (!this._animating) {
-      this._animating = true;
-      this._loop();
-    }
   }
 
   stop() {
@@ -44,103 +32,150 @@ class ParticleSystem {
   }
 
   clear() {
-    this.particles = [];
+    this.packets = [];
     this.running = false;
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  setScale(scaleMultiplier) {
+    this.scaleFactor = scaleMultiplier;
   }
 
   setActiveStage(index) {
     this.activeStageIndex = index;
   }
 
-  _spawn() {
-    if (this.particles.length >= this.maxParticles) return;
+  _spawnPacket() {
+    if (this.packets.length >= 80) return;
 
-    const stageColors = PIPELINE_STAGES.map(s => s.color);
-    const startY = 10;
-    const endY = this.height - 10;
-    const x = 14 + Math.random() * 6; // near the left indicator column
+    // Pick a route to spawn a batch packet on
+    const activeRouteIndex = Math.floor(Math.random() * this.routes.length);
+    const route = this.routes[activeRouteIndex];
+    const fromNode = this.nodes.find(n => n.id === route.from);
+    const toNode = this.nodes.find(n => n.id === route.to);
 
-    // Determine which color to use based on active stage
-    const colorIdx = this.activeStageIndex >= 0
-      ? this.activeStageIndex
-      : Math.floor(Math.random() * stageColors.length);
+    if (!fromNode || !toNode) return;
 
-    this.particles.push({
-      x: x,
-      y: startY,
-      targetY: endY,
-      speed: 0.8 + Math.random() * 1.6,
-      radius: 1.5 + Math.random() * 1.5,
-      color: stageColors[colorIdx % stageColors.length],
-      alpha: 0.6 + Math.random() * 0.4,
+    const batchNum = Math.floor(Math.random() * 90 + 10);
+    const recCount = route.type === "dq" ? "158 RECS" : (route.type === "clean" ? "9,842 RECS" : "10,000 RECS");
+
+    let color = "#06d6a0"; // Default Emerald
+    if (route.type === "clean") color = "#84cc16";
+    else if (route.type === "dq") color = "#ef476f";
+    else if (route.type === "ml") color = "#8b5cf6";
+    else if (route.type === "lineage") color = "#ec4899";
+    else if (route.type === "ai") color = "#06b6d4";
+
+    this.packets.push({
+      from: fromNode,
+      to: toNode,
+      t: 0, // 0.0 to 1.0 along Bezier path
+      speed: (0.006 + Math.random() * 0.008) * this.scaleFactor,
+      color: color,
+      batchNum: batchNum,
+      recCount: recCount,
+      type: route.type,
       trail: []
     });
   }
 
   _loop() {
-    if (!this._animating) return;
     requestAnimationFrame(() => this._loop());
 
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.frameCount++;
 
     if (this.running) {
-      // Spawn particles
-      const spawnThisFrame = this.spawnRate >= 1
-        ? Math.floor(this.spawnRate)
-        : (Math.random() < this.spawnRate ? 1 : 0);
-
-      for (let i = 0; i < spawnThisFrame; i++) {
-        this._spawn();
+      if (Math.random() < this.spawnRate * 0.3) {
+        this._spawnPacket();
       }
     }
 
-    // Update & draw
-    for (let i = this.particles.length - 1; i >= 0; i--) {
-      const p = this.particles[i];
-      p.y += p.speed;
+    // Update and draw packets
+    for (let i = this.packets.length - 1; i >= 0; i--) {
+      const p = this.packets[i];
+      p.t += p.speed;
+
+      // Calculate Bezier coordinates (x, y)
+      const pos = this._getBezierPoint(p.from, p.to, p.t);
+      p.x = pos.x;
+      p.y = pos.y;
 
       // Record trail
       p.trail.push({ x: p.x, y: p.y });
-      if (p.trail.length > 8) p.trail.shift();
+      if (p.trail.length > 10) p.trail.shift();
 
-      // Draw trail
+      // Draw Packet Trail
       if (p.trail.length > 1) {
         this.ctx.beginPath();
-        this.ctx.strokeStyle = p.color;
-        this.ctx.lineWidth = p.radius * 0.6;
-        this.ctx.globalAlpha = p.alpha * 0.15;
         this.ctx.moveTo(p.trail[0].x, p.trail[0].y);
         for (let j = 1; j < p.trail.length; j++) {
           this.ctx.lineTo(p.trail[j].x, p.trail[j].y);
         }
+        this.ctx.strokeStyle = p.color;
+        this.ctx.lineWidth = 2.5;
+        this.ctx.globalAlpha = 0.3;
         this.ctx.stroke();
       }
 
-      // Draw particle
+      // Draw Packet Head
       this.ctx.beginPath();
-      this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      this.ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
       this.ctx.fillStyle = p.color;
-      this.ctx.globalAlpha = p.alpha;
+      this.ctx.globalAlpha = 0.9;
       this.ctx.fill();
 
-      // Glow
+      // Glow Ring
       this.ctx.beginPath();
-      this.ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
-      const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
-      grad.addColorStop(0, p.color);
-      grad.addColorStop(1, "transparent");
-      this.ctx.fillStyle = grad;
-      this.ctx.globalAlpha = p.alpha * 0.15;
+      this.ctx.arc(p.x, p.y, 9, 0, Math.PI * 2);
+      this.ctx.fillStyle = p.color;
+      this.ctx.globalAlpha = 0.15;
       this.ctx.fill();
 
-      this.ctx.globalAlpha = 1;
+      // Batch Data Label
+      this.ctx.fillStyle = "#ffffff";
+      this.ctx.font = "bold 8px 'JetBrains Mono'";
+      this.ctx.textAlign = "left";
+      this.ctx.globalAlpha = 0.85;
+      this.ctx.fillText(`● BATCH ${p.batchNum}`, p.x + 8, p.y - 3);
 
-      // Remove if past bottom
-      if (p.y > p.targetY + 20) {
-        this.particles.splice(i, 1);
+      this.ctx.fillStyle = p.color;
+      this.ctx.font = "8px 'JetBrains Mono'";
+      this.ctx.fillText(p.recCount, p.x + 8, p.y + 7);
+
+      this.ctx.globalAlpha = 1.0;
+
+      // Remove when reached destination
+      if (p.t >= 1.0) {
+        this.packets.splice(i, 1);
       }
     }
+  }
+
+  _getBezierPoint(from, to, t) {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const cx1 = from.x + dx * 0.45;
+    const cy1 = from.y;
+    const cx2 = from.x + dx * 0.55;
+    const cy2 = to.y;
+
+    const u = 1 - t;
+    const tt = t * t;
+    const uu = u * u;
+    const uuu = uu * u;
+    const ttt = tt * t;
+
+    const x = uuu * from.x + 3 * uu * t * cx1 + 3 * u * tt * cx2 + ttt * to.x;
+    const y = uuu * from.y + 3 * uu * t * cy1 + 3 * u * tt * cy2 + ttt * to.y;
+
+    return { x, y };
+  }
+}
+
+// Global particle alias for backwards compatibility
+class ParticleSystem extends NetworkParticleSystem {
+  constructor(canvasId) {
+    super(canvasId, window.pipelineInstance || { routes: [], nodes: [] });
   }
 }
