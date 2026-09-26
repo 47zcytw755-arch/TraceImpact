@@ -1,0 +1,6 @@
+program_id,program_name,target_category,budget_allocated,start_date,end_date
+PRG-001,Digital Literacy Initiative,Education,150000.0,2024-01-10,2024-12-20
+PRG-002,Women Vocational Sewing,Livelihood,220000.0,2024-02-01,2024-11-30
+PRG-003,Youth Coding Bootcamp,Skill Development,180000.0,2024-03-01,2024-09-30
+PRG-004,Elderly Healthcare Outreach,Healthcare,120000.0,2024-01-15,2024-12-15
+PRG-005,Community Nutrition Drive,Health & Nutrition,95000.0,2024-04-01,2024-10-31

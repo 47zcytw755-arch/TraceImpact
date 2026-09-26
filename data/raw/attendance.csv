@@ -1,0 +1,619 @@
+attendance_id,participant_id,program_title,session_date,attendance_status,session_hours
+ATT-0001,BEN-041,Digi-Literacy,2024-02-01,Attended,2.0
+ATT-0002,BEN-017,Digital Literacy Initiative,2024-02-01,Present,2.5
+ATT-0003,BEN-011,Digital Literacy Initiative,2024-02-01,present,
+ATT-0004,BEN-029,digital literacy,2024-02-01,P,2.5
+ATT-0005,BEN-036,Digital Literacy Initiative,2024-02-01,present,3.0
+ATT-0006,BEN-023,Women Sewing Workshop,2024-02-01,Present,3.0
+ATT-0007,BEN-014,Women Sewing Workshop,2024-02-01,P,
+ATT-0008,BEN-044,Women Sewing Workshop,2024-02-01,Present,2.5
+ATT-0009,BEN-016,Women Vocational Sewing,2024-02-01,Present,2 hrs
+ATT-0010,BEN-012,coding bootcamp,2024-02-01,Present,3.0
+ATT-0011,BEN-022,Youth Coding Bootcamp,2024-02-01,Present,2 hrs
+ATT-0012,BEN-027,Youth Coding Bootcamp,2024-02-01,P,2.5
+ATT-0013,BEN-043,Youth Coding Bootcamp,2024-02-01,P,3.0
+ATT-0014,BEN-015,Elderly Health,2024-02-01,Present,3.0
+ATT-0015,BEN-044,Elderly Health,2024-02-01,Attended,2 hrs
+ATT-0016,BEN-002,Health Outreach,2024-02-01,Attended,3.0
+ATT-0017,BEN-013,Elderly Healthcare Outreach,2024-02-01,Present,3.0
+ATT-0018,BEN-026,Elderly Healthcare Outreach,2024-02-01,Attended,3.0
+ATT-0019,BEN-022,Elderly Healthcare Outreach,2024-02-01,Present,
+ATT-0020,BEN-023,community-nutrition,2024-02-01,Present,3.0
+ATT-0021,BEN-021,Community Nutrition Drive,2024-02-01,P,2.0
+ATT-0022,BEN-028,community-nutrition,2024-02-01,Attended,2.5
+ATT-0023,BEN-039,Nutrition Drive,2024-02-01,P,2.0
+ATT-0024,BEN-033,community-nutrition,2024-02-01,present,
+ATT-0025,BEN-008,Nutrition Drive,2024-02-01,Present,3.0
+ATT-0026,BEN-025,community-nutrition,2024-02-01,present,2 hrs
+ATT-0027,BEN-026,Digi-Literacy,2024-02-04,Present,
+ATT-0028,BEN-019,Digital-Literacy,2024-02-04,P,
+ATT-0029,BEN-036,Digital Literacy Initiative,2024-02-04,present,3.0
+ATT-0030,BEN-009,digital literacy,2024-02-04,P,
+ATT-0031,BEN-013,Digital-Literacy,2024-02-04,P,2 hrs
+ATT-0032,BEN-027,Digi-Literacy,2024-02-04,Present,
+ATT-0033,BEN-011,Women Vocational Sewing,2024-02-04,present,2.5
+ATT-0034,BEN-043,Women Vocational Sewing,2024-02-04,Present,2.0
+ATT-0035,BEN-006,Women Vocational Sewing,2024-02-04,Present,2 hrs
+ATT-0036,BEN-019,Women Sewing Workshop,2024-02-04,Present,2 hrs
+ATT-0037,BEN-033,vocational sewing,2024-02-04,Attended,2.5
+ATT-0038,BEN-022,Women Sewing Workshop,2024-02-04,P,2 hrs
+ATT-0039,BEN-042,vocational sewing,2024-02-04,Present,2.5
+ATT-0040,BEN-007,coding bootcamp,2024-02-04,Attended,2 hrs
+ATT-0041,BEN-028,Youth Coding Bootcamp,2024-02-04,Attended,2.5
+ATT-0042,BEN-015,Youth Coding Bootcamp,2024-02-04,P,2.5
+ATT-0043,BEN-012,Youth-Coding,2024-02-04,Attended,
+ATT-0044,BEN-021,Health Outreach,2024-02-04,P,2 hrs
+ATT-0045,BEN-029,Elderly Health,2024-02-04,Present,3.0
+ATT-0046,BEN-040,Health Outreach,2024-02-04,P,2.5
+ATT-0047,BEN-033,Elderly Health,2024-02-04,P,2.0
+ATT-0048,BEN-028,Health Outreach,2024-02-04,present,2.5
+ATT-0049,BEN-036,Elderly Health,2024-02-04,present,3.0
+ATT-0050,BEN-043,Health Outreach,2024-02-04,Present,2.5
+ATT-0051,BEN-011,Elderly Healthcare Outreach,2024-02-04,Present,2 hrs
+ATT-0052,BEN-014,Nutrition Drive,2024-02-04,P,2.0
+ATT-0053,BEN-005,Community Nutrition Drive,2024-02-04,P,2 hrs
+ATT-0054,BEN-027,community-nutrition,2024-02-04,Present,
+ATT-0055,BEN-022,Nutrition Drive,2024-02-04,P,2.0
+ATT-0056,BEN-035,Nutrition Drive,2024-02-04,present,2 hrs
+ATT-0057,BEN-035,Digi-Literacy,2024-02-07,P,2.0
+ATT-0058,BEN-044,Digi-Literacy,2024-02-07,present,2 hrs
+ATT-0059,BEN-039,digital literacy,2024-02-07,P,2.5
+ATT-0060,BEN-015,Digital Literacy Initiative,2024-02-07,P,
+ATT-0061,BEN-032,Digital Literacy Initiative,2024-02-07,Present,2 hrs
+ATT-0062,BEN-041,digital literacy,2024-02-07,P,2.5
+ATT-0063,BEN-018,Digital Literacy Initiative,2024-02-07,present,2 hrs
+ATT-0064,BEN-014,vocational sewing,2024-02-07,present,2.0
+ATT-0065,BEN-030,vocational sewing,2024-02-07,Present,
+ATT-0066,BEN-021,Women Vocational Sewing,2024-02-07,present,2.5
+ATT-0067,BEN-022,Women Sewing Workshop,2024-02-07,Present,2.0
+ATT-0068,BEN-025,Women Vocational Sewing,2024-02-07,Present,2.5
+ATT-0069,BEN-018,Women Vocational Sewing,2024-02-07,Attended,2.5
+ATT-0070,BEN-009,Youth Coding Bootcamp,2024-02-07,P,3.0
+ATT-0071,BEN-031,Youth-Coding,2024-02-07,Present,
+ATT-0072,BEN-043,coding bootcamp,2024-02-07,Present,2.5
+ATT-0073,BEN-008,Youth-Coding,2024-02-07,Present,
+ATT-0074,BEN-037,Youth Coding Bootcamp,2024-02-07,present,
+ATT-0075,BEN-026,Health Outreach,2024-02-07,Attended,2.0
+ATT-0076,BEN-013,Health Outreach,2024-02-07,Present,3.0
+ATT-0077,BEN-005,Health Outreach,2024-02-07,P,3.0
+ATT-0078,BEN-038,Elderly Healthcare Outreach,2024-02-07,Attended,3.0
+ATT-0079,BEN-016,Elderly Healthcare Outreach,2024-02-07,P,2 hrs
+ATT-0080,BEN-007,Elderly Healthcare Outreach,2024-02-07,P,3.0
+ATT-0081,BEN-020,Health Outreach,2024-02-07,P,2.5
+ATT-0082,BEN-012,Nutrition Drive,2024-02-07,P,
+ATT-0083,BEN-034,Nutrition Drive,2024-02-07,present,2.5
+ATT-0084,BEN-042,Community Nutrition Drive,2024-02-07,present,2 hrs
+ATT-0085,BEN-018,Community Nutrition Drive,2024-02-07,P,
+ATT-0086,BEN-040,community-nutrition,2024-02-07,P,3.0
+ATT-0087,BEN-035,Community Nutrition Drive,2024-02-07,P,3.0
+ATT-0088,BEN-031,Community Nutrition Drive,2024-02-07,P,2.5
+ATT-0089,BEN-017,Digital Literacy Initiative,2024-02-10,Attended,2.5
+ATT-0090,BEN-022,Digital Literacy Initiative,2024-02-10,Present,2 hrs
+ATT-0091,BEN-018,Digi-Literacy,2024-02-10,Attended,2.5
+ATT-0092,BEN-039,Digi-Literacy,2024-02-10,P,2 hrs
+ATT-0093,BEN-042,Digital Literacy Initiative,2024-02-10,Present,3.0
+ATT-0094,BEN-036,digital literacy,2024-02-10,P,2.5
+ATT-0095,BEN-043,vocational sewing,2024-02-10,P,
+ATT-0096,BEN-038,vocational sewing,2024-02-10,present,2 hrs
+ATT-0097,BEN-024,vocational sewing,2024-02-10,present,3.0
+ATT-0098,BEN-031,Women Vocational Sewing,2024-02-10,Present,2.5
+ATT-0099,BEN-036,vocational sewing,2024-02-10,Present,
+ATT-0100,BEN-034,Women Sewing Workshop,2024-02-10,Present,2.5
+ATT-0101,BEN-031,Youth-Coding,2024-02-10,Present,2.5
+ATT-0102,BEN-018,Youth-Coding,2024-02-10,Present,3.0
+ATT-0103,BEN-038,Youth Coding Bootcamp,2024-02-10,present,2.0
+ATT-0104,BEN-034,coding bootcamp,2024-02-10,Attended,2.5
+ATT-0105,BEN-039,Youth-Coding,2024-02-10,Present,2.0
+ATT-0106,BEN-019,Elderly Health,2024-02-10,P,2 hrs
+ATT-0107,BEN-009,Elderly Health,2024-02-10,Present,2.0
+ATT-0108,BEN-041,Elderly Health,2024-02-10,P,2.0
+ATT-0109,BEN-032,Elderly Healthcare Outreach,2024-02-10,P,2 hrs
+ATT-0110,BEN-007,Elderly Healthcare Outreach,2024-02-10,Attended,2.0
+ATT-0111,BEN-001,Elderly Healthcare Outreach,2024-02-10,Present,
+ATT-0112,BEN-037,Elderly Health,2024-02-10,Present,2.5
+ATT-0113,BEN-044,Elderly Healthcare Outreach,2024-02-10,Attended,2 hrs
+ATT-0114,BEN-039,community-nutrition,2024-02-10,P,3.0
+ATT-0115,BEN-040,community-nutrition,2024-02-10,Attended,2.0
+ATT-0116,BEN-015,community-nutrition,2024-02-10,Present,2.5
+ATT-0117,BEN-034,community-nutrition,2024-02-10,Present,3.0
+ATT-0118,BEN-025,community-nutrition,2024-02-10,Present,2.5
+ATT-0119,BEN-029,Community Nutrition Drive,2024-02-10,Present,
+ATT-0120,BEN-044,Community Nutrition Drive,2024-02-10,Present,2.0
+ATT-0121,BEN-020,Nutrition Drive,2024-02-10,P,
+ATT-0122,BEN-019,digital literacy,2024-02-13,present,
+ATT-0123,BEN-003,digital literacy,2024-02-13,P,2.0
+ATT-0124,BEN-015,digital literacy,2024-02-13,Present,3.0
+ATT-0125,BEN-044,digital literacy,2024-02-13,Present,2.0
+ATT-0126,BEN-041,digital literacy,2024-02-13,present,
+ATT-0127,BEN-030,Digital-Literacy,2024-02-13,P,2.0
+ATT-0128,BEN-005,Digi-Literacy,2024-02-13,present,2 hrs
+ATT-0129,BEN-033,Women Vocational Sewing,2024-02-13,P,3.0
+ATT-0130,BEN-035,Women Sewing Workshop,2024-02-13,present,2.0
+ATT-0131,BEN-032,Women Vocational Sewing,2024-02-13,Present,
+ATT-0132,BEN-029,Women Sewing Workshop,2024-02-13,Present,3.0
+ATT-0133,BEN-006,Women Sewing Workshop,2024-02-13,Present,2.5
+ATT-0134,BEN-039,vocational sewing,2024-02-13,Attended,2 hrs
+ATT-0135,BEN-012,Youth-Coding,2024-02-13,present,2 hrs
+ATT-0136,BEN-038,Youth-Coding,2024-02-13,present,2.0
+ATT-0137,BEN-028,Youth Coding Bootcamp,2024-02-13,present,2 hrs
+ATT-0138,BEN-041,coding bootcamp,2024-02-13,P,3.0
+ATT-0139,BEN-032,coding bootcamp,2024-02-13,P,
+ATT-0140,BEN-006,Youth Coding Bootcamp,2024-02-13,P,2.0
+ATT-0141,BEN-017,Health Outreach,2024-02-13,Attended,2 hrs
+ATT-0142,BEN-021,Elderly Health,2024-02-13,Present,2.5
+ATT-0143,BEN-008,Health Outreach,2024-02-13,present,
+ATT-0144,BEN-026,Elderly Health,2024-02-13,P,2.0
+ATT-0145,BEN-033,Elderly Healthcare Outreach,2024-02-13,present,
+ATT-0146,BEN-001,Elderly Healthcare Outreach,2024-02-13,present,2 hrs
+ATT-0147,BEN-008,community-nutrition,2024-02-13,Present,
+ATT-0148,BEN-002,Nutrition Drive,2024-02-13,Present,2.5
+ATT-0149,BEN-041,Community Nutrition Drive,2024-02-13,P,2.0
+ATT-0150,BEN-039,community-nutrition,2024-02-13,Present,2 hrs
+ATT-0151,BEN-016,community-nutrition,2024-02-13,present,
+ATT-0152,BEN-011,community-nutrition,2024-02-13,present,2 hrs
+ATT-0153,BEN-020,Nutrition Drive,2024-02-13,P,2.5
+ATT-0154,BEN-036,Digital Literacy Initiative,2024-02-16,present,2 hrs
+ATT-0155,BEN-010,Digital-Literacy,2024-02-16,Attended,3.0
+ATT-0156,BEN-025,Digital Literacy Initiative,2024-02-16,present,3.0
+ATT-0157,BEN-013,Digi-Literacy,2024-02-16,Present,2 hrs
+ATT-0158,BEN-039,Digi-Literacy,2024-02-16,present,3.0
+ATT-0159,BEN-033,Digi-Literacy,2024-02-16,P,3.0
+ATT-0160,BEN-009,digital literacy,2024-02-16,Present,
+ATT-0161,BEN-015,Women Sewing Workshop,2024-02-16,Present,2 hrs
+ATT-0162,BEN-027,Women Vocational Sewing,2024-02-16,Present,
+ATT-0163,BEN-003,Women Sewing Workshop,2024-02-16,present,2.0
+ATT-0164,BEN-021,vocational sewing,2024-02-16,Present,
+ATT-0165,BEN-031,vocational sewing,2024-02-16,Present,2.5
+ATT-0166,BEN-025,vocational sewing,2024-02-16,Present,2.0
+ATT-0167,BEN-039,vocational sewing,2024-02-16,present,3.0
+ATT-0168,BEN-026,coding bootcamp,2024-02-16,Present,
+ATT-0169,BEN-042,Youth Coding Bootcamp,2024-02-16,Present,3.0
+ATT-0170,BEN-006,Youth Coding Bootcamp,2024-02-16,Present,2 hrs
+ATT-0171,BEN-022,Youth Coding Bootcamp,2024-02-16,Present,2 hrs
+ATT-0172,BEN-035,Youth Coding Bootcamp,2024-02-16,present,2.0
+ATT-0173,BEN-025,Youth Coding Bootcamp,2024-02-16,present,2.0
+ATT-0174,BEN-021,Youth-Coding,2024-02-16,present,3.0
+ATT-0175,BEN-032,Youth-Coding,2024-02-16,Present,2.5
+ATT-0176,BEN-027,Elderly Health,2024-02-16,Attended,2.5
+ATT-0177,BEN-037,Elderly Healthcare Outreach,2024-02-16,P,3.0
+ATT-0178,BEN-012,Elderly Health,2024-02-16,present,2.0
+ATT-0179,BEN-011,Elderly Health,2024-02-16,present,
+ATT-0180,BEN-042,Elderly Healthcare Outreach,2024-02-16,Present,2 hrs
+ATT-0181,BEN-006,Elderly Health,2024-02-16,Attended,3.0
+ATT-0182,BEN-025,Health Outreach,2024-02-16,P,3.0
+ATT-0183,BEN-016,Elderly Health,2024-02-16,present,2.5
+ATT-0184,BEN-031,Nutrition Drive,2024-02-16,present,2.0
+ATT-0185,BEN-007,community-nutrition,2024-02-16,P,3.0
+ATT-0186,BEN-016,Community Nutrition Drive,2024-02-16,Attended,2.0
+ATT-0187,BEN-025,community-nutrition,2024-02-16,P,3.0
+ATT-0188,BEN-037,Community Nutrition Drive,2024-02-16,Attended,3.0
+ATT-0189,BEN-023,Community Nutrition Drive,2024-02-16,Present,
+ATT-0190,BEN-040,Nutrition Drive,2024-02-16,Present,2.0
+ATT-0191,BEN-020,Digital-Literacy,2024-02-19,Present,2.0
+ATT-0192,BEN-029,Digital-Literacy,2024-02-19,present,2 hrs
+ATT-0193,BEN-003,digital literacy,2024-02-19,Present,2.5
+ATT-0194,BEN-038,Digital-Literacy,2024-02-19,Attended,
+ATT-0195,BEN-011,vocational sewing,2024-02-19,Present,2.5
+ATT-0196,BEN-017,Women Vocational Sewing,2024-02-19,P,
+ATT-0197,BEN-031,vocational sewing,2024-02-19,Present,2 hrs
+ATT-0198,BEN-019,Women Vocational Sewing,2024-02-19,present,
+ATT-0199,BEN-022,Women Vocational Sewing,2024-02-19,P,3.0
+ATT-0200,BEN-008,Women Sewing Workshop,2024-02-19,present,
+ATT-0201,BEN-041,Youth-Coding,2024-02-19,Attended,2.5
+ATT-0202,BEN-024,coding bootcamp,2024-02-19,Present,2 hrs
+ATT-0203,BEN-007,coding bootcamp,2024-02-19,present,2 hrs
+ATT-0204,BEN-015,Youth Coding Bootcamp,2024-02-19,Present,2.0
+ATT-0205,BEN-031,Youth Coding Bootcamp,2024-02-19,present,2 hrs
+ATT-0206,BEN-002,Youth Coding Bootcamp,2024-02-19,Present,2.5
+ATT-0207,BEN-036,coding bootcamp,2024-02-19,Present,2 hrs
+ATT-0208,BEN-024,Health Outreach,2024-02-19,Present,2 hrs
+ATT-0209,BEN-043,Health Outreach,2024-02-19,P,3.0
+ATT-0210,BEN-035,Elderly Healthcare Outreach,2024-02-19,present,2.5
+ATT-0211,BEN-027,Elderly Health,2024-02-19,P,2.5
+ATT-0212,BEN-038,Elderly Health,2024-02-19,Present,3.0
+ATT-0213,BEN-010,Health Outreach,2024-02-19,present,2.0
+ATT-0214,BEN-041,Elderly Health,2024-02-19,present,2.5
+ATT-0215,BEN-030,community-nutrition,2024-02-19,Attended,2.0
+ATT-0216,BEN-006,Community Nutrition Drive,2024-02-19,present,2.5
+ATT-0217,BEN-043,Community Nutrition Drive,2024-02-19,Attended,2.5
+ATT-0218,BEN-014,Community Nutrition Drive,2024-02-19,Attended,2.5
+ATT-0219,BEN-014,digital literacy,2024-02-22,Attended,3.0
+ATT-0220,BEN-015,digital literacy,2024-02-22,Present,2.0
+ATT-0221,BEN-022,digital literacy,2024-02-22,Present,3.0
+ATT-0222,BEN-010,digital literacy,2024-02-22,Attended,3.0
+ATT-0223,BEN-039,Digital Literacy Initiative,2024-02-22,Present,3.0
+ATT-0224,BEN-001,Digital Literacy Initiative,2024-02-22,Present,2 hrs
+ATT-0225,BEN-018,Digital Literacy Initiative,2024-02-22,Present,2 hrs
+ATT-0226,BEN-041,Digi-Literacy,2024-02-22,present,
+ATT-0227,BEN-007,vocational sewing,2024-02-22,Present,2.0
+ATT-0228,BEN-029,vocational sewing,2024-02-22,P,2 hrs
+ATT-0229,BEN-033,Women Sewing Workshop,2024-02-22,Present,2 hrs
+ATT-0230,BEN-015,Women Sewing Workshop,2024-02-22,P,2.0
+ATT-0231,BEN-040,Women Vocational Sewing,2024-02-22,present,
+ATT-0232,BEN-003,Women Vocational Sewing,2024-02-22,Present,2.5
+ATT-0233,BEN-034,vocational sewing,2024-02-22,Attended,
+ATT-0234,BEN-020,Women Sewing Workshop,2024-02-22,present,2 hrs
+ATT-0235,BEN-034,coding bootcamp,2024-02-22,Attended,2.5
+ATT-0236,BEN-019,Youth-Coding,2024-02-22,P,2.5
+ATT-0237,BEN-030,Youth-Coding,2024-02-22,present,2 hrs
+ATT-0238,BEN-033,Youth-Coding,2024-02-22,P,2.0
+ATT-0239,BEN-039,Youth-Coding,2024-02-22,P,3.0
+ATT-0240,BEN-028,coding bootcamp,2024-02-22,present,3.0
+ATT-0241,BEN-007,Youth Coding Bootcamp,2024-02-22,P,2.0
+ATT-0242,BEN-008,Youth Coding Bootcamp,2024-02-22,Present,2.0
+ATT-0243,BEN-007,Health Outreach,2024-02-22,present,2.0
+ATT-0244,BEN-024,Elderly Health,2024-02-22,present,2 hrs
+ATT-0245,BEN-009,Health Outreach,2024-02-22,Present,3.0
+ATT-0246,BEN-036,Health Outreach,2024-02-22,present,3.0
+ATT-0247,BEN-004,Elderly Healthcare Outreach,2024-02-22,Attended,
+ATT-0248,BEN-038,Elderly Healthcare Outreach,2024-02-22,Present,2 hrs
+ATT-0249,BEN-041,Elderly Healthcare Outreach,2024-02-22,Present,3.0
+ATT-0250,BEN-024,Community Nutrition Drive,2024-02-22,Attended,3.0
+ATT-0251,BEN-008,Community Nutrition Drive,2024-02-22,Present,3.0
+ATT-0252,BEN-018,community-nutrition,2024-02-22,present,3.0
+ATT-0253,BEN-037,Nutrition Drive,2024-02-22,Present,2.5
+ATT-0254,BEN-015,Community Nutrition Drive,2024-02-22,Attended,2 hrs
+ATT-0255,BEN-028,Community Nutrition Drive,2024-02-22,Present,2.0
+ATT-0256,BEN-036,Community Nutrition Drive,2024-02-22,Attended,2.5
+ATT-0257,BEN-038,Nutrition Drive,2024-02-22,P,2 hrs
+ATT-0258,BEN-011,Digital Literacy Initiative,2024-02-25,Present,2.5
+ATT-0259,BEN-024,digital literacy,2024-02-25,Attended,2.0
+ATT-0260,BEN-020,Digital Literacy Initiative,2024-02-25,present,2 hrs
+ATT-0261,BEN-021,Digi-Literacy,2024-02-25,P,
+ATT-0262,BEN-037,Digi-Literacy,2024-02-25,P,3.0
+ATT-0263,BEN-039,digital literacy,2024-02-25,Attended,2.0
+ATT-0264,BEN-028,Women Sewing Workshop,2024-02-25,present,2.0
+ATT-0265,BEN-008,Women Vocational Sewing,2024-02-25,P,
+ATT-0266,BEN-019,Women Vocational Sewing,2024-02-25,Present,2.5
+ATT-0267,BEN-038,vocational sewing,2024-02-25,Present,2.5
+ATT-0268,BEN-032,vocational sewing,2024-02-25,present,3.0
+ATT-0269,BEN-034,Women Vocational Sewing,2024-02-25,Present,2 hrs
+ATT-0270,BEN-012,coding bootcamp,2024-02-25,present,2.0
+ATT-0271,BEN-009,Youth-Coding,2024-02-25,Present,2 hrs
+ATT-0272,BEN-025,Youth Coding Bootcamp,2024-02-25,P,2.0
+ATT-0273,BEN-035,Youth-Coding,2024-02-25,Attended,2 hrs
+ATT-0274,BEN-015,coding bootcamp,2024-02-25,P,2 hrs
+ATT-0275,BEN-033,Youth-Coding,2024-02-25,Present,2 hrs
+ATT-0276,BEN-036,Youth Coding Bootcamp,2024-02-25,present,2.5
+ATT-0277,BEN-030,Health Outreach,2024-02-25,Present,2 hrs
+ATT-0278,BEN-024,Elderly Health,2024-02-25,present,2.5
+ATT-0279,BEN-006,Elderly Health,2024-02-25,Present,2.0
+ATT-0280,BEN-028,Health Outreach,2024-02-25,Present,
+ATT-0281,BEN-007,Health Outreach,2024-02-25,Present,3.0
+ATT-0282,BEN-016,Elderly Health,2024-02-25,Present,2.5
+ATT-0283,BEN-041,Elderly Healthcare Outreach,2024-02-25,Present,3.0
+ATT-0284,BEN-026,Elderly Healthcare Outreach,2024-02-25,Present,
+ATT-0285,BEN-042,Nutrition Drive,2024-02-25,Attended,
+ATT-0286,BEN-005,Nutrition Drive,2024-02-25,Attended,
+ATT-0287,BEN-012,Nutrition Drive,2024-02-25,present,2.5
+ATT-0288,BEN-041,Nutrition Drive,2024-02-25,Present,2 hrs
+ATT-0289,BEN-032,Nutrition Drive,2024-02-25,present,3.0
+ATT-0290,BEN-004,Digital Literacy Initiative,2024-02-28,present,3.0
+ATT-0291,BEN-023,Digital Literacy Initiative,2024-02-28,Present,
+ATT-0292,BEN-033,Digi-Literacy,2024-02-28,P,
+ATT-0293,BEN-005,Digital Literacy Initiative,2024-02-28,P,
+ATT-0294,BEN-020,digital literacy,2024-02-28,present,
+ATT-0295,BEN-030,Digi-Literacy,2024-02-28,Attended,2.5
+ATT-0296,BEN-029,Digital Literacy Initiative,2024-02-28,P,2.0
+ATT-0297,BEN-003,Digital-Literacy,2024-02-28,Present,
+ATT-0298,BEN-003,Women Vocational Sewing,2024-02-28,present,3.0
+ATT-0299,BEN-016,vocational sewing,2024-02-28,P,2 hrs
+ATT-0300,BEN-029,vocational sewing,2024-02-28,Attended,2.0
+ATT-0301,BEN-034,Women Sewing Workshop,2024-02-28,present,2.0
+ATT-0302,BEN-040,vocational sewing,2024-02-28,Present,
+ATT-0303,BEN-019,coding bootcamp,2024-02-28,Present,3.0
+ATT-0304,BEN-017,Youth-Coding,2024-02-28,P,2.5
+ATT-0305,BEN-039,coding bootcamp,2024-02-28,Present,3.0
+ATT-0306,BEN-010,coding bootcamp,2024-02-28,P,3.0
+ATT-0307,BEN-022,Youth Coding Bootcamp,2024-02-28,Attended,2.0
+ATT-0308,BEN-006,coding bootcamp,2024-02-28,P,
+ATT-0309,BEN-038,Youth-Coding,2024-02-28,Present,3.0
+ATT-0310,BEN-012,Elderly Healthcare Outreach,2024-02-28,Present,2.0
+ATT-0311,BEN-014,Elderly Health,2024-02-28,Present,
+ATT-0312,BEN-022,Health Outreach,2024-02-28,Attended,2.0
+ATT-0313,BEN-032,Health Outreach,2024-02-28,present,
+ATT-0314,BEN-013,Elderly Healthcare Outreach,2024-02-28,Attended,2 hrs
+ATT-0315,BEN-015,Elderly Healthcare Outreach,2024-02-28,Present,2.5
+ATT-0316,BEN-011,community-nutrition,2024-02-28,P,2.5
+ATT-0317,BEN-029,community-nutrition,2024-02-28,Present,3.0
+ATT-0318,BEN-003,Nutrition Drive,2024-02-28,Present,3.0
+ATT-0319,BEN-027,community-nutrition,2024-02-28,Attended,2 hrs
+ATT-0320,BEN-024,Nutrition Drive,2024-02-28,present,2 hrs
+ATT-0321,BEN-016,community-nutrition,2024-02-28,Attended,2 hrs
+ATT-0322,BEN-043,Community Nutrition Drive,2024-02-28,Present,
+ATT-0323,BEN-019,Community Nutrition Drive,2024-02-28,present,2.0
+ATT-0324,BEN-024,digital literacy,2024-03-01,present,2 hrs
+ATT-0325,BEN-036,digital literacy,2024-03-01,P,2.0
+ATT-0326,BEN-007,digital literacy,2024-03-01,P,3.0
+ATT-0327,BEN-034,Digital Literacy Initiative,2024-03-01,P,2.0
+ATT-0328,BEN-008,Digi-Literacy,2024-03-01,Attended,3.0
+ATT-0329,BEN-019,digital literacy,2024-03-01,P,2.0
+ATT-0330,BEN-006,Digital-Literacy,2024-03-01,Present,2.0
+ATT-0331,BEN-007,vocational sewing,2024-03-01,P,2.5
+ATT-0332,BEN-042,Women Sewing Workshop,2024-03-01,P,2 hrs
+ATT-0333,BEN-022,Women Sewing Workshop,2024-03-01,Present,2.0
+ATT-0334,BEN-010,Women Vocational Sewing,2024-03-01,present,2.5
+ATT-0335,BEN-009,Women Vocational Sewing,2024-03-01,Attended,
+ATT-0336,BEN-003,Women Sewing Workshop,2024-03-01,P,2.0
+ATT-0337,BEN-016,coding bootcamp,2024-03-01,Attended,2 hrs
+ATT-0338,BEN-020,Youth Coding Bootcamp,2024-03-01,Present,2 hrs
+ATT-0339,BEN-008,coding bootcamp,2024-03-01,Attended,2.0
+ATT-0340,BEN-004,coding bootcamp,2024-03-01,Attended,
+ATT-0341,BEN-044,Youth Coding Bootcamp,2024-03-01,Present,3.0
+ATT-0342,BEN-027,Youth-Coding,2024-03-01,Present,
+ATT-0343,BEN-016,Elderly Health,2024-03-01,Present,
+ATT-0344,BEN-037,Health Outreach,2024-03-01,Attended,
+ATT-0345,BEN-027,Health Outreach,2024-03-01,Present,2 hrs
+ATT-0346,BEN-012,Elderly Health,2024-03-01,Present,2 hrs
+ATT-0347,BEN-006,Elderly Health,2024-03-01,present,2.0
+ATT-0348,BEN-034,Elderly Health,2024-03-01,Present,3.0
+ATT-0349,BEN-043,Community Nutrition Drive,2024-03-01,Present,3.0
+ATT-0350,BEN-041,community-nutrition,2024-03-01,present,2.5
+ATT-0351,BEN-007,community-nutrition,2024-03-01,P,2 hrs
+ATT-0352,BEN-038,community-nutrition,2024-03-01,Present,2.5
+ATT-0353,BEN-022,Community Nutrition Drive,2024-03-01,P,2.0
+ATT-0354,BEN-013,Digi-Literacy,2024-03-04,Attended,2 hrs
+ATT-0355,BEN-003,Digital-Literacy,2024-03-04,Present,2.5
+ATT-0356,BEN-044,Digital-Literacy,2024-03-04,present,2.0
+ATT-0357,BEN-043,Digital-Literacy,2024-03-04,present,2.0
+ATT-0358,BEN-021,Digital-Literacy,2024-03-04,P,2 hrs
+ATT-0359,BEN-020,Digi-Literacy,2024-03-04,P,3.0
+ATT-0360,BEN-032,Women Sewing Workshop,2024-03-04,P,2.0
+ATT-0361,BEN-024,vocational sewing,2024-03-04,Attended,2.5
+ATT-0362,BEN-034,Women Sewing Workshop,2024-03-04,present,3.0
+ATT-0363,BEN-018,Women Vocational Sewing,2024-03-04,Present,3.0
+ATT-0364,BEN-006,Women Sewing Workshop,2024-03-04,present,3.0
+ATT-0365,BEN-039,coding bootcamp,2024-03-04,present,
+ATT-0366,BEN-028,Youth-Coding,2024-03-04,present,2.0
+ATT-0367,BEN-011,Youth Coding Bootcamp,2024-03-04,P,3.0
+ATT-0368,BEN-029,coding bootcamp,2024-03-04,Present,2.0
+ATT-0369,BEN-023,Youth Coding Bootcamp,2024-03-04,Attended,2 hrs
+ATT-0370,BEN-041,Youth Coding Bootcamp,2024-03-04,Present,2.0
+ATT-0371,BEN-003,Youth Coding Bootcamp,2024-03-04,present,3.0
+ATT-0372,BEN-037,Elderly Health,2024-03-04,Present,
+ATT-0373,BEN-003,Elderly Healthcare Outreach,2024-03-04,Attended,3.0
+ATT-0374,BEN-039,Elderly Health,2024-03-04,present,3.0
+ATT-0375,BEN-010,Elderly Healthcare Outreach,2024-03-04,Present,2.0
+ATT-0376,BEN-029,Health Outreach,2024-03-04,Present,2 hrs
+ATT-0377,BEN-024,Health Outreach,2024-03-04,P,
+ATT-0378,BEN-042,Elderly Healthcare Outreach,2024-03-04,present,3.0
+ATT-0379,BEN-014,Community Nutrition Drive,2024-03-04,P,2.5
+ATT-0380,BEN-040,community-nutrition,2024-03-04,P,2.0
+ATT-0381,BEN-019,community-nutrition,2024-03-04,present,3.0
+ATT-0382,BEN-032,community-nutrition,2024-03-04,Present,
+ATT-0383,BEN-013,community-nutrition,2024-03-04,present,3.0
+ATT-0384,BEN-008,Community Nutrition Drive,2024-03-04,Present,3.0
+ATT-0385,BEN-009,community-nutrition,2024-03-04,Present,2.0
+ATT-0386,BEN-009,Digital-Literacy,2024-03-07,P,
+ATT-0387,BEN-016,digital literacy,2024-03-07,Attended,2.0
+ATT-0388,BEN-032,Digital Literacy Initiative,2024-03-07,present,2 hrs
+ATT-0389,BEN-002,Digi-Literacy,2024-03-07,Attended,2 hrs
+ATT-0390,BEN-024,Digi-Literacy,2024-03-07,Attended,2.0
+ATT-0391,BEN-021,Women Sewing Workshop,2024-03-07,Attended,3.0
+ATT-0392,BEN-042,Women Vocational Sewing,2024-03-07,Attended,
+ATT-0393,BEN-005,Women Vocational Sewing,2024-03-07,Present,2 hrs
+ATT-0394,BEN-029,Women Sewing Workshop,2024-03-07,Present,2.0
+ATT-0395,BEN-030,Women Sewing Workshop,2024-03-07,Present,3.0
+ATT-0396,BEN-011,Youth-Coding,2024-03-07,Present,3.0
+ATT-0397,BEN-021,Youth Coding Bootcamp,2024-03-07,Attended,3.0
+ATT-0398,BEN-015,Youth Coding Bootcamp,2024-03-07,present,
+ATT-0399,BEN-023,coding bootcamp,2024-03-07,Present,
+ATT-0400,BEN-034,coding bootcamp,2024-03-07,Present,
+ATT-0401,BEN-010,Elderly Healthcare Outreach,2024-03-07,Present,
+ATT-0402,BEN-011,Elderly Health,2024-03-07,Present,
+ATT-0403,BEN-040,Elderly Health,2024-03-07,Attended,2.0
+ATT-0404,BEN-039,Elderly Health,2024-03-07,Attended,3.0
+ATT-0405,BEN-022,Health Outreach,2024-03-07,present,2 hrs
+ATT-0406,BEN-037,Elderly Healthcare Outreach,2024-03-07,P,3.0
+ATT-0407,BEN-003,Elderly Health,2024-03-07,Present,2.0
+ATT-0408,BEN-002,Elderly Healthcare Outreach,2024-03-07,P,2 hrs
+ATT-0409,BEN-030,community-nutrition,2024-03-07,present,2 hrs
+ATT-0410,BEN-014,Community Nutrition Drive,2024-03-07,present,
+ATT-0411,BEN-022,community-nutrition,2024-03-07,Present,3.0
+ATT-0412,BEN-039,Community Nutrition Drive,2024-03-07,P,2.0
+ATT-0413,BEN-010,Nutrition Drive,2024-03-07,P,2.5
+ATT-0414,BEN-021,Community Nutrition Drive,2024-03-07,Present,2.0
+ATT-0415,BEN-041,Nutrition Drive,2024-03-07,P,
+ATT-0416,BEN-016,Digi-Literacy,2024-03-10,Attended,2 hrs
+ATT-0417,BEN-011,Digi-Literacy,2024-03-10,present,2 hrs
+ATT-0418,BEN-021,Digital Literacy Initiative,2024-03-10,Present,2 hrs
+ATT-0419,BEN-037,Digi-Literacy,2024-03-10,Present,2.5
+ATT-0420,BEN-042,Digital-Literacy,2024-03-10,Present,2.0
+ATT-0421,BEN-013,Digital-Literacy,2024-03-10,P,
+ATT-0422,BEN-043,Digi-Literacy,2024-03-10,present,
+ATT-0423,BEN-007,Women Sewing Workshop,2024-03-10,present,2 hrs
+ATT-0424,BEN-028,vocational sewing,2024-03-10,Present,2 hrs
+ATT-0425,BEN-009,Women Vocational Sewing,2024-03-10,Attended,
+ATT-0426,BEN-017,Women Vocational Sewing,2024-03-10,present,
+ATT-0427,BEN-005,coding bootcamp,2024-03-10,Attended,2.0
+ATT-0428,BEN-025,Youth Coding Bootcamp,2024-03-10,Present,2 hrs
+ATT-0429,BEN-033,Youth-Coding,2024-03-10,present,
+ATT-0430,BEN-029,Youth-Coding,2024-03-10,Present,2.5
+ATT-0431,BEN-036,coding bootcamp,2024-03-10,Attended,2 hrs
+ATT-0432,BEN-018,coding bootcamp,2024-03-10,Present,2.0
+ATT-0433,BEN-009,Elderly Health,2024-03-10,Present,
+ATT-0434,BEN-022,Health Outreach,2024-03-10,Present,3.0
+ATT-0435,BEN-031,Health Outreach,2024-03-10,present,2.5
+ATT-0436,BEN-034,Elderly Health,2024-03-10,Attended,3.0
+ATT-0437,BEN-022,Community Nutrition Drive,2024-03-10,present,3.0
+ATT-0438,BEN-033,community-nutrition,2024-03-10,Present,2 hrs
+ATT-0439,BEN-043,community-nutrition,2024-03-10,present,2.0
+ATT-0440,BEN-035,community-nutrition,2024-03-10,P,3.0
+ATT-0441,BEN-032,community-nutrition,2024-03-10,Attended,
+ATT-0442,BEN-037,Community Nutrition Drive,2024-03-10,Present,
+ATT-0443,BEN-020,Nutrition Drive,2024-03-10,Present,
+ATT-0444,BEN-031,community-nutrition,2024-03-10,Attended,2 hrs
+ATT-0445,BEN-044,digital literacy,2024-03-13,Present,2 hrs
+ATT-0446,BEN-016,Digital-Literacy,2024-03-13,P,2.5
+ATT-0447,BEN-003,Digi-Literacy,2024-03-13,Present,2 hrs
+ATT-0448,BEN-037,Digi-Literacy,2024-03-13,Present,2.5
+ATT-0449,BEN-008,digital literacy,2024-03-13,Attended,3.0
+ATT-0450,BEN-034,Women Sewing Workshop,2024-03-13,present,3.0
+ATT-0451,BEN-025,Women Sewing Workshop,2024-03-13,P,2.5
+ATT-0452,BEN-021,Women Vocational Sewing,2024-03-13,present,
+ATT-0453,BEN-012,vocational sewing,2024-03-13,Present,3.0
+ATT-0454,BEN-030,vocational sewing,2024-03-13,Present,2 hrs
+ATT-0455,BEN-035,vocational sewing,2024-03-13,P,3.0
+ATT-0456,BEN-022,Women Sewing Workshop,2024-03-13,present,3.0
+ATT-0457,BEN-037,Youth-Coding,2024-03-13,present,2.5
+ATT-0458,BEN-044,Youth-Coding,2024-03-13,Present,3.0
+ATT-0459,BEN-035,coding bootcamp,2024-03-13,Present,3.0
+ATT-0460,BEN-025,Youth-Coding,2024-03-13,present,2 hrs
+ATT-0461,BEN-013,Elderly Healthcare Outreach,2024-03-13,Attended,
+ATT-0462,BEN-035,Elderly Healthcare Outreach,2024-03-13,Present,2.0
+ATT-0463,BEN-018,Health Outreach,2024-03-13,Attended,2.5
+ATT-0464,BEN-036,Health Outreach,2024-03-13,Present,2.0
+ATT-0465,BEN-009,Elderly Healthcare Outreach,2024-03-13,P,3.0
+ATT-0466,BEN-007,Nutrition Drive,2024-03-13,Present,3.0
+ATT-0467,BEN-009,Nutrition Drive,2024-03-13,present,2.0
+ATT-0468,BEN-001,Community Nutrition Drive,2024-03-13,Attended,2.5
+ATT-0469,BEN-036,community-nutrition,2024-03-13,Present,2.5
+ATT-0470,BEN-011,Nutrition Drive,2024-03-13,Present,2.0
+ATT-0471,BEN-027,Nutrition Drive,2024-03-13,P,2.5
+ATT-0472,BEN-031,community-nutrition,2024-03-13,present,2.0
+ATT-0473,BEN-020,Digital-Literacy,2024-03-16,present,2 hrs
+ATT-0474,BEN-037,Digi-Literacy,2024-03-16,Present,
+ATT-0475,BEN-039,Digi-Literacy,2024-03-16,present,2.5
+ATT-0476,BEN-007,Digital Literacy Initiative,2024-03-16,present,2.5
+ATT-0477,BEN-042,Women Sewing Workshop,2024-03-16,Present,2.5
+ATT-0478,BEN-017,Women Sewing Workshop,2024-03-16,P,2 hrs
+ATT-0479,BEN-012,Women Sewing Workshop,2024-03-16,present,2.0
+ATT-0480,BEN-001,vocational sewing,2024-03-16,Present,2.5
+ATT-0481,BEN-022,Women Vocational Sewing,2024-03-16,P,3.0
+ATT-0482,BEN-019,Women Vocational Sewing,2024-03-16,Present,3.0
+ATT-0483,BEN-037,vocational sewing,2024-03-16,Present,2 hrs
+ATT-0484,BEN-022,coding bootcamp,2024-03-16,present,2.5
+ATT-0485,BEN-020,Youth Coding Bootcamp,2024-03-16,Present,2 hrs
+ATT-0486,BEN-038,Youth-Coding,2024-03-16,Present,2 hrs
+ATT-0487,BEN-037,coding bootcamp,2024-03-16,Attended,3.0
+ATT-0488,BEN-001,coding bootcamp,2024-03-16,Present,3.0
+ATT-0489,BEN-017,Youth-Coding,2024-03-16,Attended,2.5
+ATT-0490,BEN-009,Elderly Health,2024-03-16,P,
+ATT-0491,BEN-031,Elderly Health,2024-03-16,Attended,2.5
+ATT-0492,BEN-010,Elderly Healthcare Outreach,2024-03-16,Attended,2.0
+ATT-0493,BEN-030,Health Outreach,2024-03-16,P,
+ATT-0494,BEN-039,Health Outreach,2024-03-16,present,2.0
+ATT-0495,BEN-008,Community Nutrition Drive,2024-03-16,present,
+ATT-0496,BEN-004,Nutrition Drive,2024-03-16,Present,2.5
+ATT-0497,BEN-036,community-nutrition,2024-03-16,Attended,2 hrs
+ATT-0498,BEN-033,Community Nutrition Drive,2024-03-16,Attended,2 hrs
+ATT-0499,BEN-013,Community Nutrition Drive,2024-03-16,P,2.5
+ATT-0500,BEN-037,community-nutrition,2024-03-16,P,2 hrs
+ATT-0501,BEN-035,community-nutrition,2024-03-16,Present,
+ATT-0502,BEN-010,Nutrition Drive,2024-03-16,present,2.0
+ATT-0503,BEN-017,Digital-Literacy,2024-03-19,Present,
+ATT-0504,BEN-001,Digital Literacy Initiative,2024-03-19,Present,2 hrs
+ATT-0505,BEN-014,Digital Literacy Initiative,2024-03-19,present,2 hrs
+ATT-0506,BEN-038,digital literacy,2024-03-19,Present,2 hrs
+ATT-0507,BEN-005,Digital-Literacy,2024-03-19,P,2 hrs
+ATT-0508,BEN-003,Digi-Literacy,2024-03-19,P,2.0
+ATT-0509,BEN-028,digital literacy,2024-03-19,present,2.0
+ATT-0510,BEN-035,Women Vocational Sewing,2024-03-19,Present,3.0
+ATT-0511,BEN-026,vocational sewing,2024-03-19,Attended,2 hrs
+ATT-0512,BEN-034,Women Sewing Workshop,2024-03-19,P,2.5
+ATT-0513,BEN-009,Women Vocational Sewing,2024-03-19,P,3.0
+ATT-0514,BEN-015,Women Vocational Sewing,2024-03-19,present,2.5
+ATT-0515,BEN-003,Youth Coding Bootcamp,2024-03-19,Present,2.5
+ATT-0516,BEN-043,Youth Coding Bootcamp,2024-03-19,Present,
+ATT-0517,BEN-027,Youth Coding Bootcamp,2024-03-19,P,
+ATT-0518,BEN-040,coding bootcamp,2024-03-19,Present,2.5
+ATT-0519,BEN-026,Elderly Healthcare Outreach,2024-03-19,Present,2.5
+ATT-0520,BEN-029,Health Outreach,2024-03-19,present,2.5
+ATT-0521,BEN-015,Health Outreach,2024-03-19,Attended,3.0
+ATT-0522,BEN-035,Health Outreach,2024-03-19,Attended,3.0
+ATT-0523,BEN-020,Nutrition Drive,2024-03-19,present,3.0
+ATT-0524,BEN-010,Community Nutrition Drive,2024-03-19,Attended,
+ATT-0525,BEN-043,community-nutrition,2024-03-19,Present,2 hrs
+ATT-0526,BEN-034,community-nutrition,2024-03-19,P,2.0
+ATT-0527,BEN-015,Nutrition Drive,2024-03-19,P,
+ATT-0528,BEN-027,Digi-Literacy,2024-03-22,Present,2.5
+ATT-0529,BEN-044,Digital-Literacy,2024-03-22,Present,2 hrs
+ATT-0530,BEN-010,Digital Literacy Initiative,2024-03-22,Attended,2 hrs
+ATT-0531,BEN-020,Digi-Literacy,2024-03-22,Attended,
+ATT-0532,BEN-025,digital literacy,2024-03-22,P,2.5
+ATT-0533,BEN-012,Digital-Literacy,2024-03-22,Present,3.0
+ATT-0534,BEN-029,Women Sewing Workshop,2024-03-22,Present,2.0
+ATT-0535,BEN-024,vocational sewing,2024-03-22,P,
+ATT-0536,BEN-006,Women Sewing Workshop,2024-03-22,Present,2.0
+ATT-0537,BEN-035,Women Vocational Sewing,2024-03-22,Attended,
+ATT-0538,BEN-031,Youth Coding Bootcamp,2024-03-22,Present,2.0
+ATT-0539,BEN-014,coding bootcamp,2024-03-22,P,2.5
+ATT-0540,BEN-022,coding bootcamp,2024-03-22,Attended,2.5
+ATT-0541,BEN-020,Youth-Coding,2024-03-22,Present,
+ATT-0542,BEN-001,Youth-Coding,2024-03-22,present,2 hrs
+ATT-0543,BEN-035,Elderly Health,2024-03-22,P,2.0
+ATT-0544,BEN-042,Health Outreach,2024-03-22,P,3.0
+ATT-0545,BEN-023,Elderly Healthcare Outreach,2024-03-22,present,3.0
+ATT-0546,BEN-020,Elderly Health,2024-03-22,Present,
+ATT-0547,BEN-017,Elderly Healthcare Outreach,2024-03-22,Present,2.0
+ATT-0548,BEN-024,Elderly Health,2024-03-22,Attended,
+ATT-0549,BEN-033,Health Outreach,2024-03-22,P,3.0
+ATT-0550,BEN-013,Community Nutrition Drive,2024-03-22,P,
+ATT-0551,BEN-022,community-nutrition,2024-03-22,present,3.0
+ATT-0552,BEN-015,Nutrition Drive,2024-03-22,P,2 hrs
+ATT-0553,BEN-025,Community Nutrition Drive,2024-03-22,present,2.5
+ATT-0554,BEN-037,Community Nutrition Drive,2024-03-22,Attended,2 hrs
+ATT-0555,BEN-035,Digital Literacy Initiative,2024-03-25,Present,2.0
+ATT-0556,BEN-042,Digi-Literacy,2024-03-25,Present,2.5
+ATT-0557,BEN-004,Digital Literacy Initiative,2024-03-25,Present,2.0
+ATT-0558,BEN-034,digital literacy,2024-03-25,Attended,2 hrs
+ATT-0559,BEN-003,Digital-Literacy,2024-03-25,Present,
+ATT-0560,BEN-031,Women Vocational Sewing,2024-03-25,Present,
+ATT-0561,BEN-043,Women Sewing Workshop,2024-03-25,present,
+ATT-0562,BEN-032,vocational sewing,2024-03-25,Present,
+ATT-0563,BEN-002,Women Sewing Workshop,2024-03-25,P,2.5
+ATT-0564,BEN-001,Women Vocational Sewing,2024-03-25,Present,
+ATT-0565,BEN-035,Women Vocational Sewing,2024-03-25,Present,2.5
+ATT-0566,BEN-036,Women Sewing Workshop,2024-03-25,Attended,3.0
+ATT-0567,BEN-027,vocational sewing,2024-03-25,present,2 hrs
+ATT-0568,BEN-024,Youth Coding Bootcamp,2024-03-25,Present,3.0
+ATT-0569,BEN-026,coding bootcamp,2024-03-25,Present,2.0
+ATT-0570,BEN-030,Youth Coding Bootcamp,2024-03-25,P,2 hrs
+ATT-0571,BEN-037,Youth-Coding,2024-03-25,Attended,2 hrs
+ATT-0572,BEN-041,Elderly Health,2024-03-25,P,3.0
+ATT-0573,BEN-001,Health Outreach,2024-03-25,Present,
+ATT-0574,BEN-011,Elderly Healthcare Outreach,2024-03-25,Present,2.5
+ATT-0575,BEN-006,Health Outreach,2024-03-25,Attended,2 hrs
+ATT-0576,BEN-003,Community Nutrition Drive,2024-03-25,present,2.0
+ATT-0577,BEN-005,Community Nutrition Drive,2024-03-25,Attended,2.5
+ATT-0578,BEN-018,community-nutrition,2024-03-25,P,2.0
+ATT-0579,BEN-035,Nutrition Drive,2024-03-25,Present,
+ATT-0580,BEN-037,Community Nutrition Drive,2024-03-25,Attended,2 hrs
+ATT-0581,BEN-044,community-nutrition,2024-03-25,Attended,3.0
+ATT-0582,BEN-009,digital literacy,2024-03-28,Present,3.0
+ATT-0583,BEN-006,Digi-Literacy,2024-03-28,present,2.0
+ATT-0584,BEN-033,Digital-Literacy,2024-03-28,P,2 hrs
+ATT-0585,BEN-023,digital literacy,2024-03-28,present,
+ATT-0586,BEN-004,Digi-Literacy,2024-03-28,P,2.5
+ATT-0587,BEN-007,Digi-Literacy,2024-03-28,Present,
+ATT-0588,BEN-028,Digital-Literacy,2024-03-28,Present,2.0
+ATT-0589,BEN-018,Women Vocational Sewing,2024-03-28,P,3.0
+ATT-0590,BEN-010,vocational sewing,2024-03-28,Present,2.0
+ATT-0591,BEN-025,Women Vocational Sewing,2024-03-28,present,2 hrs
+ATT-0592,BEN-041,vocational sewing,2024-03-28,present,2.0
+ATT-0593,BEN-006,coding bootcamp,2024-03-28,Attended,2 hrs
+ATT-0594,BEN-012,Youth Coding Bootcamp,2024-03-28,Present,2.0
+ATT-0595,BEN-028,Youth-Coding,2024-03-28,Attended,2.0
+ATT-0596,BEN-029,coding bootcamp,2024-03-28,Attended,3.0
+ATT-0597,BEN-036,Youth-Coding,2024-03-28,Present,3.0
+ATT-0598,BEN-025,Health Outreach,2024-03-28,P,2.5
+ATT-0599,BEN-006,Elderly Healthcare Outreach,2024-03-28,present,3.0
+ATT-0600,BEN-036,Elderly Health,2024-03-28,P,2.5
+ATT-0601,BEN-016,Elderly Healthcare Outreach,2024-03-28,Present,2 hrs
+ATT-0602,BEN-037,Elderly Health,2024-03-28,P,3.0
+ATT-0603,BEN-034,Elderly Health,2024-03-28,Present,3.0
+ATT-0604,BEN-011,Elderly Health,2024-03-28,Present,2 hrs
+ATT-0605,BEN-040,Nutrition Drive,2024-03-28,Attended,2 hrs
+ATT-0606,BEN-013,Nutrition Drive,2024-03-28,P,3.0
+ATT-0607,BEN-030,Nutrition Drive,2024-03-28,Attended,2.5
+ATT-0608,BEN-007,Nutrition Drive,2024-03-28,present,
+ATT-0609,BEN-009,community-nutrition,2024-03-28,Present,2 hrs
+ATT-0610,BEN-020,Nutrition Drive,2024-03-28,Present,2 hrs
+ATT-0611,BEN-001,Nutrition Drive,2024-03-28,present,2 hrs
+ATT-0612,BEN-026,community-nutrition,2024-03-28,Present,3.0
+ATT-0613,BEN-043,Youth Coding Bootcamp,2024-02-01,P,3.0
+ATT-0614,BEN-016,Women Vocational Sewing,2024-02-01,Present,2 hrs
+ATT-0615,BEN-043,Youth Coding Bootcamp,2024-02-01,P,3.0
+ATT-0616,BEN-027,Youth Coding Bootcamp,2024-02-01,P,2.5
+ATT-0617,BEN-029,digital literacy,2024-02-01,P,2.5
+ATT-0618,BEN-999,Digital Literacy Initiative,2024-02-14,Present,2.0
