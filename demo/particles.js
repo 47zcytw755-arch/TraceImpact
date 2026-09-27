@@ -1,29 +1,60 @@
 /* ═══════════════════════════════════════════════════════════════════
    TraceImpact 2.0 — Network Map Data Batch Packet System
-   High-performance canvas particle animation following Bezier routes
+   Bounded canvas particle animation following Bezier routes with
+   dynamic batch sizing, stream splitting, and zero memory leaks.
    ═══════════════════════════════════════════════════════════════════ */
 
 class NetworkParticleSystem {
   constructor(canvasId, mapRenderer) {
-    this.canvas = document.getElementById(canvasId);
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = typeof canvasId === "string" ? document.getElementById(canvasId) : canvasId;
+    this.ctx = this.canvas ? this.canvas.getContext("2d") : null;
     this.map = mapRenderer;
     this.packets = [];
     this.running = false;
     this.spawnRate = 1.0;
     this.frameCount = 0;
-    this.activeStageIndex = -1;
     this.scaleFactor = 1.0;
+    this.speedMultiplier = 1.0;
+    this.batchRecordLabel = "1,000 RECS";
+    this.reducedMotion = false;
+    this.animationId = null;
 
-    this.routes = mapRenderer.routes;
-    this.nodes = mapRenderer.nodes;
-    this.animating = false;
+    this.routes = mapRenderer ? mapRenderer.routes : [];
+    this.nodes = mapRenderer ? mapRenderer.nodes : [];
 
-    this._loop();
+    // Check system prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.reducedMotion = true;
+    }
+
+    this._startLoop();
+  }
+
+  setSpeed(multiplier) {
+    this.speedMultiplier = Math.max(0.2, Math.min(10.0, multiplier));
+  }
+
+  setBatchSize(batchSizeStr) {
+    this.batchRecordLabel = batchSizeStr;
+  }
+
+  setReducedMotion(enabled) {
+    this.reducedMotion = !!enabled;
+    if (this.reducedMotion) {
+      this.clear();
+    }
   }
 
   start(throughput = 22215) {
-    this.spawnRate = Math.min(4.0, Math.max(0.5, throughput / 5000)) * this.scaleFactor;
+    this.spawnRate = Math.min(3.5, Math.max(0.6, throughput / 6000));
+    this.running = true;
+  }
+
+  pause() {
+    this.running = false;
+  }
+
+  resume() {
     this.running = true;
   }
 
@@ -34,21 +65,21 @@ class NetworkParticleSystem {
   clear() {
     this.packets = [];
     this.running = false;
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if (this.ctx && this.canvas) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
   }
 
-  setScale(scaleMultiplier) {
+  setScale(scaleMultiplier, batchLabel) {
     this.scaleFactor = scaleMultiplier;
-  }
-
-  setActiveStage(index) {
-    this.activeStageIndex = index;
+    if (batchLabel) this.batchRecordLabel = batchLabel;
   }
 
   _spawnPacket() {
-    if (this.packets.length >= 80) return;
+    if (this.reducedMotion || !this.routes || this.routes.length === 0) return;
+    if (this.packets.length >= 65) return; // Bounded packet pool (no infinite accumulation)
 
-    // Pick a route to spawn a batch packet on
+    // Weighted route selection
     const activeRouteIndex = Math.floor(Math.random() * this.routes.length);
     const route = this.routes[activeRouteIndex];
     const fromNode = this.nodes.find(n => n.id === route.from);
@@ -56,21 +87,36 @@ class NetworkParticleSystem {
 
     if (!fromNode || !toNode) return;
 
-    const batchNum = Math.floor(Math.random() * 90 + 10);
-    const recCount = route.type === "dq" ? "158 RECS" : (route.type === "clean" ? "9,842 RECS" : "10,000 RECS");
+    const batchNum = Math.floor(Math.random() * 900 + 100);
+    let recCount = this.batchRecordLabel;
 
+    // Color by route semantic type
     let color = "#06d6a0"; // Default Emerald
-    if (route.type === "clean") color = "#84cc16";
-    else if (route.type === "dq") color = "#ef476f";
-    else if (route.type === "ml") color = "#8b5cf6";
-    else if (route.type === "lineage") color = "#ec4899";
-    else if (route.type === "ai") color = "#06b6d4";
+    if (route.type === "clean") {
+      color = "#84cc16";
+      recCount = "993 RECS";
+    } else if (route.type === "dq") {
+      color = "#ef476f";
+      recCount = "7 RECS [FLAGGED]";
+    } else if (route.type === "ml") {
+      color = "#8b5cf6";
+      recCount = "40 ANOMALIES";
+    } else if (route.type === "lineage") {
+      color = "#ec4899";
+      recCount = "SHA-256 PROOF";
+    } else if (route.type === "ai") {
+      color = "#06b6d4";
+      recCount = "AI REPORT";
+    } else if (route.type === "control") {
+      color = "#0ea5e9";
+      recCount = "CRON SYNC";
+    }
 
     this.packets.push({
       from: fromNode,
       to: toNode,
-      t: 0, // 0.0 to 1.0 along Bezier path
-      speed: (0.006 + Math.random() * 0.008) * this.scaleFactor,
+      t: 0,
+      speed: (0.007 + Math.random() * 0.006) * this.speedMultiplier,
       color: color,
       batchNum: batchNum,
       recCount: recCount,
@@ -79,33 +125,51 @@ class NetworkParticleSystem {
     });
   }
 
-  _loop() {
-    requestAnimationFrame(() => this._loop());
+  _startLoop() {
+    const render = () => {
+      this._updateAndDraw();
+      this.animationId = requestAnimationFrame(render);
+    };
+    this.animationId = requestAnimationFrame(render);
+  }
+
+  destroy() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = null;
+    }
+    this.clear();
+  }
+
+  _updateAndDraw() {
+    if (!this.ctx || !this.canvas) return;
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.frameCount++;
 
-    if (this.running) {
-      if (Math.random() < this.spawnRate * 0.3) {
+    if (this.running && !this.reducedMotion) {
+      if (Math.random() < this.spawnRate * 0.35) {
         this._spawnPacket();
       }
     }
 
-    // Update and draw packets
+    if (this.reducedMotion) return;
+
+    // Process active data packets
     for (let i = this.packets.length - 1; i >= 0; i--) {
       const p = this.packets[i];
-      p.t += p.speed;
+      p.t += p.speed * this.speedMultiplier;
 
       // Calculate Bezier coordinates (x, y)
       const pos = this._getBezierPoint(p.from, p.to, p.t);
       p.x = pos.x;
       p.y = pos.y;
 
-      // Record trail
+      // Record particle tail
       p.trail.push({ x: p.x, y: p.y });
-      if (p.trail.length > 10) p.trail.shift();
+      if (p.trail.length > 8) p.trail.shift();
 
-      // Draw Packet Trail
+      // 1. Draw glowing packet trail
       if (p.trail.length > 1) {
         this.ctx.beginPath();
         this.ctx.moveTo(p.trail[0].x, p.trail[0].y);
@@ -113,35 +177,35 @@ class NetworkParticleSystem {
           this.ctx.lineTo(p.trail[j].x, p.trail[j].y);
         }
         this.ctx.strokeStyle = p.color;
-        this.ctx.lineWidth = 2.5;
-        this.ctx.globalAlpha = 0.3;
+        this.ctx.lineWidth = 2.0;
+        this.ctx.globalAlpha = 0.28;
         this.ctx.stroke();
       }
 
-      // Draw Packet Head
+      // 2. Draw Packet Center Core
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
       this.ctx.fillStyle = p.color;
-      this.ctx.globalAlpha = 0.9;
+      this.ctx.globalAlpha = 0.95;
       this.ctx.fill();
 
-      // Glow Ring
+      // 3. Draw Outer Pulse Ring
       this.ctx.beginPath();
-      this.ctx.arc(p.x, p.y, 9, 0, Math.PI * 2);
+      this.ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
       this.ctx.fillStyle = p.color;
       this.ctx.globalAlpha = 0.15;
       this.ctx.fill();
 
-      // Batch Data Label
+      // 4. Batch Label
       this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = "bold 8px 'JetBrains Mono'";
+      this.ctx.font = "bold 8.5px 'JetBrains Mono', monospace";
       this.ctx.textAlign = "left";
-      this.ctx.globalAlpha = 0.85;
-      this.ctx.fillText(`● BATCH ${p.batchNum}`, p.x + 8, p.y - 3);
+      this.ctx.globalAlpha = 0.9;
+      this.ctx.fillText(`BATCH #${p.batchNum}`, p.x + 9, p.y - 3);
 
       this.ctx.fillStyle = p.color;
-      this.ctx.font = "8px 'JetBrains Mono'";
-      this.ctx.fillText(p.recCount, p.x + 8, p.y + 7);
+      this.ctx.font = "8px 'JetBrains Mono', monospace";
+      this.ctx.fillText(p.recCount, p.x + 9, p.y + 7);
 
       this.ctx.globalAlpha = 1.0;
 
@@ -173,7 +237,7 @@ class NetworkParticleSystem {
   }
 }
 
-// Global particle alias for backwards compatibility
+// Global alias for compatibility
 class ParticleSystem extends NetworkParticleSystem {
   constructor(canvasId) {
     super(canvasId, window.pipelineInstance || { routes: [], nodes: [] });

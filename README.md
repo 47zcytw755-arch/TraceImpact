@@ -275,7 +275,7 @@ SALT_KEY=traceimpact_super_secret_pii_salt_2026
 ```bash
 .venv/bin/python -m pytest -v
 ```
-*(Expected output: 81/81 tests passing across Days 1–7 and World Bank API suite in < 1.5s).*
+*(Expected output: 94/94 tests passing across Days 1–7, ML/AI, and World Bank API suite in < 3s).*
 
 ### 5. Ingest Real Public Data (TraceImpact 2.0 Extension)
 ```bash
@@ -354,18 +354,19 @@ python -m src.ai.investigator
 
 ## Documentation Index
 
-- [`docs/ARCHITECTURE.md`](file:///Users/shashwat/Desktop/project1/docs/ARCHITECTURE.md): Complete system architecture, Medallion flow, and security specifications.
-- [`docs/REAL_DATA_INGESTION.md`](file:///Users/shashwat/Desktop/project1/docs/REAL_DATA_INGESTION.md): TraceImpact 2.0 World Bank public data pipeline architecture.
-- [`docs/AUTOMATION.md`](file:///Users/shashwat/Desktop/project1/docs/AUTOMATION.md): Automated scheduler configuration and cron execution guide.
-- [`docs/ML_ANOMALY_DETECTION.md`](file:///Users/shashwat/Desktop/project1/docs/ML_ANOMALY_DETECTION.md): Machine learning anomaly detection methodology and non-causality boundaries.
-- [`docs/AI_DATA_INTELLIGENCE.md`](file:///Users/shashwat/Desktop/project1/docs/AI_DATA_INTELLIGENCE.md): Grounded AI investigation engine and SQL security constraints.
-- [`docs/DEMO_SCRIPT.md`](file:///Users/shashwat/Desktop/project1/docs/DEMO_SCRIPT.md): 3-minute executive presentation walkthrough script.
-- [`docs/DEMO_WALKTHROUGH.md`](file:///Users/shashwat/Desktop/project1/docs/DEMO_WALKTHROUGH.md): Complete visual evaluation and spoken script walkthrough.
-- [`docs/DAY_1_6_FINAL_BASELINE.md`](file:///Users/shashwat/Desktop/project1/docs/DAY_1_6_FINAL_BASELINE.md): Verified Day 1–6 project baseline.
-- [`docs/POST_DAY_5_6_REVIEW.md`](file:///Users/shashwat/Desktop/project1/docs/POST_DAY_5_6_REVIEW.md): Independent deep-inspection review report.
-- [`docs/DATA_PIPELINE.md`](file:///Users/shashwat/Desktop/project1/docs/DATA_PIPELINE.md): Data cleaning rules and normalization contracts.
-- [`docs/KPI_DEFINITIONS.md`](file:///Users/shashwat/Desktop/project1/docs/KPI_DEFINITIONS.md): Nonprofit KPI formulas and lineage catalog.
-- [`docs/DATA_QUALITY_SCORECARD.md`](file:///Users/shashwat/Desktop/project1/docs/DATA_QUALITY_SCORECARD.md): Quality scorecard views and reliability scoring methodology.
-- [`docs/DASHBOARD.md`](file:///Users/shashwat/Desktop/project1/docs/DASHBOARD.md): Streamlit application architecture and user guide.
-- [`docs/TRACEABILITY.md`](file:///Users/shashwat/Desktop/project1/docs/TRACEABILITY.md): 1-to-1 cryptographic lineage proof specifications.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): Complete system architecture, Medallion flow, and security specifications.
+- [`docs/REAL_DATA_INGESTION.md`](docs/REAL_DATA_INGESTION.md): TraceImpact 2.0 World Bank public data pipeline architecture.
+- [`docs/ML_ANOMALY_DETECTION.md`](docs/ML_ANOMALY_DETECTION.md): Machine learning anomaly detection methodology and non-causality boundaries.
+- [`docs/AI_DATA_INTELLIGENCE.md`](docs/AI_DATA_INTELLIGENCE.md): Grounded AI investigation engine and SQL security constraints.
+- [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md): 3-minute executive presentation walkthrough script.
+- [`docs/DEMO_WALKTHROUGH.md`](docs/DEMO_WALKTHROUGH.md): Complete visual evaluation and spoken script walkthrough.
+- [`docs/DAY_1_6_FINAL_BASELINE.md`](docs/DAY_1_6_FINAL_BASELINE.md): Verified Day 1–6 project baseline.
+- [`docs/POST_DAY_5_6_REVIEW.md`](docs/POST_DAY_5_6_REVIEW.md): Independent deep-inspection review report.
+- [`docs/DATA_PIPELINE.md`](docs/DATA_PIPELINE.md): Data cleaning rules and normalization contracts.
+- [`docs/KPI_DEFINITIONS.md`](docs/KPI_DEFINITIONS.md): Nonprofit KPI formulas and lineage catalog.
+- [`docs/DATA_QUALITY_SCORECARD.md`](docs/DATA_QUALITY_SCORECARD.md): Quality scorecard views and reliability scoring methodology.
+- [`docs/DASHBOARD.md`](docs/DASHBOARD.md): Streamlit application architecture and user guide.
+- [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md): 1-to-1 cryptographic lineage proof specifications.
+- [`docs/POWER_BI_DASHBOARD_GUIDE.md`](docs/POWER_BI_DASHBOARD_GUIDE.md): Power BI Executive Intelligence Layer dashboard specifications.
+- [`docs/POWER_BI_ARCHITECTURE.md`](docs/POWER_BI_ARCHITECTURE.md): Power BI architecture and data model reference.
 

@@ -4,8 +4,9 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 class PipelineNetworkMap {
-  constructor(containerId) {
-    this.container = document.getElementById(containerId);
+  constructor(containerId, onNodeSelected) {
+    this.container = typeof containerId === "string" ? document.getElementById(containerId) : containerId;
+    this.onNodeSelected = onNodeSelected || null;
     this.viewport = null;
     this.svgLayer = null;
     this.nodesContainer = null;
@@ -19,55 +20,54 @@ class PipelineNetworkMap {
     this.isDragging = false;
     this.dragStart = { x: 0, y: 0 };
     this.activeTraceNode = null;
+    this.activeTracePath = [];
 
-    // Network topology configuration
+    // Stage nodes definitions with logical coordinates
     this.nodes = [
-      // LAYER 1: SOURCES (X: 40)
-      { id: "api", label: "World Bank API", icon: "🌐", layer: "source", x: 40, y: 80, tier: "major", status: "ONLINE", tech: "api.worldbank.org/v2", recs: "15,000 [REAL]" },
-      { id: "csv", label: "Synthetic CSV", icon: "📄", layer: "source", x: 40, y: 220, type: "source", tier: "normal", status: "READY", tech: "CSV Batch Loader", recs: "85,701 [SIM]" },
+      // LAYER 1: SOURCES (X: 50)
+      { id: "api", label: "World Bank API", icon: "🌐", layer: "source", x: 50, y: 90, tier: "major", status: "ONLINE", tech: "api.worldbank.org/v2", recs: "15,000 [REAL]", sub: "HTTP REST API" },
+      { id: "scheduler", label: "APScheduler", icon: "⏱", layer: "ingest", x: 50, y: 240, tier: "small", status: "CRON", tech: "APScheduler 3.10", recs: "Daily 02:00", sub: "Cron Trigger" },
 
-      // LAYER 2: INGESTION & RAW STAGING (X: 200)
-      { id: "scheduler", label: "Scheduler", icon: "⏱", layer: "ingest", x: 200, y: 40, tier: "small", status: "CRON", tech: "APScheduler", recs: "Daily 02:00" },
-      { id: "ingestion", label: "API Ingestion", icon: "📥", layer: "ingest", x: 200, y: 130, tier: "major", status: "RUNNING", tech: "Paginated HTTP Client", recs: "22,215 rps" },
-      { id: "pagination", label: "Page Fetcher", icon: "📑", layer: "ingest", x: 200, y: 220, tier: "normal", status: "FETCHING", tech: "1,000 recs/page", recs: "16 pages" },
-      { id: "bronze", label: "Raw / Bronze", icon: "🥉", layer: "ingest", x: 200, y: 310, tier: "normal", status: "STORED", tech: "api_raw_responses (JSONB)", recs: "Immutable" },
-      { id: "hash", label: "Hash & Metadata", icon: "🔐", layer: "ingest", x: 200, y: 400, tier: "normal", status: "VERIFIED", tech: "SHA-256 Fingerprint", recs: "100% hash check" },
+      // LAYER 2: INGESTION & RAW STAGING (X: 230)
+      { id: "ingestion", label: "Ingestion Engine", icon: "📥", layer: "ingest", x: 230, y: 90, tier: "major", status: "READY", tech: "WorldBankExtractor", recs: "22,215 rps", sub: "Stream Parser" },
+      { id: "pagination", label: "Page Iterator", icon: "📑", layer: "ingest", x: 230, y: 210, tier: "normal", status: "STANDBY", tech: "16 Pages @ 1K", recs: "16 pages", sub: "Page Chunks" },
+      { id: "bronze", label: "Raw / Bronze", icon: "🥉", layer: "ingest", x: 230, y: 330, tier: "normal", status: "STORED", tech: "api_raw_responses", recs: "Immutable", sub: "JSONB Staging" },
+      { id: "hash", label: "SHA-256 Digest", icon: "🔐", layer: "ingest", x: 230, y: 440, tier: "normal", status: "VERIFIED", tech: "SHA-256 Digest", recs: "100% Hash Check", sub: "Provenance" },
 
-      // LAYER 3: DATA QUALITY & VALIDATION (X: 380 - 520)
-      { id: "validate", label: "Validation Engine", icon: "✓", layer: "quality", x: 380, y: 220, tier: "major", status: "RUNNING", tech: "WorldBankValidator", recs: "98,420 / 100K" },
-      { id: "clean", label: "Clean / Silver", icon: "🔧", layer: "quality", x: 530, y: 130, tier: "normal", status: "CLEANED", tech: "UPSERT Normalizer", recs: "98.72% clean" },
-      { id: "dq", label: "DQ Quarantine", icon: "📊", layer: "quality", x: 530, y: 330, tier: "alert", status: "FLAGGED", tech: "Rule Violations & Range", recs: "701 issues" },
+      // LAYER 3: DATA QUALITY & VALIDATION (X: 430 - 580)
+      { id: "validate", label: "Validation Engine", icon: "✓", layer: "quality", x: 430, y: 220, tier: "major", status: "READY", tech: "WorldBankValidator", recs: "99.3% Valid", sub: "Boundary Engine" },
+      { id: "clean", label: "Clean / Silver", icon: "🔧", layer: "quality", x: 600, y: 110, tier: "normal", status: "CLEANED", tech: "UPSERT Normalizer", recs: "99,299 Obs", sub: "Silver Table" },
+      { id: "dq", label: "DQ Quarantine", icon: "📊", layer: "quality", x: 600, y: 340, tier: "alert", status: "AUDITED", tech: "701 Logged Issues", recs: "701 Issues", sub: "Audit Log" },
 
-      // LAYER 4: CENTRAL DATA CORE HUB (CENTER HUB - X: 700)
-      { id: "postgres", label: "POSTGRESQL CORE", icon: "🐘", layer: "core", x: 700, y: 220, tier: "core", status: "CENTRAL HUB", tech: "PostgreSQL 18.4 Engine", recs: "100,000 OBS" },
+      // LAYER 4: CENTRAL DATA CORE HUB (X: 780)
+      { id: "postgres", label: "POSTGRESQL CORE", icon: "🐘", layer: "core", x: 780, y: 220, tier: "core", status: "CENTRAL HUB", tech: "PostgreSQL 18.4 Engine", recs: "100,000 OBS", sub: "Single Source of Truth" },
 
-      // LAYER 5: INTELLIGENCE BRANCHES (X: 880)
-      { id: "analytics", label: "Analytics Views", icon: "📈", layer: "intelligence", x: 880, y: 60, tier: "normal", status: "QUERYING", tech: "v_country_trends, v_latest", recs: "5 views" },
-      { id: "features", label: "Feature Engine", icon: "⚙️", layer: "intelligence", x: 880, y: 160, tier: "normal", status: "COMPUTING", tech: "z-score & peer growth", recs: "100K features" },
-      { id: "ml", label: "ML Isolation Forest", icon: "🧠", layer: "intelligence", x: 880, y: 260, tier: "major", status: "EVALUATING", tech: "sklearn IsolationForest", recs: "4,000 (4.0%)" },
-      { id: "lineage", label: "Lineage Tracker", icon: "🔗", layer: "intelligence", x: 880, y: 370, tier: "normal", status: "VERIFIED", tech: "7-Step JOIN Lineage", recs: "100% trace" },
+      // LAYER 5: INTELLIGENCE & ML (X: 970)
+      { id: "analytics", label: "Analytical Views", icon: "📈", layer: "intelligence", x: 970, y: 60, tier: "normal", status: "QUERYING", tech: "5 SQL Views", recs: "v_country_trends", sub: "Trend Analytics" },
+      { id: "features", label: "Feature Engine", icon: "⚙️", layer: "intelligence", x: 970, y: 165, tier: "normal", status: "COMPUTING", tech: "z-score & peer growth", recs: "100K features", sub: "Vector Engine" },
+      { id: "ml", label: "ML Isolation Forest", icon: "🧠", layer: "intelligence", x: 970, y: 275, tier: "major", status: "EVALUATING", tech: "sklearn IsolationForest", recs: "4,000 Anomalies", sub: "Contamination 4%" },
+      { id: "lineage", label: "Lineage Tracker", icon: "🔗", layer: "intelligence", x: 970, y: 395, tier: "normal", status: "VERIFIED", tech: "7-Step JOIN Lineage", recs: "100% Trace", sub: "Audit Trail" },
 
-      // LAYER 6: AI INVESTIGATION & PRESENTATION (X: 1040 - 1200)
-      { id: "ai", label: "AI Investigator", icon: "🤖", layer: "ai", x: 1040, y: 220, tier: "major", status: "SYNTHESIZING", tech: "WorldBankInvestigator", recs: "5 insights" },
-      { id: "power_bi", label: "Power BI Executive", icon: "📊", layer: "presentation", x: 1200, y: 130, tier: "output", status: "CONNECTED", tech: "9-Page Intelligence", recs: "Star Schema" },
-      { id: "streamlit", label: "Streamlit App", icon: "📱", layer: "presentation", x: 1200, y: 310, tier: "output", label: "Deep Inspection", status: "ACTIVE", tech: "Detailed Lineage & SQL", recs: "Interactive" }
+      // LAYER 6: AI INVESTIGATION & PRESENTATION (X: 1160 - 1320)
+      { id: "ai", label: "AI Investigator", icon: "🤖", layer: "ai", x: 1160, y: 220, tier: "major", status: "SYNTHESIZING", tech: "WorldBankInvestigator", recs: "5 insights", sub: "Non-Causality" },
+      { id: "power_bi", label: "Power BI Executive", icon: "📊", layer: "presentation", x: 1330, y: 130, tier: "output", status: "CONNECTED", tech: "Star Schema Model", recs: "9-Page Model", sub: "Board Reports" },
+      { id: "streamlit", label: "Streamlit App", icon: "📱", layer: "presentation", x: 1330, y: 310, tier: "output", status: "ACTIVE", tech: "Interactive Portal", recs: "Lineage UI", sub: "Drilldown" }
     ];
 
     this.routes = [
-      // Source to Ingestion
+      // Source & Schedule to Ingestion
       { from: "api", to: "ingestion", type: "main" },
-      { from: "csv", to: "ingestion", type: "main" },
       { from: "scheduler", to: "ingestion", type: "control" },
 
-      // Ingestion Pipeline
+      // Ingestion Flow
       { from: "ingestion", to: "pagination", type: "main" },
       { from: "pagination", to: "bronze", type: "main" },
       { from: "bronze", to: "hash", type: "main" },
       { from: "hash", to: "validate", type: "main" },
 
-      // Validation Branching (Clean Data vs DQ Flagged)
+      // Validation Branching (Clean Data vs DQ Flagged Quarantine)
       { from: "validate", to: "clean", type: "clean", label: "Valid Data (99.3%)" },
-      { from: "validate", to: "dq", type: "dq", label: "DQ Issues (Quarantine)" },
+      { from: "validate", to: "dq", type: "dq", label: "DQ Issues (Quarantined)" },
 
       // Convergence into PostgreSQL Core Hub
       { from: "clean", to: "postgres", type: "clean" },
@@ -81,10 +81,10 @@ class PipelineNetworkMap {
 
       // Convergence to AI Investigation Engine
       { from: "analytics", to: "ai", type: "main" },
-      { from: "ml", to: "ai", type: "ml", label: "Flagged Anomalies (4.0%)" },
+      { from: "ml", to: "ai", type: "ml", label: "Anomalies (4.0%)" },
       { from: "lineage", to: "ai", type: "lineage" },
 
-      // Presentation Layer
+      // Presentation Layer Deliveries
       { from: "ai", to: "power_bi", type: "ai" },
       { from: "ai", to: "streamlit", type: "ai" }
     ];
@@ -93,13 +93,14 @@ class PipelineNetworkMap {
     this.completedNodes = new Set();
     this.errorNodes = new Set();
     this.bottleneckNode = null;
+    this.nodeMetrics = {};
 
-    this.batches = [];
     this._initDom();
     this._bindEvents();
   }
 
   _initDom() {
+    if (!this.container) return;
     this.container.innerHTML = "";
     this.container.className = "network-map-container";
 
@@ -111,16 +112,16 @@ class PipelineNetworkMap {
     // SVG Layer for Bezier Routes
     this.svgLayer = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svgLayer.setAttribute("class", "map-svg-layer");
-    this.svgLayer.setAttribute("width", "1350");
-    this.svgLayer.setAttribute("height", "500");
+    this.svgLayer.setAttribute("width", "1480");
+    this.svgLayer.setAttribute("height", "540");
     this.viewport.appendChild(this.svgLayer);
 
     // Canvas Layer for Animated Data Batches
     this.canvasLayer = document.createElement("canvas");
     this.canvasLayer.id = "particle-canvas";
     this.canvasLayer.setAttribute("class", "map-canvas-layer");
-    this.canvasLayer.width = 1350;
-    this.canvasLayer.height = 500;
+    this.canvasLayer.width = 1480;
+    this.canvasLayer.height = 540;
     this.viewport.appendChild(this.canvasLayer);
     this.ctx = this.canvasLayer.getContext("2d");
 
@@ -133,25 +134,26 @@ class PipelineNetworkMap {
     const mapControls = document.createElement("div");
     mapControls.className = "map-nav-controls";
     mapControls.innerHTML = `
-      <button class="map-btn" id="map-zoom-in" title="Zoom In">+</button>
-      <button class="map-btn" id="map-zoom-out" title="Zoom Out">−</button>
+      <button class="map-btn" id="map-zoom-in" title="Zoom In (+)">+</button>
+      <button class="map-btn" id="map-zoom-out" title="Zoom Out (−)">−</button>
+      <button class="map-btn" id="map-fit" title="Fit to Screen">FIT</button>
       <button class="map-btn" id="map-reset" title="Reset View">RESET</button>
-      <button class="map-btn" id="map-fit" title="Fit to Canvas">FIT</button>
     `;
     this.container.appendChild(mapControls);
 
     this._renderSvgRoutes();
     this._renderNodes();
-    this.fitToMap();
+    setTimeout(() => this.fitToMap(), 50);
   }
 
   _bindEvents() {
-    // Zoom / Pan navigation
     const controls = this.container.querySelector(".map-nav-controls");
-    controls.querySelector("#map-zoom-in").addEventListener("click", () => this.zoomBy(0.15));
-    controls.querySelector("#map-zoom-out").addEventListener("click", () => this.zoomBy(-0.15));
-    controls.querySelector("#map-reset").addEventListener("click", () => this.resetView());
-    controls.querySelector("#map-fit").addEventListener("click", () => this.fitToMap());
+    if (controls) {
+      controls.querySelector("#map-zoom-in").addEventListener("click", () => this.zoomBy(0.15));
+      controls.querySelector("#map-zoom-out").addEventListener("click", () => this.zoomBy(-0.15));
+      controls.querySelector("#map-reset").addEventListener("click", () => this.resetView());
+      controls.querySelector("#map-fit").addEventListener("click", () => this.fitToMap());
+    }
 
     // Mouse Dragging Pan
     this.container.addEventListener("mousedown", (e) => {
@@ -181,10 +183,17 @@ class PipelineNetworkMap {
       const delta = e.deltaY > 0 ? -0.1 : 0.1;
       this.zoomBy(delta);
     }, { passive: false });
+
+    // Window Resize Observer for Auto Fit
+    window.addEventListener("resize", () => {
+      if (!this.activeTraceNode && !this.isDragging) {
+        this.fitToMap();
+      }
+    });
   }
 
   zoomBy(delta) {
-    this.zoom = Math.min(1.8, Math.max(0.5, this.zoom + delta));
+    this.zoom = Math.min(2.0, Math.max(0.4, this.zoom + delta));
     this._updateTransform();
   }
 
@@ -192,24 +201,27 @@ class PipelineNetworkMap {
     this.zoom = 1.0;
     this.panX = 0;
     this.panY = 0;
-    this._updateTransform();
+    this._updateTransform(true);
   }
 
   fitToMap() {
+    if (!this.container) return;
     const containerRect = this.container.getBoundingClientRect();
-    const mapW = 1350;
-    const mapH = 500;
-    const scaleX = (containerRect.width - 20) / mapW;
-    const scaleY = (containerRect.height - 20) / mapH;
-    this.zoom = Math.min(scaleX, scaleY, 1.0);
+    const mapW = 1480;
+    const mapH = 540;
+    if (containerRect.width <= 0 || containerRect.height <= 0) return;
+
+    const scaleX = (containerRect.width - 24) / mapW;
+    const scaleY = (containerRect.height - 24) / mapH;
+    this.zoom = Math.min(scaleX, scaleY, 1.05);
     this.panX = (containerRect.width - mapW * this.zoom) / 2;
     this.panY = (containerRect.height - mapH * this.zoom) / 2;
-    this._updateTransform();
+    this._updateTransform(true);
   }
 
-  panToNode(nodeId, targetZoom = 1.1) {
+  panToNode(nodeId, targetZoom = 1.2) {
     const node = this.nodes.find(n => n.id === nodeId);
-    if (!node) return;
+    if (!node || !this.container) return;
     const containerRect = this.container.getBoundingClientRect();
     this.zoom = targetZoom;
     this.panX = (containerRect.width / 2) - (node.x * this.zoom);
@@ -218,8 +230,9 @@ class PipelineNetworkMap {
   }
 
   _updateTransform(animated = false) {
+    if (!this.viewport) return;
     if (animated) {
-      this.viewport.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+      this.viewport.style.transition = "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
     } else {
       this.viewport.style.transition = "none";
     }
@@ -229,7 +242,7 @@ class PipelineNetworkMap {
   _renderSvgRoutes() {
     this.svgLayer.innerHTML = "";
     
-    // Add SVG Defs for gradients & glowing filters
+    // SVG Defs for gradients & glowing filters
     const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     defs.innerHTML = `
       <filter id="glow-route" x="-20%" y="-20%" width="140%" height="140%">
@@ -240,8 +253,8 @@ class PipelineNetworkMap {
         </feMerge>
       </filter>
       <linearGradient id="grad-main" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#06d6a0" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#118ab2" stop-opacity="0.8"/>
+        <stop offset="0%" stop-color="#06d6a0" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#118ab2" stop-opacity="0.85"/>
       </linearGradient>
       <linearGradient id="grad-clean" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#06d6a0" stop-opacity="0.9"/>
@@ -255,6 +268,10 @@ class PipelineNetworkMap {
         <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.9"/>
         <stop offset="100%" stop-color="#a855f7" stop-opacity="0.9"/>
       </linearGradient>
+      <linearGradient id="grad-lineage" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ec4899" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.9"/>
+      </linearGradient>
     `;
     this.svgLayer.appendChild(defs);
 
@@ -265,7 +282,7 @@ class PipelineNetworkMap {
 
       const pathStr = this._calcBezierPath(fromNode, toNode);
       
-      // Route track path
+      // Route track path (base background curve)
       const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
       pathEl.setAttribute("d", pathStr);
       pathEl.setAttribute("class", `map-route-track route-${route.type}`);
@@ -329,6 +346,7 @@ class PipelineNetworkMap {
             <span class="node-status-text">${node.status}</span>
           </div>
           <div class="node-recs">${node.recs || ""}</div>
+          <div class="node-live-counter mono" id="node-live-${node.id}"></div>
         </div>
       `;
 
@@ -337,10 +355,13 @@ class PipelineNetworkMap {
           <div class="core-hub-ring"></div>
           <div class="core-hub-ring ring-outer"></div>
           <div class="node-body core-body">
-            <span class="core-icon">${node.icon}</span>
-            <span class="core-title">${node.label}</span>
+            <div class="core-header">
+              <span class="core-icon">${node.icon}</span>
+              <span class="core-title">${node.label}</span>
+            </div>
             <span class="core-sub">${node.tech}</span>
             <div class="core-badge">100,000 OBS STORED</div>
+            <div class="core-latency mono text-cyan">⚡ 0.15ms Query Scan</div>
           </div>
         `;
       }
@@ -354,38 +375,21 @@ class PipelineNetworkMap {
   _onNodeClick(node) {
     this.activeNodeId = node.id;
     this.highlightTrace(node.id);
-    this._showNodeDetailFlyout(node);
+    if (this.onNodeSelected) {
+      this.onNodeSelected(node.id);
+    }
   }
 
-  _showNodeDetailFlyout(node) {
-    const detail = document.getElementById("stage-detail");
-    const title = document.getElementById("detail-title");
-    const body = document.getElementById("detail-body");
-
-    const stageData = PIPELINE_STAGES.find(s => s.id === node.id);
-
-    title.textContent = `${node.icon} ${node.label}`;
-    let html = `<p style="margin-bottom:12px;color:var(--text-primary);font-size:0.85rem">${stageData?.detail?.description || node.tech}</p>`;
-    
-    html += `<div class="detail-row"><span class="detail-label">Node Tier</span><span class="detail-value mono">${node.tier.toUpperCase()}</span></div>`;
-    html += `<div class="detail-row"><span class="detail-label">Network Status</span><span class="detail-value mono text-cyan">${node.status}</span></div>`;
-    html += `<div class="detail-row"><span class="detail-label">Technology</span><span class="detail-value mono">${node.tech}</span></div>`;
-
-    if (stageData?.detail?.specs) {
-      stageData.detail.specs.forEach(s => {
-        html += `<div class="detail-row"><span class="detail-label">${s.label}</span><span class="detail-value">${s.value}</span></div>`;
-      });
+  updateNodeMetric(nodeId, countStr) {
+    const el = document.getElementById(`node-live-${nodeId}`);
+    if (el) {
+      el.textContent = countStr;
     }
-
-    body.innerHTML = html;
-    detail.classList.remove("hidden");
   }
 
   highlightTrace(nodeId) {
     this.activeTraceNode = nodeId;
     const connectedNodeIds = new Set([nodeId]);
-
-    // Find upstream & downstream connected routes
     const connectedRouteIndices = new Set();
 
     this.routes.forEach((r, idx) => {
@@ -396,7 +400,6 @@ class PipelineNetworkMap {
       }
     });
 
-    // Update node highlighting classes
     this.nodesContainer.querySelectorAll(".map-node").forEach(el => {
       const id = el.dataset.nodeId;
       if (id === nodeId) {
@@ -411,7 +414,6 @@ class PipelineNetworkMap {
       }
     });
 
-    // Update SVG route tracks
     this.svgLayer.querySelectorAll(".map-route-track").forEach(el => {
       const idx = parseInt(el.dataset.index);
       if (connectedRouteIndices.has(idx)) {
@@ -424,13 +426,39 @@ class PipelineNetworkMap {
     });
   }
 
+  highlightLineageChain(chainNodeIds) {
+    const idSet = new Set(chainNodeIds);
+    this.nodesContainer.querySelectorAll(".map-node").forEach(el => {
+      const id = el.dataset.nodeId;
+      if (idSet.has(id)) {
+        el.classList.add("lineage-chain-active");
+        el.classList.remove("dimmed");
+      } else {
+        el.classList.add("dimmed");
+        el.classList.remove("lineage-chain-active");
+      }
+    });
+
+    this.svgLayer.querySelectorAll(".map-route-track").forEach(el => {
+      const from = el.dataset.from;
+      const to = el.dataset.to;
+      if (idSet.has(from) && idSet.has(to)) {
+        el.classList.add("trace-active", "lineage-route");
+        el.classList.remove("dimmed");
+      } else {
+        el.classList.add("dimmed");
+        el.classList.remove("trace-active", "lineage-route");
+      }
+    });
+  }
+
   clearTrace() {
     this.activeTraceNode = null;
     this.nodesContainer.querySelectorAll(".map-node").forEach(el => {
-      el.classList.remove("active-trace-target", "connected-trace", "dimmed");
+      el.classList.remove("active-trace-target", "connected-trace", "lineage-chain-active", "dimmed");
     });
     this.svgLayer.querySelectorAll(".map-route-track").forEach(el => {
-      el.classList.remove("trace-active", "dimmed");
+      el.classList.remove("trace-active", "lineage-route", "dimmed");
     });
   }
 
@@ -441,18 +469,24 @@ class PipelineNetworkMap {
     this._updateNodeClasses();
   }
 
+  setActiveById(nodeId) {
+    this.activeNodeId = nodeId;
+    this._updateNodeClasses();
+  }
+
   setCompleted(index) {
-    this.completedNodes.add(index);
+    const stage = PIPELINE_STAGES[index];
+    if (stage) this.completedNodes.add(stage.id);
     this._updateNodeClasses();
   }
 
-  setError(index) {
-    this.errorNodes.add(index);
+  setError(nodeId) {
+    this.errorNodes.add(nodeId);
     this._updateNodeClasses();
   }
 
-  clearError(index) {
-    this.errorNodes.delete(index);
+  clearError(nodeId) {
+    this.errorNodes.delete(nodeId);
     this._updateNodeClasses();
   }
 
@@ -467,11 +501,8 @@ class PipelineNetworkMap {
   }
 
   highlightStage(stageId) {
-    const stage = PIPELINE_STAGES.find(s => s.id === stageId);
-    if (stage) {
-      this.panToNode(stageId, 1.25);
-      this.highlightTrace(stageId);
-    }
+    this.panToNode(stageId, 1.2);
+    this.highlightTrace(stageId);
   }
 
   reset() {
@@ -481,23 +512,22 @@ class PipelineNetworkMap {
     this.bottleneckNode = null;
     this.clearTrace();
     this.resetView();
+    this.nodesContainer.querySelectorAll(".node-live-counter").forEach(el => el.textContent = "");
     this._updateNodeClasses();
   }
 
   _updateNodeClasses() {
     this.nodesContainer.querySelectorAll(".map-node").forEach((el) => {
       const id = el.dataset.nodeId;
-      const idx = PIPELINE_STAGES.findIndex(s => s.id === id);
-
       el.classList.remove("active", "completed", "error", "bottleneck");
 
-      if (this.bottleneckNode === id) {
-        el.classList.add("bottleneck");
-      } else if (this.errorNodes.has(idx)) {
+      if (this.errorNodes.has(id)) {
         el.classList.add("error");
+      } else if (this.bottleneckNode === id) {
+        el.classList.add("bottleneck");
       } else if (id === this.activeNodeId) {
         el.classList.add("active");
-      } else if (this.completedNodes.has(idx)) {
+      } else if (this.completedNodes.has(id)) {
         el.classList.add("completed");
       }
     });
