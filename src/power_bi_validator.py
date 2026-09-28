@@ -1,5 +1,5 @@
 """
-TraceImpact 2.0 — Power BI Data Model & DAX Measure Automated Validator
+TraceImpact 2.0 — Comprehensive Power BI Data Model & DAX Measure Automated Validator
 Runs empirical verification comparing PostgreSQL analytical database views directly against Power BI DAX measure logic.
 """
 
@@ -36,52 +36,87 @@ def validate_power_bi_measures() -> Dict[str, Any]:
     
     results = {}
     
-    # 1. Synthetic Total Records
+    # 1. Total Programs
+    cur.execute("SELECT COUNT(*) FROM programs;")
+    prog_cnt = cur.fetchone()[0]
+    results['Total Programs'] = {'sql_value': prog_cnt, 'expected': 5, 'status': 'PASS' if prog_cnt == 5 else 'FAIL'}
+
+    # 2. Total Beneficiaries
+    cur.execute("SELECT COUNT(DISTINCT beneficiary_id) FROM beneficiaries;")
+    ben_cnt = cur.fetchone()[0]
+    results['Distinct Beneficiaries'] = {'sql_value': ben_cnt, 'expected': 51, 'status': 'PASS' if ben_cnt == 51 else 'FAIL'}
+
+    # 3. Total Attendance Records & Session Hours
+    cur.execute("SELECT COUNT(*), SUM(session_hours) FROM attendance;")
+    att_cnt, att_hrs = cur.fetchone()
+    results['Attendance Records'] = {'sql_value': att_cnt, 'expected': 612, 'status': 'PASS' if att_cnt == 612 else 'FAIL'}
+    results['Total Session Hours'] = {'sql_value': float(att_hrs), 'expected': 1183.0, 'status': 'PASS' if float(att_hrs) == 1183.0 else 'FAIL'}
+
+    # 4. Total Expenses & Budget Allocated
+    cur.execute("SELECT SUM(amount) FROM expenses;")
+    exp_sum = float(cur.fetchone()[0])
+    cur.execute("SELECT SUM(budget_allocated) FROM programs;")
+    bud_sum = float(cur.fetchone()[0])
+    results['Total Expenses'] = {'sql_value': exp_sum, 'expected': 666950.36, 'status': 'PASS' if round(exp_sum, 2) == 666950.36 else 'FAIL'}
+    results['Total Budget Allocated'] = {'sql_value': bud_sum, 'expected': 765000.0, 'status': 'PASS' if round(bud_sum, 2) == 765000.0 else 'FAIL'}
+
+    # 5. Outcome Improvement
+    cur.execute("SELECT AVG(exit_score - baseline_score), AVG((exit_score - baseline_score) / baseline_score * 100) FROM outcomes;")
+    score_imp, pct_imp = cur.fetchone()
+    results['Avg Score Improvement'] = {'sql_value': round(float(score_imp), 2), 'expected': 26.18, 'status': 'PASS' if round(float(score_imp), 2) == 26.18 else 'FAIL'}
+    results['Avg Outcome Improvement %'] = {'sql_value': round(float(pct_imp), 2), 'expected': 79.52, 'status': 'PASS' if round(float(pct_imp), 2) == 79.52 else 'FAIL'}
+
+    # 6. Synthetic Total Records
     cur.execute("SELECT COUNT(*) FROM source_records;")
     syn_total = cur.fetchone()[0]
-    results['Synthetic Total Records'] = {'sql_value': syn_total, 'status': 'PASS'}
+    results['Synthetic Total Records'] = {'sql_value': syn_total, 'expected': 784, 'status': 'PASS' if syn_total == 784 else 'FAIL'}
     
-    # 2. Synthetic Data Quality Score
+    # 7. Synthetic Data Quality Score
     cur.execute("SELECT clean_record_rate FROM v_data_quality_summary;")
     syn_dq_score = float(cur.fetchone()[0])
     results['Synthetic Clean Record Rate %'] = {'sql_value': syn_dq_score, 'expected': 98.72, 'status': 'PASS' if round(syn_dq_score, 2) == 98.72 else 'FAIL'}
     
-    # 3. Synthetic Issues & Resolution Rate
+    # 8. Synthetic Issues & Resolution Rate
     cur.execute("SELECT total_issues, resolved_count, resolution_percentage FROM v_data_quality_summary;")
     tot_iss, res_iss, res_pct = cur.fetchone()
     results['Synthetic Total DQ Issues'] = {'sql_value': tot_iss, 'expected': 177, 'status': 'PASS' if tot_iss == 177 else 'FAIL'}
     results['Synthetic Resolved DQ Issues'] = {'sql_value': res_iss, 'expected': 149, 'status': 'PASS' if res_iss == 149 else 'FAIL'}
     results['Synthetic Resolution Rate %'] = {'sql_value': float(res_pct), 'expected': 84.18, 'status': 'PASS' if round(float(res_pct), 2) == 84.18 else 'FAIL'}
     
-    # 4. World Bank Observations
+    # 9. World Bank Observations
     cur.execute("SELECT COUNT(*) FROM world_bank_observations;")
     wb_obs = cur.fetchone()[0]
     results['World Bank Observations Stored'] = {'sql_value': wb_obs, 'expected': 5588, 'status': 'PASS' if wb_obs == 5588 else 'FAIL'}
     
-    # 5. World Bank Clean Observation Rate
+    # 10. World Bank Clean Observation Rate
     cur.execute("SELECT observation_clean_rate_pct FROM v_world_bank_data_quality_summary;")
     wb_clean_rate = float(cur.fetchone()[0])
     results['World Bank Clean Rate %'] = {'sql_value': wb_clean_rate, 'expected': 100.0, 'status': 'PASS' if wb_clean_rate == 100.0 else 'FAIL'}
     
-    # 6. World Bank ML Anomalies Flagged
+    # 11. World Bank ML Anomalies Flagged
     cur.execute("SELECT COUNT(*) FROM world_bank_anomalies WHERE is_anomaly = True;")
     wb_anom = cur.fetchone()[0]
     results['World Bank ML Flagged Anomalies'] = {'sql_value': wb_anom, 'expected': 783, 'status': 'PASS' if wb_anom == 783 else 'FAIL'}
     
-    # 7. World Bank AI Investigations
+    # 12. World Bank AI Investigations
     cur.execute("SELECT COUNT(*) FROM ai_investigations;")
     wb_ai_inv = cur.fetchone()[0]
     results['World Bank AI Investigations'] = {'sql_value': wb_ai_inv, 'expected': 6, 'status': 'PASS' if wb_ai_inv == 6 else 'FAIL'}
     
-    # 8. World Bank AI Insights
+    # 13. World Bank AI Insights
     cur.execute("SELECT COUNT(*) FROM ai_insights;")
     wb_ai_ins = cur.fetchone()[0]
-    results['World Bank AI Insights'] = {'sql_value': wb_ai_ins, 'expected': '>= 5', 'status': 'PASS' if wb_ai_ins >= 5 else 'FAIL'}
+    results['World Bank AI Insights'] = {'sql_value': wb_ai_ins, 'expected': '>= 30', 'status': 'PASS' if wb_ai_ins >= 30 else 'FAIL'}
 
-    # 9. Ingestion Runs
+    # 14. Ingestion Runs
     cur.execute("SELECT COUNT(*) FROM api_ingestion_runs;")
     runs_cnt = cur.fetchone()[0]
-    results['API Ingestion Runs'] = {'sql_value': runs_cnt, 'expected': '>= 13', 'status': 'PASS' if runs_cnt >= 13 else 'FAIL'}
+    results['API Ingestion Runs'] = {'sql_value': runs_cnt, 'expected': '>= 60', 'status': 'PASS' if runs_cnt >= 60 else 'FAIL'}
+
+    # 15. Lineage Records
+    cur.execute("SELECT COUNT(*) FROM v_pbi_end_to_end_lineage;")
+    lin_cnt = cur.fetchone()[0]
+    results['Lineage Records'] = {'sql_value': lin_cnt, 'expected': '>= 5800', 'status': 'PASS' if lin_cnt >= 5800 else 'FAIL'}
 
     conn.close()
     return results

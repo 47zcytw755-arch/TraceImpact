@@ -1,5 +1,7 @@
 # TraceImpact — Traceable Impact Reporting & Data Quality Platform
 
+> 📖 **Authoritative Master Documentation:** For the complete, consolidated single-source-of-truth technical specification, Medallion data architecture, ADRs, engineering rules, ML/AI boundaries, and QA testing strategy, see [`docs/PROJECT_MASTER.md`](docs/PROJECT_MASTER.md).
+
 TraceImpact is a data engineering, data quality observability, and impact reporting platform designed specifically for small-to-medium nonprofit organizations and philanthropic grant-makers. It transforms fragmented, messy operational spreadsheets into an audited PostgreSQL database, computes reliable social and financial KPIs via pre-aggregated SQL views, catalogs data quality anomalies without silently dropping records, and delivers a modern multi-page Streamlit dashboard featuring cryptographic 1-to-1 drilldown lineage and a safe AI natural-language query assistant.
 
 ---

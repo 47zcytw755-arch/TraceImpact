@@ -1,0 +1,900 @@
+source_pipeline,issue_id,source_file,source_record_id,column_name,issue_type,severity,description,status,raw_value,detected_at,program_name
+Synthetic,352,outcomes.csv,765,baseline_score,MISSING_VALUE,WARNING,Outcome survey 'SURV-0026' has missing baseline_score.,OPEN,,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,354,outcomes.csv,779,exit_score,INVALID_NUMBER,ERROR,"Outcome survey 'SURV-0040' exit_score 145.0 is out of allowable bounds [0.0, 100.0].",OPEN,145.0,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,349,expenses.csv,738,amount_spent,INVALID_NUMBER,ERROR,Expense 'EXP-0068' has negative amount: -4500.00. Financial rules disallow negative expenditures.,OPEN,-4500.0,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,328,attendance.csv,614,attendance_id,DUPLICATE,ERROR,Duplicate attendance check-in for participant 'BEN-016' in program 'PRG-002' on date '2024-02-01'.,OPEN,ATT-0614,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,331,attendance.csv,617,attendance_id,DUPLICATE,ERROR,Duplicate attendance check-in for participant 'BEN-029' in program 'PRG-001' on date '2024-02-01'.,OPEN,ATT-0617,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,326,attendance.csv,613,attendance_id,DUPLICATE,ERROR,Duplicate attendance check-in for participant 'BEN-043' in program 'PRG-003' on date '2024-02-01'.,OPEN,ATT-0613,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,332,attendance.csv,618,participant_id,UNMATCHED_REFERENCE,ERROR,Attendance record 'ATT-0618' references unknown/unregistered participant 'BEN-999'.,OPEN,BEN-999,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,351,outcomes.csv,747,baseline_score,MISSING_VALUE,WARNING,Outcome survey 'SURV-0008' has missing baseline_score.,OPEN,,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,353,outcomes.csv,772,baseline_score,MISSING_VALUE,WARNING,Outcome survey 'SURV-0033' has missing baseline_score.,OPEN,,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,330,attendance.csv,616,attendance_id,DUPLICATE,ERROR,Duplicate attendance check-in for participant 'BEN-027' in program 'PRG-003' on date '2024-02-01'.,OPEN,ATT-0616,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,329,attendance.csv,615,attendance_id,DUPLICATE,ERROR,Duplicate attendance check-in for participant 'BEN-043' in program 'PRG-003' on date '2024-02-01'.,OPEN,ATT-0615,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,194,attendance.csv,9,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,195,attendance.csv,11,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,178,beneficiaries.csv,619,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-001' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,180,beneficiaries.csv,630,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-012' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,181,beneficiaries.csv,631,age,MISSING_VALUE,WARNING,Beneficiary 'BEN-013' is missing age value.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,182,beneficiaries.csv,634,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-016' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,183,beneficiaries.csv,642,registration_date,MISSING_VALUE,WARNING,Beneficiary 'BEN-024' is missing registration_date.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,184,beneficiaries.csv,643,age,MISSING_VALUE,WARNING,Beneficiary 'BEN-025' is missing age value.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,185,beneficiaries.csv,645,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-027' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,186,beneficiaries.csv,649,age,MISSING_VALUE,WARNING,Beneficiary 'BEN-031' is missing age value.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,187,beneficiaries.csv,656,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-038' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,188,beneficiaries.csv,657,registration_date,MISSING_VALUE,WARNING,Beneficiary 'BEN-039' is missing registration_date.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,189,beneficiaries.csv,659,registration_date,MISSING_VALUE,WARNING,Beneficiary 'BEN-041' is missing registration_date.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,190,beneficiaries.csv,662,age,MISSING_VALUE,WARNING,Beneficiary 'BEN-044' is missing age value.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,191,beneficiaries.csv,665,contact_phone,MISSING_VALUE,INFO,Beneficiary 'BEN-047' has no contact phone registered.,OPEN,nan,2026-09-26 17:25:24.740193+05:30,
+Synthetic,192,beneficiaries.csv,669,beneficiary_id,DUPLICATE,ERROR,Duplicate beneficiary_id 'BEN-012' detected in source dataset.,OPEN,BEN-012,2026-09-26 17:25:24.740193+05:30,
+Synthetic,193,beneficiaries.csv,670,full_name,DUPLICATE,WARNING,Person 'Aishani Bassi' with phone '7816184959' already registered as BEN-005; potential duplicate participant under new ID 'BEN-099'.,OPEN,Aishani Bassi,2026-09-26 17:25:24.740193+05:30,
+Synthetic,196,attendance.csv,15,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,197,attendance.csv,26,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,198,attendance.csv,31,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,199,attendance.csv,35,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,200,attendance.csv,36,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,179,beneficiaries.csv,629,age,MISSING_VALUE,WARNING,Beneficiary 'BEN-011' is missing age value.,OPEN,,2026-09-26 17:25:24.740193+05:30,
+Synthetic,350,expenses.csv,739,program_code,UNMATCHED_REFERENCE,ERROR,Expense 'EXP-0069' has invalid or missing program code: 'NAN'.,OPEN,NAN,2026-09-26 17:25:24.740193+05:30,
+Synthetic,309,attendance.csv,552,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,205,attendance.csv,53,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,206,attendance.csv,56,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,207,attendance.csv,58,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,208,attendance.csv,61,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,209,attendance.csv,63,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,210,attendance.csv,79,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,211,attendance.csv,84,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,212,attendance.csv,90,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,213,attendance.csv,92,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,214,attendance.csv,96,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,215,attendance.csv,106,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,216,attendance.csv,109,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,217,attendance.csv,113,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,218,attendance.csv,128,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,219,attendance.csv,134,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,220,attendance.csv,135,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,221,attendance.csv,137,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,222,attendance.csv,141,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,223,attendance.csv,146,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,224,attendance.csv,150,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,225,attendance.csv,152,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,226,attendance.csv,154,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,227,attendance.csv,157,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,228,attendance.csv,161,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,229,attendance.csv,170,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,230,attendance.csv,171,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,231,attendance.csv,180,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,232,attendance.csv,192,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,233,attendance.csv,197,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,234,attendance.csv,202,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,235,attendance.csv,203,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,236,attendance.csv,205,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,237,attendance.csv,207,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,238,attendance.csv,208,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,239,attendance.csv,224,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,240,attendance.csv,225,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,241,attendance.csv,228,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,242,attendance.csv,229,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,243,attendance.csv,234,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,244,attendance.csv,237,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,245,attendance.csv,244,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,246,attendance.csv,248,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,247,attendance.csv,254,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,248,attendance.csv,257,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,249,attendance.csv,260,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,250,attendance.csv,269,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,251,attendance.csv,271,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,252,attendance.csv,273,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,253,attendance.csv,274,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,254,attendance.csv,275,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,255,attendance.csv,277,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,256,attendance.csv,288,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,257,attendance.csv,299,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,258,attendance.csv,314,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,259,attendance.csv,319,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,260,attendance.csv,320,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,261,attendance.csv,321,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,262,attendance.csv,324,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,263,attendance.csv,332,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,264,attendance.csv,337,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,265,attendance.csv,338,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,266,attendance.csv,345,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,267,attendance.csv,346,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,268,attendance.csv,351,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,269,attendance.csv,354,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,270,attendance.csv,358,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,271,attendance.csv,369,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,272,attendance.csv,376,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,273,attendance.csv,388,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,274,attendance.csv,389,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,275,attendance.csv,393,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,276,attendance.csv,405,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,277,attendance.csv,408,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,278,attendance.csv,409,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,279,attendance.csv,416,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,280,attendance.csv,417,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,281,attendance.csv,418,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,282,attendance.csv,423,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,283,attendance.csv,424,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,284,attendance.csv,428,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,285,attendance.csv,431,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,286,attendance.csv,438,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,287,attendance.csv,444,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,288,attendance.csv,445,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,289,attendance.csv,447,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,290,attendance.csv,454,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,291,attendance.csv,460,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,292,attendance.csv,473,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,293,attendance.csv,478,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,294,attendance.csv,483,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,295,attendance.csv,485,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,296,attendance.csv,486,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,297,attendance.csv,497,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,298,attendance.csv,498,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,204,attendance.csv,51,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,299,attendance.csv,500,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,300,attendance.csv,504,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,301,attendance.csv,505,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,302,attendance.csv,506,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,303,attendance.csv,507,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,304,attendance.csv,511,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,305,attendance.csv,525,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,306,attendance.csv,529,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,307,attendance.csv,530,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,308,attendance.csv,542,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,310,attendance.csv,554,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,311,attendance.csv,558,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,312,attendance.csv,567,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,313,attendance.csv,570,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,314,attendance.csv,571,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,315,attendance.csv,575,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,316,attendance.csv,580,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,317,attendance.csv,584,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,318,attendance.csv,591,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,319,attendance.csv,593,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,320,attendance.csv,601,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,321,attendance.csv,604,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,322,attendance.csv,605,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,323,attendance.csv,609,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,324,attendance.csv,610,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,325,attendance.csv,611,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,340,expenses.csv,700,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹4,259.68' sanitized to numeric float 4259.68.",RESOLVED,"₹4,259.68",2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,327,attendance.csv,614,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,334,expenses.csv,674,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹8,481.61' sanitized to numeric float 8481.61.",RESOLVED,"₹8,481.61",2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,337,expenses.csv,690,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹14,691.79' sanitized to numeric float 14691.79.",RESOLVED,"₹14,691.79",2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,338,expenses.csv,694,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹12,589.82' sanitized to numeric float 12589.82.",RESOLVED,"₹12,589.82",2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,341,expenses.csv,701,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹5,209.92' sanitized to numeric float 5209.92.",RESOLVED,"₹5,209.92",2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,348,expenses.csv,728,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹17,883.51' sanitized to numeric float 17883.51.",RESOLVED,"₹17,883.51",2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,344,expenses.csv,722,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹12,464.40' sanitized to numeric float 12464.40.",RESOLVED,"₹12,464.40",2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,346,expenses.csv,725,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹12,977.35' sanitized to numeric float 12977.35.",RESOLVED,"₹12,977.35",2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,339,expenses.csv,697,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹9,579.09' sanitized to numeric float 9579.09.",RESOLVED,"₹9,579.09",2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,342,expenses.csv,702,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹9,928.30' sanitized to numeric float 9928.30.",RESOLVED,"₹9,928.30",2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,343,expenses.csv,721,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹4,123.13' sanitized to numeric float 4123.13.",RESOLVED,"₹4,123.13",2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,201,attendance.csv,38,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,202,attendance.csv,40,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Youth Coding Bootcamp
+Synthetic,203,attendance.csv,44,session_hours,INCONSISTENT_VALUE,INFO,Session hours '2 hrs' normalized to numeric 2.00.,RESOLVED,2 hrs,2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,345,expenses.csv,724,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹5,021.45' sanitized to numeric float 5021.45.",RESOLVED,"₹5,021.45",2026-09-26 17:25:24.740193+05:30,Community Nutrition Drive
+Synthetic,347,expenses.csv,726,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹2,668.67' sanitized to numeric float 2668.67.",RESOLVED,"₹2,668.67",2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+Synthetic,335,expenses.csv,677,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹12,350.43' sanitized to numeric float 12350.43.",RESOLVED,"₹12,350.43",2026-09-26 17:25:24.740193+05:30,Women Vocational Sewing
+Synthetic,336,expenses.csv,682,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹15,216.74' sanitized to numeric float 15216.74.",RESOLVED,"₹15,216.74",2026-09-26 17:25:24.740193+05:30,Elderly Healthcare Outreach
+Synthetic,333,expenses.csv,671,amount_spent,INVALID_FORMAT,INFO,"Currency string '₹11,271.75' sanitized to numeric float 11271.75.",RESOLVED,"₹11,271.75",2026-09-26 17:25:24.740193+05:30,Digital Literacy Initiative
+World Bank,1,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,
+World Bank,2,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,
+World Bank,3,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,
+World Bank,4,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,
+World Bank,5,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,British Virgin Islands
+World Bank,6,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,British Virgin Islands
+World Bank,7,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,British Virgin Islands
+World Bank,8,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,British Virgin Islands
+World Bank,9,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Cuba
+World Bank,10,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Eritrea
+World Bank,11,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Eritrea
+World Bank,12,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Eritrea
+World Bank,13,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Eritrea
+World Bank,14,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Gibraltar
+World Bank,15,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Gibraltar
+World Bank,16,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Gibraltar
+World Bank,17,World Bank API (api.worldbank.org/v2),1,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:03.879519+05:30,Gibraltar
+World Bank,18,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,"Korea, Dem. People's Rep."
+World Bank,19,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,"Korea, Dem. People's Rep."
+World Bank,20,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,"Korea, Dem. People's Rep."
+World Bank,21,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,"Korea, Dem. People's Rep."
+World Bank,22,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,South Sudan
+World Bank,23,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,South Sudan
+World Bank,24,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,South Sudan
+World Bank,25,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,South Sudan
+World Bank,26,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,St. Martin (French part)
+World Bank,27,World Bank API (api.worldbank.org/v2),2,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:04.753408+05:30,St. Martin (French part)
+World Bank,28,World Bank API (api.worldbank.org/v2),3,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:05.774464+05:30,"Yemen, Rep."
+World Bank,29,World Bank API (api.worldbank.org/v2),3,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:05.774464+05:30,"Yemen, Rep."
+World Bank,30,World Bank API (api.worldbank.org/v2),3,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:05.774464+05:30,"Yemen, Rep."
+World Bank,31,World Bank API (api.worldbank.org/v2),4,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:06.520933+05:30,
+World Bank,32,World Bank API (api.worldbank.org/v2),4,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:06.520933+05:30,
+World Bank,33,World Bank API (api.worldbank.org/v2),4,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:06.520933+05:30,
+World Bank,34,World Bank API (api.worldbank.org/v2),4,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:06.520933+05:30,
+World Bank,35,World Bank API (api.worldbank.org/v2),7,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:09.670564+05:30,
+World Bank,36,World Bank API (api.worldbank.org/v2),7,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:09.670564+05:30,
+World Bank,37,World Bank API (api.worldbank.org/v2),7,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:09.670564+05:30,
+World Bank,38,World Bank API (api.worldbank.org/v2),7,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:09.670564+05:30,
+World Bank,39,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,
+World Bank,40,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,
+World Bank,41,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,
+World Bank,42,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,
+World Bank,43,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Argentina
+World Bank,44,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Argentina
+World Bank,45,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Argentina
+World Bank,46,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Argentina
+World Bank,47,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Aruba
+World Bank,48,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Aruba
+World Bank,49,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Aruba
+World Bank,50,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Aruba
+World Bank,51,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BS in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,"Bahamas, The"
+World Bank,52,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BS in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,"Bahamas, The"
+World Bank,53,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Channel Islands
+World Bank,54,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Channel Islands
+World Bank,55,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Channel Islands
+World Bank,56,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Channel Islands
+World Bank,57,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Equatorial Guinea
+World Bank,58,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Equatorial Guinea
+World Bank,59,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Equatorial Guinea
+World Bank,60,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Equatorial Guinea
+World Bank,61,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Eritrea
+World Bank,62,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Eritrea
+World Bank,63,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Eritrea
+World Bank,64,World Bank API (api.worldbank.org/v2),10,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:25.851671+05:30,Eritrea
+World Bank,65,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Grenada
+World Bank,66,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Grenada
+World Bank,67,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Grenada
+World Bank,68,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Grenada
+World Bank,69,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Kosovo
+World Bank,70,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Kosovo
+World Bank,71,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Kosovo
+World Bank,72,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Kosovo
+World Bank,73,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FM in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,"Micronesia, Fed. Sts."
+World Bank,74,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Nicaragua
+World Bank,75,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Nicaragua
+World Bank,76,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Nicaragua
+World Bank,77,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Nicaragua
+World Bank,78,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Sint Maarten (Dutch part)
+World Bank,79,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Sint Maarten (Dutch part)
+World Bank,80,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Sint Maarten (Dutch part)
+World Bank,81,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,Sint Maarten (Dutch part)
+World Bank,82,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Kitts and Nevis
+World Bank,83,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Kitts and Nevis
+World Bank,84,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Kitts and Nevis
+World Bank,85,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2018 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Kitts and Nevis
+World Bank,86,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VC in 2021 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Vincent and the Grenadines
+World Bank,87,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VC in 2020 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Vincent and the Grenadines
+World Bank,88,World Bank API (api.worldbank.org/v2),11,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VC in 2019 (null observation).,RESOLVED,,2026-09-26 22:42:26.954433+05:30,St. Vincent and the Grenadines
+World Bank,89,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,
+World Bank,90,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,
+World Bank,91,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,
+World Bank,92,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,
+World Bank,93,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,British Virgin Islands
+World Bank,94,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,British Virgin Islands
+World Bank,95,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,British Virgin Islands
+World Bank,96,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,British Virgin Islands
+World Bank,97,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Cuba
+World Bank,98,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Eritrea
+World Bank,99,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Eritrea
+World Bank,100,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Eritrea
+World Bank,101,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Eritrea
+World Bank,102,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Gibraltar
+World Bank,103,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Gibraltar
+World Bank,104,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Gibraltar
+World Bank,105,World Bank API (api.worldbank.org/v2),13,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.108615+05:30,Gibraltar
+World Bank,106,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,"Korea, Dem. People's Rep."
+World Bank,107,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,"Korea, Dem. People's Rep."
+World Bank,108,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,"Korea, Dem. People's Rep."
+World Bank,109,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,"Korea, Dem. People's Rep."
+World Bank,110,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,South Sudan
+World Bank,111,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,South Sudan
+World Bank,112,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,South Sudan
+World Bank,113,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,South Sudan
+World Bank,114,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,St. Martin (French part)
+World Bank,115,World Bank API (api.worldbank.org/v2),14,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2018 (null observation).,RESOLVED,,2026-09-26 22:43:19.620846+05:30,St. Martin (French part)
+World Bank,116,World Bank API (api.worldbank.org/v2),15,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2021 (null observation).,RESOLVED,,2026-09-26 22:43:19.942131+05:30,"Yemen, Rep."
+World Bank,117,World Bank API (api.worldbank.org/v2),15,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2020 (null observation).,RESOLVED,,2026-09-26 22:43:19.942131+05:30,"Yemen, Rep."
+World Bank,118,World Bank API (api.worldbank.org/v2),15,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for YE in 2019 (null observation).,RESOLVED,,2026-09-26 22:43:19.942131+05:30,"Yemen, Rep."
+World Bank,119,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,
+World Bank,120,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,
+World Bank,121,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,
+World Bank,122,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AF in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Afghanistan
+World Bank,123,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AS in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,American Samoa
+World Bank,124,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AS in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,American Samoa
+World Bank,125,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AS in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,American Samoa
+World Bank,126,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AW in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Aruba
+World Bank,127,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for BS in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,"Bahamas, The"
+World Bank,128,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for BM in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Bermuda
+World Bank,129,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,British Virgin Islands
+World Bank,130,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,British Virgin Islands
+World Bank,131,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,British Virgin Islands
+World Bank,132,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KY in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Cayman Islands
+World Bank,133,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for JG in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Channel Islands
+World Bank,134,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for JG in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Channel Islands
+World Bank,135,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Cuba
+World Bank,136,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Cuba
+World Bank,137,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Cuba
+World Bank,138,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CW in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Curacao
+World Bank,139,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Eritrea
+World Bank,140,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Eritrea
+World Bank,141,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Eritrea
+World Bank,142,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for FO in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Faroe Islands
+World Bank,143,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for PF in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,French Polynesia
+World Bank,144,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Gibraltar
+World Bank,145,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Gibraltar
+World Bank,146,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Gibraltar
+World Bank,147,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GL in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Greenland
+World Bank,148,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GL in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Greenland
+World Bank,149,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GU in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Guam
+World Bank,150,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GU in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Guam
+World Bank,151,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GU in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Guam
+World Bank,152,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for IM in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Isle of Man
+World Bank,153,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for IM in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Isle of Man
+World Bank,154,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,"Korea, Dem. People's Rep."
+World Bank,155,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,"Korea, Dem. People's Rep."
+World Bank,156,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2023 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,"Korea, Dem. People's Rep."
+World Bank,157,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for LB in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Lebanon
+World Bank,158,World Bank API (api.worldbank.org/v2),22,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for LI in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:07.134061+05:30,Liechtenstein
+World Bank,159,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,
+World Bank,160,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for XY in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,
+World Bank,161,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AF in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Afghanistan
+World Bank,162,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AS in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,American Samoa
+World Bank,163,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AS in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,American Samoa
+World Bank,164,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for AW in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Aruba
+World Bank,165,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for BS in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,"Bahamas, The"
+World Bank,166,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for BM in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Bermuda
+World Bank,167,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,British Virgin Islands
+World Bank,168,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for VG in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,British Virgin Islands
+World Bank,169,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KY in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Cayman Islands
+World Bank,170,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for JG in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Channel Islands
+World Bank,171,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for JG in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Channel Islands
+World Bank,172,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Cuba
+World Bank,173,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CU in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Cuba
+World Bank,174,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for CW in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Curacao
+World Bank,175,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Eritrea
+World Bank,176,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for ER in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Eritrea
+World Bank,177,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for FO in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Faroe Islands
+World Bank,178,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for PF in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,French Polynesia
+World Bank,179,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Gibraltar
+World Bank,180,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GI in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Gibraltar
+World Bank,181,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GL in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Greenland
+World Bank,182,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GL in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Greenland
+World Bank,183,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GU in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Guam
+World Bank,184,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for GU in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Guam
+World Bank,185,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for IM in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Isle of Man
+World Bank,186,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for IM in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Isle of Man
+World Bank,187,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,"Korea, Dem. People's Rep."
+World Bank,188,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for KP in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,"Korea, Dem. People's Rep."
+World Bank,189,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for LB in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Lebanon
+World Bank,190,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for LI in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Liechtenstein
+World Bank,191,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MC in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Monaco
+World Bank,192,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for NC in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,New Caledonia
+World Bank,193,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MP in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Northern Mariana Islands
+World Bank,194,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MP in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Northern Mariana Islands
+World Bank,195,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SM in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,San Marino
+World Bank,196,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SM in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,San Marino
+World Bank,197,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,South Sudan
+World Bank,198,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SS in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,South Sudan
+World Bank,199,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,St. Martin (French part)
+World Bank,200,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for MF in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,St. Martin (French part)
+World Bank,201,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SY in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Syrian Arab Republic
+World Bank,202,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for SY in 2024 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Syrian Arab Republic
+World Bank,203,World Bank API (api.worldbank.org/v2),23,NY.GDP.PCAP.CD,MISSING_VALUE,INFO,No value reported for TC in 2025 (null observation).,RESOLVED,,2026-09-26 22:49:52.685431+05:30,Turks and Caicos Islands
+World Bank,204,World Bank API (api.worldbank.org/v2),24,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:25.456144+05:30,
+World Bank,205,World Bank API (api.worldbank.org/v2),24,SP.POP.TOTL,MISSING_VALUE,INFO,No value reported for XY in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:25.456144+05:30,
+World Bank,206,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Africa Eastern and Southern
+World Bank,207,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Africa Western and Central
+World Bank,208,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for 1A in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Arab World
+World Bank,209,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for S3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Caribbean small states
+World Bank,210,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for B8 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Central Europe and the Baltics
+World Bank,211,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for V2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Early-demographic dividend
+World Bank,212,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for Z4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,East Asia & Pacific
+World Bank,213,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for 4E in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,East Asia & Pacific (excluding high income)
+World Bank,214,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,East Asia & Pacific (IDA & IBRD countries)
+World Bank,215,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Euro area
+World Bank,216,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for Z7 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Europe & Central Asia
+World Bank,217,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for 7E in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Europe & Central Asia (excluding high income)
+World Bank,218,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T7 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Europe & Central Asia (IDA & IBRD countries)
+World Bank,219,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for EU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,European Union
+World Bank,220,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Heavily indebted poor countries (HIPC)
+World Bank,221,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,High income
+World Bank,222,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,IBRD only
+World Bank,223,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,IDA & IBRD total
+World Bank,224,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,IDA blend
+World Bank,225,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,IDA only
+World Bank,226,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,IDA total
+World Bank,227,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for V3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Late-demographic dividend
+World Bank,228,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Latin America & Caribbean
+World Bank,229,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Latin America & Caribbean (excluding high income)
+World Bank,230,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Latin America & the Caribbean (IDA & IBRD countries)
+World Bank,231,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Least developed countries: UN classification
+World Bank,232,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Low & middle income
+World Bank,233,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Low income
+World Bank,234,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Lower middle income
+World Bank,235,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Middle East, North Africa, Afghanistan & Pakistan"
+World Bank,236,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)"
+World Bank,237,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)"
+World Bank,238,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Middle income
+World Bank,239,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,North America
+World Bank,240,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,
+World Bank,241,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XY in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,
+World Bank,242,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for OE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,OECD members
+World Bank,243,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for S4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Other small states
+World Bank,244,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for S2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Pacific island small states
+World Bank,245,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for V4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Post-demographic dividend
+World Bank,246,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for V1 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Pre-demographic dividend
+World Bank,247,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for S1 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Small states
+World Bank,248,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for 8S in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,South Asia
+World Bank,249,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T5 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,South Asia (IDA & IBRD)
+World Bank,250,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sub-Saharan Africa
+World Bank,251,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sub-Saharan Africa (excluding high income)
+World Bank,252,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for T6 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sub-Saharan Africa (IDA & IBRD countries)
+World Bank,253,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Upper middle income
+World Bank,254,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for 1W in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,World
+World Bank,255,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Afghanistan
+World Bank,256,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Albania
+World Bank,257,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Algeria
+World Bank,258,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,American Samoa
+World Bank,259,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Andorra
+World Bank,260,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Angola
+World Bank,261,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Antigua and Barbuda
+World Bank,262,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Argentina
+World Bank,263,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Armenia
+World Bank,264,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Aruba
+World Bank,265,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Australia
+World Bank,266,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Austria
+World Bank,267,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for AZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Azerbaijan
+World Bank,268,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Bahamas, The"
+World Bank,269,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bahrain
+World Bank,270,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bangladesh
+World Bank,271,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Barbados
+World Bank,272,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Belarus
+World Bank,273,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Belgium
+World Bank,274,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Belize
+World Bank,275,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Benin
+World Bank,276,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bermuda
+World Bank,277,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bhutan
+World Bank,278,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bolivia
+World Bank,279,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bosnia and Herzegovina
+World Bank,280,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Botswana
+World Bank,281,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Brazil
+World Bank,282,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for VG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,British Virgin Islands
+World Bank,283,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Brunei Darussalam
+World Bank,284,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Bulgaria
+World Bank,285,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Burkina Faso
+World Bank,286,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for BI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Burundi
+World Bank,287,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cabo Verde
+World Bank,288,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cambodia
+World Bank,289,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cameroon
+World Bank,290,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Canada
+World Bank,291,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cayman Islands
+World Bank,292,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Central African Republic
+World Bank,293,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Chad
+World Bank,294,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for JG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Channel Islands
+World Bank,295,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Chile
+World Bank,296,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,China
+World Bank,297,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Colombia
+World Bank,298,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Comoros
+World Bank,299,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Congo, Dem. Rep."
+World Bank,300,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Congo, Rep."
+World Bank,301,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Costa Rica
+World Bank,302,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cote d'Ivoire
+World Bank,303,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for HR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Croatia
+World Bank,304,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cuba
+World Bank,305,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Curacao
+World Bank,306,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Cyprus
+World Bank,307,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Czechia
+World Bank,308,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Denmark
+World Bank,309,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Djibouti
+World Bank,310,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Dominica
+World Bank,311,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Dominican Republic
+World Bank,312,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for EC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Ecuador
+World Bank,313,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for EG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Egypt, Arab Rep."
+World Bank,314,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,El Salvador
+World Bank,315,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Equatorial Guinea
+World Bank,316,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ER in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Eritrea
+World Bank,317,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for EE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Estonia
+World Bank,318,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Eswatini
+World Bank,319,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ET in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Ethiopia
+World Bank,320,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for FO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Faroe Islands
+World Bank,321,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for FJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Fiji
+World Bank,322,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for FI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Finland
+World Bank,323,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for FR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,France
+World Bank,324,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,French Polynesia
+World Bank,325,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Gabon
+World Bank,326,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Gambia, The"
+World Bank,327,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Georgia
+World Bank,328,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for DE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Germany
+World Bank,329,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Ghana
+World Bank,330,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Gibraltar
+World Bank,331,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Greece
+World Bank,332,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Greenland
+World Bank,333,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Grenada
+World Bank,334,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Guam
+World Bank,335,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Guatemala
+World Bank,336,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Guinea
+World Bank,337,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Guinea-Bissau
+World Bank,338,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for GY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Guyana
+World Bank,339,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for HT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Haiti
+World Bank,340,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for HN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Honduras
+World Bank,341,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for HK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Hong Kong SAR, China"
+World Bank,342,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for HU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Hungary
+World Bank,343,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Iceland
+World Bank,344,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,India
+World Bank,345,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ID in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Indonesia
+World Bank,346,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Iran, Islamic Rep."
+World Bank,347,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Iraq
+World Bank,348,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Ireland
+World Bank,349,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Isle of Man
+World Bank,350,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Israel
+World Bank,351,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for IT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Italy
+World Bank,352,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for JM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Jamaica
+World Bank,353,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for JP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Japan
+World Bank,354,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for JO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Jordan
+World Bank,355,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kazakhstan
+World Bank,356,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kenya
+World Bank,357,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kiribati
+World Bank,358,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Korea, Dem. People's Rep."
+World Bank,359,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Korea, Rep."
+World Bank,360,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for XK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kosovo
+World Bank,361,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kuwait
+World Bank,362,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Kyrgyz Republic
+World Bank,363,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Lao PDR
+World Bank,364,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Latvia
+World Bank,365,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Lebanon
+World Bank,366,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Lesotho
+World Bank,367,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Liberia
+World Bank,368,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Libya
+World Bank,369,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Liechtenstein
+World Bank,370,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Lithuania
+World Bank,371,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Luxembourg
+World Bank,372,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Macao SAR, China"
+World Bank,373,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Madagascar
+World Bank,374,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Malawi
+World Bank,375,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Malaysia
+World Bank,376,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Maldives
+World Bank,377,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ML in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mali
+World Bank,378,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Malta
+World Bank,379,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Marshall Islands
+World Bank,380,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mauritania
+World Bank,381,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mauritius
+World Bank,382,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MX in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mexico
+World Bank,383,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for FM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Micronesia, Fed. Sts."
+World Bank,384,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Moldova
+World Bank,385,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Monaco
+World Bank,386,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mongolia
+World Bank,387,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ME in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Montenegro
+World Bank,388,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Morocco
+World Bank,389,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Mozambique
+World Bank,390,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Myanmar
+World Bank,391,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Namibia
+World Bank,392,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Naoero
+World Bank,393,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Nepal
+World Bank,394,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Netherlands
+World Bank,395,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,New Caledonia
+World Bank,396,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,New Zealand
+World Bank,397,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Nicaragua
+World Bank,398,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Niger
+World Bank,399,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Nigeria
+World Bank,400,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,North Macedonia
+World Bank,401,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Northern Mariana Islands
+World Bank,402,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for NO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Norway
+World Bank,403,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for OM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Oman
+World Bank,404,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Pakistan
+World Bank,405,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Palau
+World Bank,406,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Panama
+World Bank,407,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Papua New Guinea
+World Bank,408,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Paraguay
+World Bank,409,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Peru
+World Bank,410,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Philippines
+World Bank,411,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Poland
+World Bank,412,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Portugal
+World Bank,413,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for PR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Puerto Rico (US)
+World Bank,414,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for QA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Qatar
+World Bank,415,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for RO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Romania
+World Bank,416,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for RU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Russian Federation
+World Bank,417,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for RW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Rwanda
+World Bank,418,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for WS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Samoa
+World Bank,419,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,San Marino
+World Bank,420,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ST in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sao Tome and Principe
+World Bank,421,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Saudi Arabia
+World Bank,422,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Senegal
+World Bank,423,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for RS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Serbia
+World Bank,424,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Seychelles
+World Bank,425,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sierra Leone
+World Bank,426,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Singapore
+World Bank,427,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SX in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sint Maarten (Dutch part)
+World Bank,428,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Slovak Republic
+World Bank,429,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Slovenia
+World Bank,430,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Solomon Islands
+World Bank,431,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,"Somalia, Fed. Rep."
+World Bank,432,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ZA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,South Africa
+World Bank,433,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,South Sudan
+World Bank,434,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for ES in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Spain
+World Bank,435,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sri Lanka
+World Bank,436,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for KN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,St. Kitts and Nevis
+World Bank,437,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for LC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,St. Lucia
+World Bank,438,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for MF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,St. Martin (French part)
+World Bank,439,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for VC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,St. Vincent and the Grenadines
+World Bank,440,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sudan
+World Bank,441,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Suriname
+World Bank,442,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Sweden
+World Bank,443,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for CH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Switzerland
+World Bank,444,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for SY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Syrian Arab Republic
+World Bank,445,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Tajikistan
+World Bank,446,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Tanzania
+World Bank,447,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Thailand
+World Bank,448,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Timor-Leste
+World Bank,449,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Togo
+World Bank,450,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Tonga
+World Bank,451,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Trinidad and Tobago
+World Bank,452,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Tunisia
+World Bank,453,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Turkiye
+World Bank,454,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Turkmenistan
+World Bank,455,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Turks and Caicos Islands
+World Bank,456,World Bank API (api.worldbank.org/v2),25,SP.DYN.LE00.IN,MISSING_VALUE,INFO,No value reported for TV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:27.149448+05:30,Tuvalu
+World Bank,457,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Africa Eastern and Southern
+World Bank,458,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Africa Western and Central
+World Bank,459,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for 1A in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Arab World
+World Bank,460,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for S3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Caribbean small states
+World Bank,461,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for B8 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Central Europe and the Baltics
+World Bank,462,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for V2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Early-demographic dividend
+World Bank,463,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for Z4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,East Asia & Pacific
+World Bank,464,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for 4E in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,East Asia & Pacific (excluding high income)
+World Bank,465,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,East Asia & Pacific (IDA & IBRD countries)
+World Bank,466,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Euro area
+World Bank,467,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for Z7 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Europe & Central Asia
+World Bank,468,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for 7E in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Europe & Central Asia (excluding high income)
+World Bank,469,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T7 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Europe & Central Asia (IDA & IBRD countries)
+World Bank,470,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for EU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,European Union
+World Bank,471,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Heavily indebted poor countries (HIPC)
+World Bank,472,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,High income
+World Bank,473,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,IBRD only
+World Bank,474,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,IDA & IBRD total
+World Bank,475,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,IDA blend
+World Bank,476,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,IDA only
+World Bank,477,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,IDA total
+World Bank,478,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for V3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Late-demographic dividend
+World Bank,479,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Latin America & Caribbean
+World Bank,480,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Latin America & Caribbean (excluding high income)
+World Bank,481,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Latin America & the Caribbean (IDA & IBRD countries)
+World Bank,482,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Least developed countries: UN classification
+World Bank,483,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Low & middle income
+World Bank,484,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Low income
+World Bank,485,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Lower middle income
+World Bank,486,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Middle East, North Africa, Afghanistan & Pakistan"
+World Bank,487,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)"
+World Bank,488,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T3 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)"
+World Bank,489,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Middle income
+World Bank,490,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,North America
+World Bank,491,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,
+World Bank,492,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XY in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,
+World Bank,493,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for OE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,OECD members
+World Bank,494,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for S4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Other small states
+World Bank,495,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for S2 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Pacific island small states
+World Bank,496,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for V4 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Post-demographic dividend
+World Bank,497,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for V1 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Pre-demographic dividend
+World Bank,498,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for S1 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Small states
+World Bank,499,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for 8S in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,South Asia
+World Bank,500,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T5 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,South Asia (IDA & IBRD)
+World Bank,501,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sub-Saharan Africa
+World Bank,502,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sub-Saharan Africa (excluding high income)
+World Bank,503,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for T6 in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sub-Saharan Africa (IDA & IBRD countries)
+World Bank,504,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Upper middle income
+World Bank,505,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for 1W in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,World
+World Bank,506,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Afghanistan
+World Bank,507,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Albania
+World Bank,508,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Algeria
+World Bank,509,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,American Samoa
+World Bank,510,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Andorra
+World Bank,511,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Angola
+World Bank,512,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Antigua and Barbuda
+World Bank,513,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Argentina
+World Bank,514,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AR in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Argentina
+World Bank,515,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Armenia
+World Bank,516,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Aruba
+World Bank,517,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AW in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Aruba
+World Bank,518,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Australia
+World Bank,519,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Austria
+World Bank,520,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for AZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Azerbaijan
+World Bank,521,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Bahamas, The"
+World Bank,522,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BS in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Bahamas, The"
+World Bank,523,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bahrain
+World Bank,524,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bangladesh
+World Bank,525,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Barbados
+World Bank,526,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Belarus
+World Bank,527,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Belgium
+World Bank,528,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Belize
+World Bank,529,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Benin
+World Bank,530,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bermuda
+World Bank,531,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bhutan
+World Bank,532,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bolivia
+World Bank,533,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bosnia and Herzegovina
+World Bank,534,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Botswana
+World Bank,535,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Brazil
+World Bank,536,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,British Virgin Islands
+World Bank,537,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Brunei Darussalam
+World Bank,538,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Bulgaria
+World Bank,539,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Burkina Faso
+World Bank,540,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for BI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Burundi
+World Bank,541,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cabo Verde
+World Bank,542,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cambodia
+World Bank,543,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cameroon
+World Bank,544,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Canada
+World Bank,545,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cayman Islands
+World Bank,546,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Central African Republic
+World Bank,547,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Chad
+World Bank,548,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Channel Islands
+World Bank,549,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JG in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Channel Islands
+World Bank,550,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Chile
+World Bank,551,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,China
+World Bank,552,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Colombia
+World Bank,553,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Comoros
+World Bank,554,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Congo, Dem. Rep."
+World Bank,555,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Congo, Rep."
+World Bank,556,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CG in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Congo, Rep."
+World Bank,557,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Costa Rica
+World Bank,558,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cote d'Ivoire
+World Bank,559,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for HR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Croatia
+World Bank,560,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cuba
+World Bank,561,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Curacao
+World Bank,562,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Cyprus
+World Bank,563,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Czechia
+World Bank,564,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Denmark
+World Bank,565,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Djibouti
+World Bank,566,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Dominica
+World Bank,567,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Dominican Republic
+World Bank,568,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for EC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Ecuador
+World Bank,569,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for EG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Egypt, Arab Rep."
+World Bank,570,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,El Salvador
+World Bank,571,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Equatorial Guinea
+World Bank,572,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GQ in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Equatorial Guinea
+World Bank,573,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Eritrea
+World Bank,574,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ER in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Eritrea
+World Bank,575,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for EE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Estonia
+World Bank,576,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Eswatini
+World Bank,577,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ET in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Ethiopia
+World Bank,578,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Faroe Islands
+World Bank,579,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Fiji
+World Bank,580,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Finland
+World Bank,581,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,France
+World Bank,582,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,French Polynesia
+World Bank,583,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Gabon
+World Bank,584,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Gambia, The"
+World Bank,585,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Georgia
+World Bank,586,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for DE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Germany
+World Bank,587,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Ghana
+World Bank,588,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Gibraltar
+World Bank,589,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Greece
+World Bank,590,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Greenland
+World Bank,591,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Grenada
+World Bank,592,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GD in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Grenada
+World Bank,593,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Guam
+World Bank,594,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Guatemala
+World Bank,595,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Guinea
+World Bank,596,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Guinea-Bissau
+World Bank,597,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for GY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Guyana
+World Bank,598,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for HT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Haiti
+World Bank,599,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for HN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Honduras
+World Bank,600,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for HK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Hong Kong SAR, China"
+World Bank,601,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for HU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Hungary
+World Bank,602,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Iceland
+World Bank,603,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,India
+World Bank,604,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ID in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Indonesia
+World Bank,605,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Iran, Islamic Rep."
+World Bank,606,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IQ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Iraq
+World Bank,607,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Ireland
+World Bank,608,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Isle of Man
+World Bank,609,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Israel
+World Bank,610,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for IT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Italy
+World Bank,611,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Jamaica
+World Bank,612,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Japan
+World Bank,613,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for JO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Jordan
+World Bank,614,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kazakhstan
+World Bank,615,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kenya
+World Bank,616,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kiribati
+World Bank,617,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Korea, Dem. People's Rep."
+World Bank,618,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KP in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Korea, Dem. People's Rep."
+World Bank,619,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Korea, Rep."
+World Bank,620,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kosovo
+World Bank,621,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for XK in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kosovo
+World Bank,622,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kuwait
+World Bank,623,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Kyrgyz Republic
+World Bank,624,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Lao PDR
+World Bank,625,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Latvia
+World Bank,626,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Lebanon
+World Bank,627,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Lesotho
+World Bank,628,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Liberia
+World Bank,629,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Libya
+World Bank,630,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Liechtenstein
+World Bank,631,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Lithuania
+World Bank,632,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Luxembourg
+World Bank,633,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Macao SAR, China"
+World Bank,634,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Madagascar
+World Bank,635,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Malawi
+World Bank,636,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Malaysia
+World Bank,637,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Maldives
+World Bank,638,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ML in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mali
+World Bank,639,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Malta
+World Bank,640,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Marshall Islands
+World Bank,641,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mauritania
+World Bank,642,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mauritius
+World Bank,643,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MX in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mexico
+World Bank,644,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Micronesia, Fed. Sts."
+World Bank,645,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for FM in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Micronesia, Fed. Sts."
+World Bank,646,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Moldova
+World Bank,647,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Monaco
+World Bank,648,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mongolia
+World Bank,649,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ME in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Montenegro
+World Bank,650,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Morocco
+World Bank,651,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Mozambique
+World Bank,652,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Myanmar
+World Bank,653,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Namibia
+World Bank,654,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Naoero
+World Bank,655,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Nepal
+World Bank,656,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Netherlands
+World Bank,657,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,New Caledonia
+World Bank,658,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,New Zealand
+World Bank,659,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Nicaragua
+World Bank,660,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NI in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Nicaragua
+World Bank,661,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Niger
+World Bank,662,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Nigeria
+World Bank,663,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,North Macedonia
+World Bank,664,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MP in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Northern Mariana Islands
+World Bank,665,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for NO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Norway
+World Bank,666,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for OM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Oman
+World Bank,667,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Pakistan
+World Bank,668,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Palau
+World Bank,669,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Panama
+World Bank,670,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Papua New Guinea
+World Bank,671,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Paraguay
+World Bank,672,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Peru
+World Bank,673,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Philippines
+World Bank,674,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Poland
+World Bank,675,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Portugal
+World Bank,676,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for PR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Puerto Rico (US)
+World Bank,677,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for QA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Qatar
+World Bank,678,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for RO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Romania
+World Bank,679,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for RU in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Russian Federation
+World Bank,680,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for RW in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Rwanda
+World Bank,681,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for WS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Samoa
+World Bank,682,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,San Marino
+World Bank,683,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ST in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sao Tome and Principe
+World Bank,684,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Saudi Arabia
+World Bank,685,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Senegal
+World Bank,686,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for RS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Serbia
+World Bank,687,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Seychelles
+World Bank,688,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sierra Leone
+World Bank,689,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Singapore
+World Bank,690,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sint Maarten (Dutch part)
+World Bank,691,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SX in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sint Maarten (Dutch part)
+World Bank,692,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Slovak Republic
+World Bank,693,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SI in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Slovenia
+World Bank,694,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SB in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Solomon Islands
+World Bank,695,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,"Somalia, Fed. Rep."
+World Bank,696,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ZA in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,South Africa
+World Bank,697,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SS in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,South Sudan
+World Bank,698,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for ES in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Spain
+World Bank,699,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LK in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sri Lanka
+World Bank,700,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Kitts and Nevis
+World Bank,701,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for KN in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Kitts and Nevis
+World Bank,702,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for LC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Lucia
+World Bank,703,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for MF in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Martin (French part)
+World Bank,704,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Vincent and the Grenadines
+World Bank,705,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for VC in 2024 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,St. Vincent and the Grenadines
+World Bank,706,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SD in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sudan
+World Bank,707,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Suriname
+World Bank,708,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SE in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Sweden
+World Bank,709,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for CH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Switzerland
+World Bank,710,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for SY in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Syrian Arab Republic
+World Bank,711,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TJ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Tajikistan
+World Bank,712,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TZ in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Tanzania
+World Bank,713,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TH in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Thailand
+World Bank,714,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TL in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Timor-Leste
+World Bank,715,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TG in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Togo
+World Bank,716,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TO in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Tonga
+World Bank,717,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TT in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Trinidad and Tobago
+World Bank,718,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TN in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Tunisia
+World Bank,719,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TR in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Turkiye
+World Bank,720,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TM in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Turkmenistan
+World Bank,721,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TC in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Turks and Caicos Islands
+World Bank,722,World Bank API (api.worldbank.org/v2),26,SH.H2O.BASW.ZS,MISSING_VALUE,INFO,No value reported for TV in 2025 (null observation).,RESOLVED,,2026-09-26 22:50:28.410166+05:30,Tuvalu

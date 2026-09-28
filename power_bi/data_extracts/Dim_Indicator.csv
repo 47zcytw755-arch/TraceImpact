@@ -1,0 +1,5 @@
+indicator_code,indicator_name,topic,description,unit_of_measure,source_organization,created_at
+NY.GDP.PCAP.CD,GDP per capita (current US$),Economic Policy & Debt,GDP per capita is gross domestic product divided by midyear population.,current US$,World Bank World Development Indicators,2026-09-26 22:42:02.257697+05:30
+SP.POP.TOTL,"Population, total",Health: Population,Total population is based on the de facto definition of population.,people,World Bank World Development Indicators,2026-09-26 22:42:02.257697+05:30
+SP.DYN.LE00.IN,"Life expectancy at birth, total (years)",Health,Life expectancy at birth indicates the number of years a newborn infant would live.,years,World Bank World Development Indicators,2026-09-26 22:42:02.257697+05:30
+SH.H2O.BASW.ZS,People using at least basic drinking water services (% of population),Environment: Water and sanitation,The percentage of people using at least basic water services.,% of population,World Bank World Development Indicators,2026-09-26 22:42:02.257697+05:30

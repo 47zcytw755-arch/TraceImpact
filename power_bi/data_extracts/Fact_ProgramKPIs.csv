@@ -1,0 +1,6 @@
+program_id,program_name,target_category,budget_allocated,beneficiaries_served,total_attendance_records,total_session_hours,avg_session_hours,attendance_per_beneficiary,total_expenses,budget_utilization_pct,cost_per_beneficiary,cost_per_beneficiary_hour,total_evaluations,avg_baseline_score,avg_exit_score,avg_improvement,avg_improvement_pct
+PRG-001,Digital Literacy Initiative,Education,150000.00,42,123,224.00,1.82,2.93,130311.93,86.87,3102.67,581.75,14,35.38,60.41,25.04,85.09
+PRG-002,Women Vocational Sewing,Livelihood,220000.00,42,116,217.50,1.88,2.76,182570.35,82.99,4346.91,839.40,6,39.62,64.50,24.88,64.97
+PRG-003,Youth Coding Bootcamp,Skill Development,180000.00,43,113,227.50,2.01,2.63,115177.59,63.99,2678.55,506.28,6,34.96,64.78,31.40,95.45
+PRG-004,Elderly Healthcare Outreach,Healthcare,120000.00,44,128,259.00,2.02,2.91,89977.29,74.98,2044.94,347.40,7,35.84,64.23,28.39,83.98
+PRG-005,Community Nutrition Drive,Health & Nutrition,95000.00,43,132,255.00,1.93,3.07,148913.20,156.75,3463.10,583.97,6,42.40,64.88,21.75,54.16

@@ -1,0 +1,203 @@
+// ============================================================================
+// TRACEIMPACT 2.0 — COMPLETE DAX MEASURES LIBRARY
+// Centralized under dedicated `_Measures` Table
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// 01_Executive Folder
+// ----------------------------------------------------------------------------
+
+Total Programs = 
+// Provenance: [REAL]
+COUNTROWS(Dim_Program)
+
+Total Beneficiaries = 
+// Provenance: [REAL]
+SUM(Fact_ProgramKPIs[beneficiaries_served])
+
+Total Attendance Sessions = 
+// Provenance: [REAL]
+SUM(Fact_ProgramKPIs[total_attendance_records])
+
+Total Session Hours = 
+// Provenance: [REAL]
+SUM(Fact_ProgramKPIs[total_session_hours])
+
+Total Program Expenses = 
+// Provenance: [REAL]
+SUM(Fact_ProgramKPIs[total_expenses])
+
+Total Budget Allocated = 
+// Provenance: [REAL]
+SUM(Fact_ProgramKPIs[budget_allocated])
+
+Budget Utilization % = 
+// Provenance: [MEASURED]
+DIVIDE([Total Program Expenses], [Total Budget Allocated], 0) * 100
+
+Avg Outcome Score Improvement = 
+// Provenance: [MEASURED]
+AVERAGE(Fact_ProgramKPIs[avg_improvement])
+
+Avg Outcome Improvement % = 
+// Provenance: [MEASURED]
+AVERAGE(Fact_ProgramKPIs[avg_improvement_pct])
+
+Total Synthetic Records = 
+// Provenance: [SIMULATED]
+CALCULATE(
+    MAX(Fact_ExecKPIs[total_records]),
+    Fact_ExecKPIs[pipeline_name] = "Synthetic Nonprofit Pipeline"
+)
+
+Synthetic Clean Record Rate % = 
+// Provenance: [MEASURED]
+CALCULATE(
+    MAX(Fact_ExecKPIs[dq_score_pct]),
+    Fact_ExecKPIs[pipeline_name] = "Synthetic Nonprofit Pipeline"
+)
+
+Total World Bank Observations = 
+// Provenance: [REAL]
+COUNTROWS(Fact_PublicExplorer)
+
+Overall Data Quality Score = 
+// Provenance: [MEASURED]
+AVERAGE(Fact_ExecKPIs[dq_score_pct])
+
+// ----------------------------------------------------------------------------
+// 02_BeforeAfter Folder
+// ----------------------------------------------------------------------------
+
+Raw Issues Count = 
+// Provenance: [MEASURED]
+SUM(Fact_BeforeAfter[raw_issues_count])
+
+Resolved Issues Count = 
+// Provenance: [MEASURED]
+SUM(Fact_BeforeAfter[processed_resolved_issues])
+
+Overall Resolution Rate % = 
+// Provenance: [MEASURED]
+DIVIDE([Resolved Issues Count], [Raw Issues Count], 0) * 100
+
+Quarantined Records Count = 
+// Provenance: [MEASURED]
+SUM(Fact_BeforeAfter[processed_quarantined_records])
+
+// ----------------------------------------------------------------------------
+// 03_DataQuality Folder
+// ----------------------------------------------------------------------------
+
+Total DQ Issues = 
+// Provenance: [MEASURED]
+COUNTROWS(Fact_DataQuality)
+
+Error Count = 
+// Provenance: [MEASURED]
+CALCULATE([Total DQ Issues], Fact_DataQuality[severity] = "ERROR")
+
+Warning Count = 
+// Provenance: [MEASURED]
+CALCULATE([Total DQ Issues], Fact_DataQuality[severity] = "WARNING")
+
+Info Count = 
+// Provenance: [MEASURED]
+CALCULATE([Total DQ Issues], Fact_DataQuality[severity] = "INFO")
+
+Open Issues Count = 
+// Provenance: [MEASURED]
+CALCULATE([Total DQ Issues], Fact_DataQuality[status] = "OPEN")
+
+Resolved DQ Count = 
+// Provenance: [MEASURED]
+CALCULATE([Total DQ Issues], Fact_DataQuality[status] = "RESOLVED")
+
+// ----------------------------------------------------------------------------
+// 04_PublicData Folder
+// ----------------------------------------------------------------------------
+
+Countries Reporting = 
+// Provenance: [REAL]
+DISTINCTCOUNT(Fact_PublicExplorer[country_code])
+
+Indicator Average Value = 
+// Provenance: [REAL]
+AVERAGE(Fact_PublicExplorer[indicator_value])
+
+Year-over-Year Growth % = 
+// Provenance: [REAL]
+AVERAGE(Fact_PublicExplorer[yoy_growth_pct])
+
+// ----------------------------------------------------------------------------
+// 05_MLAnomalies Folder
+// ----------------------------------------------------------------------------
+
+ML Flagged Anomaly Count = 
+// Provenance: [MEASURED]
+CALCULATE(COUNTROWS(Fact_MLAnomalies), Fact_MLAnomalies[is_anomaly] = TRUE)
+
+Anomaly Rate % = 
+// Provenance: [MEASURED]
+DIVIDE([ML Flagged Anomaly Count], [Total World Bank Observations], 0) * 100
+
+Average Anomaly Score = 
+// Provenance: [MEASURED]
+AVERAGE(Fact_MLAnomalies[anomaly_score])
+
+// ----------------------------------------------------------------------------
+// 06_AIInvestigations Folder
+// ----------------------------------------------------------------------------
+
+Total AI Investigations = 
+// Provenance: [MEASURED]
+COUNTROWS(Fact_AIInvestigations)
+
+AI Insights Generated = 
+// Provenance: [MEASURED]
+CALCULATE(
+    DISTINCTCOUNT(Fact_AIInvestigations[insight_id]),
+    NOT(ISBLANK(Fact_AIInvestigations[insight_id]))
+)
+
+// ----------------------------------------------------------------------------
+// 07_Ingestion Folder
+// ----------------------------------------------------------------------------
+
+Total Ingestion Runs = 
+// Provenance: [MEASURED]
+COUNTROWS(Fact_IngestionMonitor)
+
+Successful Ingestion Runs = 
+// Provenance: [MEASURED]
+CALCULATE([Total Ingestion Runs], Fact_IngestionMonitor[run_status] = "COMPLETED")
+
+Average Ingestion Run Duration (s) = 
+// Provenance: [MEASURED]
+AVERAGE(Fact_IngestionMonitor[duration_seconds])
+
+// ----------------------------------------------------------------------------
+// 08_StressTest Folder
+// ----------------------------------------------------------------------------
+
+Measured Throughput RPS = 
+// Provenance: [MEASURED]
+MAX(Fact_StressTest[throughput_rps])
+
+Measured Peak Memory MB = 
+// Provenance: [MEASURED]
+MAX(Fact_StressTest[peak_ram_mb])
+
+// ----------------------------------------------------------------------------
+// 09_Lineage Folder
+// ----------------------------------------------------------------------------
+
+Lineage Success Rate % = 
+// Provenance: [MEASURED]
+VAR TotalLineageRecs = COUNTROWS(Fact_Lineage)
+VAR ValidLineageRecs = CALCULATE(
+    COUNTROWS(Fact_Lineage),
+    NOT(ISBLANK(Fact_Lineage[response_hash]))
+)
+RETURN
+DIVIDE(ValidLineageRecs, TotalLineageRecs, 0) * 100

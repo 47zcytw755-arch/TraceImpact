@@ -1,184 +1,186 @@
-# TraceImpact — System Architecture & Technical Specifications
+# TraceImpact 2.0 — System Architecture & Technical Specifications
 
-**Document Version:** 1.0.0  
-**Status:** Production Ready  
-**Milestone:** Complete Day 1–7 Portfolio Architecture  
-
----
-
-## 1. Executive Summary & Architectural Philosophy
-
-**TraceImpact** is an enterprise-grade data platform engineered for nonprofit organizations and philanthropic grant-makers. Traditional data stacks in the social sector frequently fail auditability standards because dirty data is discarded during ad-hoc transformations, and dashboard metrics cannot be traced back to original spreadsheets.
-
-TraceImpact enforces three inviolable architectural principles:
-1. **Raw Data Immutability:** Source datasets are ingested verbatim, hashed via SHA-256, and stored in JSONB staging. Raw files on disk are never altered.
-2. **Defensible Data Governance:** Anomalies (duplicates, invalid numbers, missing fields) are cataloged into an auditable issue log with severity and status, rather than being silently dropped.
-3. **1-to-1 Cryptographic Lineage:** Every KPI and domain entity maintains an unbroken pointer (`source_record_id`) connecting high-level reports back to the exact physical CSV row on disk.
+> **Document Version:** 2.0.0  
+> **Status:** RELEASE VALIDATED  
+> **Milestone:** Complete Production-Oriented Portfolio Architecture (Synthetic Operations + Live Public Data + ML + AI + Power BI)
 
 ---
 
-## 2. End-to-End Medallion Architecture
+## 1. System Overview & Core Philosophy
+
+**TraceImpact** is a portfolio-scale, defensible data engineering and intelligence platform designed for nonprofit operations, philanthropic impact verification, and public development analytics.
+
+Traditional data stacks fail auditability standards because dirty data is discarded during ad-hoc transformations and dashboard metrics cannot be traced back to original spreadsheets or API payloads. TraceImpact enforces four inviolable architectural principles:
+1. **Raw Data Immutability:** Source datasets and REST API payloads are ingested verbatim, hashed via SHA-256, and staged in PostgreSQL JSONB tables. Raw files on disk are never altered.
+2. **Defensible Data Quality Triage:** Anomalies (duplicates, invalid numbers, missing values, orphan foreign keys) are cataloged into an auditable issue log with severity (`ERROR`, `WARNING`, `INFO`) and status (`OPEN`, `RESOLVED`, `QUARANTINED`), rather than being silently dropped.
+3. **1-to-1 Cryptographic Lineage:** Every KPI, domain entity, and AI insight maintains an unbroken pointer (`source_record_id` / `response_hash`) connecting high-level reports back to the physical CSV row or raw API payload.
+4. **Deterministic Evidence Grounding for AI & ML:** Machine learning anomaly scores are purely descriptive, and AI explanations are strictly bound to pre-calculated empirical database metrics with non-causality guarantees.
+
+---
+
+## 2. End-to-End Medallion Architecture Diagram
 
 ```mermaid
 flowchart TD
-    subgraph BRONZE ["1. Ingestion & Provenance Layer (Bronze)"]
+    subgraph BRONZE ["1. Ingestion & Bronze Layer (Raw Staging)"]
         CSV["Raw Source CSVs\n(data/raw/)"]
-        HASH["SHA-256 Fingerprinting\n(hashlib)"]
-        SF["source_files Table\n(file_id, file_hash, total_rows)"]
+        WB_API["World Bank REST API\n(api.worldbank.org/v2)"]
+        HASH_CSV["SHA-256 Checksum\n(source_files)"]
+        HASH_API["SHA-256 Digest\n(api_raw_responses)"]
         SR["source_records Table\n(record_id, file_id, row_index, raw_data JSONB)"]
-        CSV --> HASH --> SF
-        CSV --> SR
-        SF -.->|file_id FK| SR
+        AR["api_raw_responses Table\n(response_id, run_id, response_hash, raw_payload JSONB)"]
+        
+        CSV --> HASH_CSV --> SR
+        WB_API --> HASH_API --> AR
     end
 
-    subgraph SILVER ["2. Normalization & Quality Triage Layer (Silver)"]
-        CLEAN["Non-Destructive Cleaning Engine\n(src/cleaning/)"]
+    subgraph SILVER ["2. Quality Triage & Silver Layer (Clean Relational)"]
+        CLEAN_SYN["Non-Destructive Cleaning Engine\n(src/cleaning/)"]
+        VAL_WB["World Bank Validator\n(src/quality/)"]
         PII["Salted SHA-256\nPseudonymization"]
-        DQI["data_quality_issues Table\n(177 cataloged anomalies)"]
-        PROG["programs"]
-        BEN["beneficiaries\n(anonymized_code)"]
-        ATT["attendance"]
-        EXP["expenses"]
-        OUTC["outcomes"]
-        SR --> CLEAN
-        CLEAN --> PII --> BEN
-        CLEAN --> PROG
-        CLEAN --> ATT
-        CLEAN --> EXP
-        CLEAN --> OUTC
-        CLEAN -->|Catalog Anomalies| DQI
-        DQI -.->|record_id FK| SR
-        BEN -.->|source_record_id FK| SR
-        ATT -.->|source_record_id FK| SR
-        EXP -.->|source_record_id FK| SR
-        OUTC -.->|source_record_id FK| SR
+        DQI["data_quality_issues Table\n(177 Cataloged Issues)"]
+        WB_DQI["world_bank_data_quality_issues Table\n(722 Public Data Notices)"]
+        DOM_SYN["Normalized Nonprofit Tables\n(programs, beneficiaries, attendance, expenses, outcomes)"]
+        DOM_WB["Normalized Public Data Tables\n(world_bank_countries, indicators, observations)"]
+        
+        SR --> CLEAN_SYN --> PII --> DOM_SYN
+        CLEAN_SYN -->|Quarantine / Defects| DQI
+        AR --> VAL_WB --> DOM_WB
+        VAL_WB -->|Notices / Quarantines| WB_DQI
     end
 
     subgraph GOLD ["3. Analytical & Governance View Layer (Gold)"]
-        V_REACH["v_program_reach"]
-        V_ATT["v_attendance_consistency"]
-        V_COST["v_cost_per_beneficiary"]
-        V_HOUR["v_cost_per_beneficiary_hour"]
-        V_OUT["v_outcome_improvement"]
-        V_KPIS["v_program_kpis (16 metrics)"]
-        V_DQ_SUM["v_data_quality_summary"]
-        V_DQ_BLOCK["v_data_quality_blocking"]
-        PROG & BEN & ATT & EXP & OUTC --> V_REACH & V_ATT & V_COST & V_HOUR & V_OUT --> V_KPIS
-        DQI --> V_DQ_SUM & V_DQ_BLOCK
+        V_SYN["Nonprofit KPI Views\n(v_program_reach, v_cost_per_beneficiary, v_outcome_improvement, v_program_kpis)"]
+        V_WB["Public Analytics Views\n(v_world_bank_country_trends, v_world_bank_regional_comparison)"]
+        V_PBI["Power BI Analytical Views\n(v_pbi_executive_kpis, v_pbi_data_quality_fact, v_pbi_public_data_explorer)"]
+        ML["Isolation Forest ML Model\n(src/ml/anomaly_detector.py)"]
+        AI["Grounded AI Investigator\n(src/ai/investigator.py)"]
+        ANOM_TBL["world_bank_anomalies Table\n(783 ML Flagged Anomalies)"]
+        AI_TBL["ai_investigations & ai_insights Tables\n(6 Investigations, 33 Insights)"]
+        
+        DOM_SYN --> V_SYN & V_PBI
+        DOM_WB --> V_WB & V_PBI
+        DOM_WB --> ML --> ANOM_TBL
+        ANOM_TBL --> AI --> AI_TBL
     end
 
-    subgraph PRESENTATION ["4. Interactive Presentation Layer (Streamlit)"]
-        APP["Portal Overview\n(app.py)"]
-        P1["1. Executive Summary\n(pages/1_Executive_Summary.py)"]
-        P2["2. Program Analysis\n(pages/2_Program_Analysis.py)"]
-        P3["3. Data Quality Scorecard\n(pages/3_Data_Quality.py)"]
-        P4["4. Traceability Proof Engine\n(pages/4_Traceability.py)"]
-        P5["5. AI Query Assistant\n(pages/5_AI_Query_Assistant.py)"]
-        V_KPIS & V_DQ_SUM --> APP & P1 & P2
-        V_DQ_SUM & V_DQ_BLOCK --> P3
-        SR & SF --> P4
-    end
-
-    subgraph AI_LAYER ["5. AI Natural-Language Query Layer"]
-        USER["Executive / Donor Query\n('Which programs are over budget?')"]
-        ENGINE["AIAssistantEngine\n(src/dashboard/ai_assistant.py)"]
-        SAFETY["SQL Validator & Intent Mapper\n(Read-only, injection-safe)"]
-        USER --> ENGINE --> SAFETY --> GOLD
-        GOLD --> ENGINE --> P5
+    subgraph PRESENTATION ["4. Multi-Interface Presentation Layer"]
+        ST["Streamlit Interactive Control Center\n(Port: 8501 / app.py + 6 Pages)"]
+        PBI["Power BI Executive Dashboard\n(9 Specialized Report Pages)"]
+        
+        V_SYN & V_WB & V_PBI & ANOM_TBL & AI_TBL --> ST
+        V_PBI & ANOM_TBL & AI_TBL --> PBI
     end
 ```
 
 ---
 
-## 3. Detailed Architectural Layers
+## 3. Detailed Component Architecture
 
-### Layer 1: Ingestion & Provenance (Bronze)
-- **Input Datasets:** Ingests CSV files representing operational programs, community members, attendance registers, expense receipts, and pre/post survey outcomes.
-- **Cryptographic Provenance:** Calculates SHA-256 checksums before reading content. Registers file fingerprints in `source_files(file_hash)` to detect file tampering.
-- **Immutable JSONB Staging:** Every row is stored verbatim in `source_records(raw_data)` alongside its 1-based physical coordinate `row_index`. This guarantees that original data is preserved exactly as received.
+### 3.1 Raw Ingestion & Bronze Staging Layer
+- **Purpose**: Verbatim capture of incoming data files and REST API responses with cryptographic provenance.
+- **Technology**: Python 3.10+ (`hashlib`, `requests`, `psycopg2`), PostgreSQL JSONB.
+- **Inputs**: Raw CSV spreadsheets (`data/raw/*.csv`), World Bank REST API responses.
+- **Outputs**: Staged records in `source_files`, `source_records`, `api_ingestion_runs`, `api_raw_responses`.
+- **Dependencies**: PostgreSQL 14+, local filesystem.
+- **Failure Modes**: Missing input files, network timeouts, HTTP 429 rate limits, malformed JSON.
+- **Security Considerations**: File hashes verify data integrity; no cleartext credentials stored.
+- **Traceability**: Calculates SHA-256 hash before reading file; records 1-based line coordinates.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 2: Cleaning, Validation & PII Pseudonymization (Silver)
-- **Declarative Normalization:** Strips currency symbols (`₹`, `,`), standardizes multiple date formats (`YYYY-MM-DD`, `DD/MM/YYYY`, text formats), and maps ambiguous program aliases to standardized master keys (`PRG-001` through `PRG-005`).
-- **PII Protection:** To protect vulnerable community members, personal identifiers (full name, phone number) are never exposed to reporting views. Instead, an `anonymized_code` is generated via HMAC/salted SHA-256 hashing.
-- **Observability Audit Log (`data_quality_issues`):** Anomaly rules catalog defects across three severity tiers:
-  - `ERROR` (10 items): Severe violations (e.g. duplicate attendance check-in, negative expenses, scores > 100) quarantined from domain tables.
-  - `WARNING` (12 items): Incompleteness items (e.g. missing baseline scores in outcome surveys).
-  - `INFO` (155 items): Normalization actions (e.g. standardized casing, cleaned whitespace).
+### 3.2 Cleaning, Normalization & PII Protection Layer (Silver)
+- **Purpose**: Deterministic normalization of messy field data, PII pseudonymization, and domain constraint enforcement.
+- **Technology**: Pandas, regular expressions, HMAC/SHA-256.
+- **Inputs**: `source_records.raw_data` JSONB.
+- **Outputs**: Cleaned CSV artifacts (`data/processed/*.csv`), normalized relational domain rows (`programs`, `beneficiaries`, `attendance`, `expenses`, `outcomes`).
+- **Dependencies**: `source_records`, `source_files`.
+- **Failure Modes**: Unmapped program aliases, invalid dates, negative expenses, duplicate participant IDs.
+- **Security Considerations**: Community member full names and phone numbers are excluded from domain tables and replaced with salted SHA-256 `anonymized_code`.
+- **Traceability**: Every domain record carries a foreign key `source_record_id` pointing to `source_records.record_id`.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 3: Analytical & Governance Views (Gold)
-- **Elimination of Row Multiplication:** Relational queries joining 1-to-many fact tables (`attendance`, `expenses`, `outcomes`) risk Cartesian product explosion. TraceImpact eliminates this by computing aggregations within dedicated Common Table Expressions (CTEs) before performing 1-to-1 joins on `program_id`.
-- **Division Safety:** Financial and attendance ratios leverage `NULLIF(denominator, 0)` to guarantee queries never throw division-by-zero runtime exceptions.
-- **Contract-Stable Views:** 6 analytical views and 5 quality views decouple database physical storage from presentation components.
+### 3.3 Data Quality & Observability Triage Engine
+- **Purpose**: Systematically catalog and categorize every data anomaly rather than dropping records.
+- **Technology**: Python rule engine, PostgreSQL relational tables.
+- **Inputs**: Raw records and candidate cleaned objects.
+- **Outputs**: Cataloged issues in `data_quality_issues` and `world_bank_data_quality_issues`.
+- **Severities**:
+  - `ERROR`: Blocking defects quarantined from domain tables (10 synthetic errors).
+  - `WARNING`: Non-blocking defects with missing optional data (12 synthetic warnings).
+  - `INFO`: Formatting notices and API missing values (155 synthetic + 722 World Bank notices).
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 4: Interactive Dashboard (Presentation)
-- Built on **Streamlit** and modularized into 5 distinct operational views:
-  - `app.py`: Database connectivity health check, platform volume counters, guided workflow routes.
-  - `pages/1_Executive_Summary.py`: 8 KPI cards and 5 visual analytics charts.
-  - `pages/2_Program_Analysis.py`: Dynamic program selector, 12-metric scorecard, budget utilization monitor, and 4-domain tabbed explorer.
-  - `pages/3_Data_Quality.py`: Observability scorecard, multi-parameter issue triage filter table.
-  - `pages/4_Traceability.py`: 1-to-1 cryptographic proof engine.
-  - `pages/5_AI_Query_Assistant.py`: Natural language Q&A and SQL explainer.
+### 3.4 Analytical Views & Gold Layer
+- **Purpose**: Centralize KPI calculations, eliminate Cartesian row multiplication, and enforce division safety.
+- **Technology**: PostgreSQL SQL Views utilizing Common Table Expressions (CTEs), `NULLIF()`, and window functions (`LAG()`).
+- **Key Views**:
+  - `v_program_reach`: Unique participants and attendance session hours per program.
+  - `v_cost_per_beneficiary`: Program financial efficiency.
+  - `v_outcome_improvement`: Baseline vs exit survey scores and percentage improvement.
+  - `v_program_kpis`: Master 16-metric rollup per program.
+  - `v_world_bank_country_trends`: Multi-year time-series with YoY growth %.
+  - `v_pbi_*`: 9 dedicated views optimized for Power BI import and DirectQuery.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 5: Cryptographic 1-to-1 Lineage Engine
-Enables bidirectional drilldown from any metric to the physical disk file:
-```
-Dashboard KPI / Report
-        ↓
-PostgreSQL Analytical View (v_program_reach, v_program_kpis)
-        ↓
-Domain Table Row (beneficiaries, attendance, expenses, outcomes)
-        ↓ [Foreign Key: source_record_id]
-Raw Staging Table (source_records)
-        ↓ [Stores verbatim raw_data JSONB and 1-based row_index]
-File Provenance Table (source_files)
-        ↓ [Stores SHA-256 cryptographic fingerprint]
-Physical Raw CSV on Local Disk (data/raw/<filename>)
-        [Exact row index read-only verification]
-```
+### 3.5 Machine Learning Anomaly Detection Layer
+- **Purpose**: Detect multivariate statistical divergence in country-year development indicators.
+- **Technology**: Python (`scikit-learn`), `IsolationForest`, `joblib`.
+- **Features (4-Dimensional Vector)**:
+  1. `z_score`: Standard deviations from country historical trajectory.
+  2. `yoy_growth_pct`: Year-over-Year percentage change.
+  3. `peer_z_score`: Deviation relative to global peer group in the same reporting year.
+  4. `hist_ratio`: Ratio against country historical mean.
+- **Outputs**: Model registry in `ml_anomaly_models`, serialized weights in `models/`, scored rows in `world_bank_anomalies`.
+- **Non-Causality Boundary**: Detects empirical statistical divergence without claiming real-world causation.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 6: AI Natural Language Query Assistant
-- Translates donor and executive inquiries into safe SQL against the approved view layer.
-- Enforces strict read-only execution: permits only `SELECT` and `WITH` statements, rejecting all DDL/DML tokens (`DROP`, `DELETE`, `INSERT`, `UPDATE`, `ALTER`, `TRUNCATE`).
-- Prevents multi-statement chaining and comment injection attacks.
-- Outputs human-readable SQL code blocks alongside plain-English architectural explanations.
+### 3.6 Grounded AI Investigation Layer
+- **Purpose**: Synthesize complex anomalous multi-indicator patterns into actionable executive briefings.
+- **Technology**: Python (`src/ai/investigator.py`), PostgreSQL JSONB, LLM integration or grounded rule-based engine.
+- **Inputs**: Anomalies from `world_bank_anomalies` + pre-calculated historical baselines.
+- **Outputs**: Structured investigations in `ai_investigations`, actionable bulletins in `ai_insights`.
+- **Grounding Invariant**: Strictly separates **VERIFIED FACTS** from **CONTEXTUAL HYPOTHESES** and appends mandatory non-causality notices.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 7: TraceImpact 2.0 Automated Real Public Data Pipeline
-- Ingests real-world macroeconomic and social development indicators from the World Bank API.
-- Implements automated configurable scheduling (default 24h daily interval via `src/ingestion/scheduler.py`).
-- Bronze staging stores verbatim raw JSON responses with SHA-256 cryptographic fingerprints (`api_raw_responses`).
-- Data quality validation layer quarantines invalid numbers and logs missing values in `world_bank_data_quality_issues`.
-- Idempotent upserts populate normalized PostgreSQL domain tables (`world_bank_countries`, `world_bank_indicators`, `world_bank_observations`).
+### 3.7 AI Query Assistant & Security Layer
+- **Purpose**: Natural-language to SQL translation for non-technical users.
+- **Technology**: Python (`src/dashboard/ai_assistant.py`), SQL parser.
+- **Security Invariant**: Read-only token enforcement (strictly `SELECT` and `WITH`), blocklist of DDL/DML keywords, anti-chaining filter, and approved Gold view whitelist.
+- **Current Status**: ✅ IMPLEMENTED.
 
-### Layer 8: Machine Learning Anomaly Detection
-- Leverages scikit-learn's `IsolationForest` to detect statistically extreme deviations in country-year indicator trajectories.
-- Extracts multi-year historical Z-scores, YoY growth rates, and cross-country peer group deviations via `WorldBankFeatureExtractor`.
-- Persists model versions, hyperparameters, and evaluation metrics in `ml_anomaly_models`.
-- Records detected anomalies in `world_bank_anomalies` with continuous anomaly decision scores and feature snapshots.
-- **Strict Non-Causality Rule**: Detects empirical divergence from historical baselines without making causal assertions.
-
-### Layer 9: Grounded AI Investigation & Insight Generation
-- `WorldBankInvestigator` retrieves anomalous observations, historical trajectories, and co-occurring cross-indicator context.
-- Generates structured evidence dictionaries and synthesizes findings strictly separating verified **FACTS** from contextual **HYPOTHESES (INTERPRETATION)**.
-- Enforces a mandatory **Non-Causality Disclaimer** on all generated outputs.
-- Persists investigations into `ai_investigations` and actionable summaries into `ai_insights`.
-- Unifies full 7-step lineage from AI Insight back to immutable World Bank API response hash via `v_world_bank_ai_lineage`.
-
----
-
-## 4. Security & Privacy Framework
-
-1. **Zero Hard-Coded Credentials:** All database credentials are managed via environment variables in `.env` and loaded securely through `src/config.py`.
-2. **Git Hygiene:** `.env`, `.venv/`, `__pycache__/`, and `.pytest_cache/` are verified untracked and excluded in `.gitignore`.
-3. **UI Sanitization:** Connection monitors expose only host, database name, and user; passwords and salt keys are never rendered.
-4. **SQL Injection Prevention:** 100% of dynamic queries use parameterized SQLAlchemy binds (`:bind_name`), completely preventing SQL injection.
-5. **PII Isolation:** Full names and contact details remain locked in raw staging; business tables use one-way salted SHA-256 hashes (`anonymized_code`).
+### 3.8 Presentation Layer (Streamlit + Power BI)
+- **Streamlit (`http://localhost:8501`)**: Technical/operational control plane with 6 pages (`app.py`, `1_Executive_Summary.py`, `2_Program_Analysis.py`, `3_Data_Quality.py`, `4_Traceability.py`, `5_AI_Query_Assistant.py`, `6_Public_Data_Explorer.py`).
+- **Power BI Desktop & Web**: Executive reporting layer with 9 pages, 32 DAX measures, M scripts, high-contrast dark theme, and 100% verified PostgreSQL data parity.
+- **Current Status**: ✅ IMPLEMENTED.
 
 ---
 
-## 5. Performance & Scalability Profile
+## 4. Current vs Proposed Future Cloud Architecture
 
-- **Sub-15ms Query Response:** Analytical views leverage PostgreSQL indexes on `country_code`, `indicator_code`, `year`, and `observation_id`.
-- **Sub-Second ML Training & Inference:** Isolation Forest model fits on 5,588 observations in 0.24s and evaluates the full corpus in 0.13s.
-- **Memory Efficient:** Staging records are queried strictly by primary key (`observation_id`, `record_id`); bulk tables are never loaded unnecessarily into memory.
-- **Connection Pooling:** Thread-safe connection pool manages checkout and release across concurrent Streamlit sessions.
-- **Comprehensive Automated Test Execution:** Complete 94-test automated test suite executes in ~2.0 seconds.
+| Architectural Dimension | Current Implementation (TraceImpact 2.0) | Proposed Future Cloud Architecture |
+| :--- | :--- | :--- |
+| **Hosting & Infrastructure** | Localhost / Single-Node Server | Cloud Virtual Network (AWS VPC / Azure VNet) |
+| **Database Engine** | Local PostgreSQL 14+ Instance | Managed Cloud DB (Azure Database for PostgreSQL / AWS RDS) |
+| **Raw Bronze Storage** | Local Disk (`data/raw/`) + Database JSONB | Cloud Object Store (Azure Blob / ADLS Gen2 / AWS S3) |
+| **Pipeline Orchestration** | Pure-Python Background Scheduler | Cloud Orchestrator (Azure Data Factory / AWS Step Functions) |
+| **Machine Learning** | Local Scikit-Learn Isolation Forest | Managed ML Endpoint (Azure ML / AWS SageMaker / Vertex AI) |
+| **AI Investigation** | Local Grounded Engine + API client | Managed LLM API (Azure OpenAI / Google Vertex AI Gemini) |
+| **BI Presentation** | Local Streamlit + Power BI Desktop / Web | Hosted Streamlit in Container + Power BI Service Workspace |
+| **Monitoring & Logs** | PostgreSQL Audit Tables + Python Logging | Cloud Telemetry (Azure Monitor / AWS CloudWatch / Datadog) |
+
+---
+
+## 5. Security, Observability & Performance Metrics
+
+1. **Security**:
+   - Zero hardcoded passwords; environment-driven configuration via `.env` and `src/config.py`.
+   - 100% parameterized SQLAlchemy queries eliminating SQL injection.
+   - PII pseudonymized via salted SHA-256 before reaching domain tables.
+2. **Observability**:
+   - Every ingestion run recorded in `api_ingestion_runs` with start/end timestamps, records inserted/quarantined, and error messages.
+   - Every quality defect cataloged in `data_quality_issues` with column name, raw value, and severity.
+3. **Empirical Performance Profile**:
+   - **Sub-15ms Query Latency**: Indexed Gold views respond in <15ms on local PostgreSQL.
+   - **Sub-Second ML Execution**: Isolation Forest fits 5,588 records in 0.24s; inference executes in 0.13s.
+   - **High-Volume Throughput**: 100,000-record stress test processed in 5.23s (19,120 RPS) with peak memory under 417 MB.
+   - **Rapid Test Suite**: Complete 94-test regression suite executes in ~2.0s.

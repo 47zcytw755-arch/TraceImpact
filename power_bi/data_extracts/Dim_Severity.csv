@@ -1,0 +1,4 @@
+severity,severity_rank,severity_label
+ERROR,1,Critical Blocking Error
+WARNING,2,Non-Blocking Warning
+INFO,3,Informational Audit Notice

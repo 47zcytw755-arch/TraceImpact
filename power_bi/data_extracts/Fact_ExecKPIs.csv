@@ -1,0 +1,3 @@
+pipeline_name,total_records,valid_records,invalid_records,dq_score_pct,total_issues_detected,total_issues_resolved,anomalies_detected,entities_count,latest_ingestion_status,last_updated_at
+Synthetic Nonprofit Pipeline,784,774,10,98.72,177,149,0,5,COMPLETED,2026-09-27 13:18:29.597419+05:30
+World Bank Public Data Pipeline,5588,5588,0,100.00,722,722,783,264,COMPLETED,2026-09-27 13:17:25.585641+05:30

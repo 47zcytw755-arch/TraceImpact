@@ -1,0 +1,4 @@
+status,status_rank,status_label
+OPEN,1,Open Issue
+RESOLVED,2,Resolved / Auto-Cleaned
+QUARANTINED,3,Quarantined / Excluded
