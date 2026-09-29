@@ -23,6 +23,7 @@ from src.dashboard.queries import (
     get_world_bank_indicator_summary_df,
     get_world_bank_latest_table,
     get_world_bank_lineage,
+    get_api_ingestion_runs_history,
 )
 from src.dashboard.formatting import format_number
 

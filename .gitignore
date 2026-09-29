@@ -45,3 +45,23 @@ models/*.joblib
 
 # Derived Processed Data (regenerable from raw + pipeline)
 data/processed/
+
+# Local secrets and database backups
+.env.local.backup
+traceimpact_backup.dump
+
+# Generated demo/video output
+brag-output/
+brag-output-*/
+
+# Generated Graphify output
+graphify-out/
+
+# Local AI coding-agent configuration
+.agents/
+.claude/
+.gemini/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+skills-lock.json
